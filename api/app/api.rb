@@ -11,8 +11,8 @@ module Apollo
       include CassandraCoreMixin
       include ResultFormatter
 
-      def submit_query query
-        prepare_and_execute_cql query
+      def submit_query params
+        prepare_and_execute_cql params[:query], params[:keyspace]
       end
 
       def to_json result
@@ -22,10 +22,11 @@ module Apollo
 
     desc "Submits query to cassandra and returns result"
     params do
+      requires :keyspace
       requires :query, type: String, desc: "String to query"
     end
     post :query do
-      cass_result = submit_query params[:query]
+      cass_result = submit_query params
       to_json cass_result
     end
   end

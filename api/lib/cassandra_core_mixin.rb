@@ -19,8 +19,8 @@ module CassandraCoreMixin
     cassandra_connector.cassandra_cluster
   end
 
-  def cassandra_session
-    cassandra_connector.cassandra_session("rainmaker")
+  def cassandra_session(keyspace = @keyspace)
+    cassandra_connector.cassandra_session(keyspace)
   end
 
   def cassandra_force_reconnect!
@@ -74,114 +74,53 @@ module CassandraCoreMixin
     end
   end
 
-  class PreparedStatementsCache
-    def initialize(cassandra_session)
-      @session = cassandra_session
-      @prepared_statements_by_key = {}
-    end
-
-    def [] (key)
-      @prepared_statements_by_key.fetch(key)
-    end
-
-    def []= (key, query)
-      @prepared_statements_by_key[key] = query
-    end
-
-    def << (query)
-      prep_and_store(query)
-    end
-
-    def has_key?(key)
-      @prepared_statements_by_key.has_key? key
-    end
-
-    def has_query?(query)
-      key = key_for_query(query)
-      has_key?(key)
-    end
-
-    def get_query(query)
-      key = key_for_query(query)
-      self[key]
-    end
-
-    def prep_and_store(query)
-      key = key_for_query(query)
-      prepared_statement = prep(query)
-      self[key] = prepared_statement
-      prepared_statement
-    end
-
-    def key_for_query(query)
-      Digest::MD5.hexdigest(query)
-    end
-
-    def prep(query)
-      @session.prepare(query)
-    end
+  def prep query
+    cassandra_session.prepare(query)
   end
 
-  def prepcache
-    if @prepcache.nil?
-      @prepcache = PreparedStatementsCache.new(cassandra_session)
-    end
-    return @prepcache
+  def prepare_and_execute_cql(cql, keyspace)
+    @keyspace = keyspace
+    prepared_statement = prep(cql)
+
+    cassandra_execute(prepared_statement)
   end
 
-  def prepare_cql_with_cache(cql)
-    if prepcache.has_query?(cql)
-      prepared_statement = prepcache.get_query(cql)
-    else
-      prepared_statement = prepcache.prep_and_store(cql)
-    end
+  # def cast_string_to_cassandra_datatype(cassandra_datatype, string)
+  #   ruby_type = map_cassandra_datatype_to_ruby_type(cassandra_datatype)
+  #   if string.nil?
+  #     nil
+  #   elsif ruby_type == String
+  #     string
+  #   elsif ruby_type == Integer || ruby_type == Bignum
+  #     string.empty? ? nil : string.to_i
+  #   elsif ruby_type == Float
+  #     string.empty? ? nil : string.to_f
+  #   elsif ruby_type == BigDecimal
+  #     string.empty? ? nil : BigDecimal.new(string)
+  #   elsif ruby_type == Time
+  #     string.empty? ? nil : Time.parse(string)
+  #   else
+  #     raise "Don't know how to coerce #{string.inspect} to a #{ruby_type.inspect}"
+  #   end
+  # end
 
-    prepared_statement
-  end
-
-  def prepare_and_execute_cql(cql, opts = {})
-    prepared_statement = prepare_cql_with_cache(cql)
-    #bound_prepared_statement = prepared_statement.bind(opts.delete :arguments)
-
-    cassandra_execute(prepared_statement, opts)
-  end
-
-  def cast_string_to_cassandra_datatype(cassandra_datatype, string)
-    ruby_type = map_cassandra_datatype_to_ruby_type(cassandra_datatype)
-    if string.nil?
-      nil
-    elsif ruby_type == String
-      string
-    elsif ruby_type == Integer || ruby_type == Bignum
-      string.empty? ? nil : string.to_i
-    elsif ruby_type == Float
-      string.empty? ? nil : string.to_f
-    elsif ruby_type == BigDecimal
-      string.empty? ? nil : BigDecimal.new(string)
-    elsif ruby_type == Time
-      string.empty? ? nil : Time.parse(string)
-    else
-      raise "Don't know how to coerce #{string.inspect} to a #{ruby_type.inspect}"
-    end
-  end
-
-  def map_cassandra_datatype_to_ruby_type(cassandra_datatype)
-    case cassandra_datatype
-    when :int, "org.apache.cassandra.db.marshal.Int32Type"
-      Integer
-    when :bigint, "org.apache.cassandra.db.marshal.LongType"
-      Bignum
-    when :float
-      Float
-    when :varchar
-      String
-    when :decimal
-      BigDecimal
-    when :timestamp
-      Time
-    else
-      raise "Don't know how to convert #{cassandra_datatype.inspect} into a Ruby type"
-    end
-  end
+  # def map_cassandra_datatype_to_ruby_type(cassandra_datatype)
+  #   case cassandra_datatype
+  #   when :int, "org.apache.cassandra.db.marshal.Int32Type"
+  #     Integer
+  #   when :bigint, "org.apache.cassandra.db.marshal.LongType"
+  #     Bignum
+  #   when :float
+  #     Float
+  #   when :varchar
+  #     String
+  #   when :decimal
+  #     BigDecimal
+  #   when :timestamp
+  #     Time
+  #   else
+  #     raise "Don't know how to convert #{cassandra_datatype.inspect} into a Ruby type"
+  #   end
+  # end
 
 end
