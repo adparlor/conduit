@@ -1,0 +1,15 @@
+{
+  "name": "apollo",
+  "version": "0.0.1",
+  "description": "Cassandra UI",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "1.3.0",
+    "gulp": "3.9.0"
+  }
+}

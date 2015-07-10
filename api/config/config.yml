@@ -1,0 +1,15 @@
+test:
+  cassandra:
+    cluster:
+      hosts: ['127.0.0.1']
+      consistency: !ruby/symbol all # need full consistency in specs to ensure deterministic read results in assertions
+
+development:
+  cassandra:
+    cluster:
+      hosts: ['127.0.0.1']
+
+production:
+  cassandra:
+    cluster:
+      hosts: ['127.0.0.1']

@@ -1,0 +1,12 @@
+
+source 'https://rubygems.org'
+
+gem 'rack'
+gem 'grape'
+gem 'cassandra-driver'
+gem 'rake'
+gem 'oj'
+
+group :development do
+  gem 'byebug'
+end
