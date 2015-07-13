@@ -24,9 +24,9 @@
       #sidebarRegion .keyspace-row .keyspace-collapse-toggle:hover .keyspace-collapse-icon {
         color: #3498db; }
   #sidebarRegion .tables-container {
-    padding-left: 15px; }
+    padding: 5px 0 0 15px; }
     #sidebarRegion .tables-container .table-row {
-      padding: 5px 0; }
+      padding: 3px 0; }
       #sidebarRegion .tables-container .table-row .table-collapse-toggle {
         position: relative;
         cursor: pointer; }
@@ -38,8 +38,8 @@
         #sidebarRegion .tables-container .table-row .table-collapse-toggle:hover .table-collapse-icon {
           color: #3498db; }
   #sidebarRegion .columns-container {
-    padding-left: 30px; }
+    padding: 5px 0 0 30px; }
     #sidebarRegion .columns-container .column-row {
-      padding: 5px 0; }
+      padding: 3px 0; }
       #sidebarRegion .columns-container .column-row .column-name {
         font-weight: 300; }

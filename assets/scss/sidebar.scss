@@ -45,9 +45,9 @@ $alizarin: #e74c3c;
     }
   }
   .tables-container {
-    padding-left: 15px;
+    padding: 5px 0 0 15px;
     .table-row {
-      padding: 5px 0;
+      padding: 3px 0;
       .table-collapse-toggle {
         position: relative;
         cursor: pointer;
@@ -67,9 +67,9 @@ $alizarin: #e74c3c;
     }
   }
   .columns-container {
-    padding-left: 30px;
+    padding: 5px 0 0 30px;
     .column-row {
-      padding: 5px 0;
+      padding: 3px 0;
       .column-name {
         font-weight: 300;
       }
