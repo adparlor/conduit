@@ -40,6 +40,15 @@ define(['ColumnsView'], function(ColumnsView) {
             return isCollapsed ? "hide" : ""
           }
         }]
+      },
+      '.table-name > .fa': {
+        attributes: [{
+          observe: 'isCollapsed',
+          name: 'class',
+          onGet: function(isCollapsed) {
+            return isCollapsed ? "fa-folder" : "fa-folder-open"
+          }
+        }]
       }
     },
 

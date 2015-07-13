@@ -21,7 +21,9 @@ requirejs.config({
     QueriesView: "views/query/queries",
     QueryBuilderView: "views/query/query_builder",
     ResultsView: "views/query/results",
-    ResultView: "views/query/result"
+    ResultView: "views/query/result",
+    Query: "models/query",
+    Queries: "collections/queries"
   }
 })
 

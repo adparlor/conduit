@@ -1,6 +1,8 @@
 
 $midnight: #2c3e50;
 $asphalt: #34495e;
+$asbestos: #7f8c8d;
+$concrete: #95a5a6;
 $silver: #bdc3c7;
 $clouds: #ecf0f1;
 $wisteria: #8e44ad;
@@ -15,15 +17,41 @@ $alizarin: #e74c3c;
   margin-top: 50px;
   position: fixed;
   background-color: $clouds;
-  padding: 20px 20px;
   overflow-y: scroll;
 
   .collapse-icon, .column-collapse {
     color: $midnight;
   }
 
+  .fa {
+    display: inline;
+  }
+
+  #sidebar {
+    border-top: 2px solid $midnight;
+    #keyspaceHeader {
+      height: 50px;
+      border-top: 2x solid $silver;
+      border-bottom: 1px solid $asbestos;
+      font-size: 20px;
+      padding: 10px 0 0 20px;
+    }
+
+    #keyspacesContainer {
+      // border-top: 2px solid $silver;
+    }
+  }
+
   .keyspace-row {
-    padding: 10px 0;
+    border-top: 0.1em solid $silver;
+    border-bottom: 0.1em solid $concrete;
+    padding: 10px 20px;
+    &:first-child {
+      border-top: 1px solid $silver;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
     .keyspace-collapse-toggle {
       position: relative;
       cursor: pointer;
@@ -34,8 +62,11 @@ $alizarin: #e74c3c;
       .keyspace-name {
         position: absolute;
         font-size: 18px;
-        top: -7px;
+        top: -5px;
         left: 20px;
+        .fa {
+          padding-right: 5px;
+        }
       }
       &:hover {
         .keyspace-collapse-icon {
@@ -57,6 +88,9 @@ $alizarin: #e74c3c;
         .table-name {
           position: absolute;
           left: 20px;
+          .fa {
+            padding-right: 5px;
+          }
         }
         &:hover {
           .table-collapse-icon {
@@ -72,6 +106,9 @@ $alizarin: #e74c3c;
       padding: 3px 0;
       .column-name {
         font-weight: 300;
+        .fa {
+          padding-right: 5px;
+        }
       }
     }
   }

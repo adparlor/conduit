@@ -1,13 +1,12 @@
 
 define(['TabView'], function(TabView) {
 
-  TabsView = Backbone.Marionette.CompositeView.extend({
+  TabsView = Backbone.Marionette.CollectionView.extend({
     initialize: function(options) {
-      this.model = new Backbone.Model()
-      this.collection = new Backbone.Collection()
+      this.presenterModel = new Backbone.Model()
     },
 
-    template: Handlebars.templates['query/tabs_layout'],
+    className: "query-tabs",
 
     childView: TabView,
 
@@ -15,7 +14,7 @@ define(['TabView'], function(TabView) {
 
     },
 
-    bindings: {
+    presenterBindings: {
 
     },
 
@@ -24,9 +23,9 @@ define(['TabView'], function(TabView) {
     },
 
     render: function() {
-      this.unstickit()
-      Backbone.Marionette.CompositeView.prototype.render.call(this)
-      this.stickit()
+      this.unstickit(this.presenterModel, this.presenterBindings)
+      Backbone.Marionette.CollectionView.prototype.render.call(this)
+      this.stickit(this.presenterModel, this.presenterBindings)
     }
   })
 

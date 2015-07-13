@@ -4,12 +4,27 @@
   margin-top: 50px;
   position: fixed;
   background-color: #ecf0f1;
-  padding: 20px 20px;
   overflow-y: scroll; }
   #sidebarRegion .collapse-icon, #sidebarRegion .column-collapse {
     color: #2c3e50; }
+  #sidebarRegion .fa {
+    display: inline; }
+  #sidebarRegion #sidebar {
+    border-top: 2px solid #2c3e50; }
+    #sidebarRegion #sidebar #keyspaceHeader {
+      height: 50px;
+      border-top: 2x solid #bdc3c7;
+      border-bottom: 1px solid #7f8c8d;
+      font-size: 20px;
+      padding: 10px 0 0 20px; }
   #sidebarRegion .keyspace-row {
-    padding: 10px 0; }
+    border-top: 0.1em solid #bdc3c7;
+    border-bottom: 0.1em solid #95a5a6;
+    padding: 10px 20px; }
+    #sidebarRegion .keyspace-row:first-child {
+      border-top: 1px solid #bdc3c7; }
+    #sidebarRegion .keyspace-row:last-child {
+      border-bottom: none; }
     #sidebarRegion .keyspace-row .keyspace-collapse-toggle {
       position: relative;
       cursor: pointer; }
@@ -19,8 +34,10 @@
       #sidebarRegion .keyspace-row .keyspace-collapse-toggle .keyspace-name {
         position: absolute;
         font-size: 18px;
-        top: -7px;
+        top: -5px;
         left: 20px; }
+        #sidebarRegion .keyspace-row .keyspace-collapse-toggle .keyspace-name .fa {
+          padding-right: 5px; }
       #sidebarRegion .keyspace-row .keyspace-collapse-toggle:hover .keyspace-collapse-icon {
         color: #3498db; }
   #sidebarRegion .tables-container {
@@ -35,6 +52,8 @@
         #sidebarRegion .tables-container .table-row .table-collapse-toggle .table-name {
           position: absolute;
           left: 20px; }
+          #sidebarRegion .tables-container .table-row .table-collapse-toggle .table-name .fa {
+            padding-right: 5px; }
         #sidebarRegion .tables-container .table-row .table-collapse-toggle:hover .table-collapse-icon {
           color: #3498db; }
   #sidebarRegion .columns-container {
@@ -43,3 +62,5 @@
       padding: 3px 0; }
       #sidebarRegion .columns-container .column-row .column-name {
         font-weight: 300; }
+        #sidebarRegion .columns-container .column-row .column-name .fa {
+          padding-right: 5px; }

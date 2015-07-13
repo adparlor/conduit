@@ -8,12 +8,19 @@ define([], function() {
 
     template: Handlebars.templates['query/tab_layout'],
 
+    className: "query-tab",
+
     events: {
 
     },
 
     bindings: {
-
+      '.tab-name': {
+        observe: 'query',
+        onGet: function(query) {
+          return query ? query : "Untitled"
+        }
+      }
     },
 
     onDestroy: function() {
