@@ -1,15 +1,21 @@
 var gulp = require('gulp'),
     exec = require('child_process').exec,
-    sass = require('gulp-ruby-sass')
+    sass = require('gulp-ruby-sass'),
+    concat = require('gulp-concat'),
+    autoprefix = require('gulp-autoprefixer')
 
 gulp.task('styles', function() {
   return sass('assets/scss')
+    .pipe(autoprefix({
+      browsers: ['last 2 versions']
+    }))
     .pipe(gulp.dest('assets/css'))
 })
 
-gulp.task('compile_styleguide', function() {
-  return sass('assets/styleguide_scss/main.scss')
-    .pipe(gulp.dest('assets/css'))
+gulp.task('concatStyles', function() {
+  gulp.src('assets/css/**/*.css')
+    .pipe(concat('main.css'))
+    .pipe(gulp.dest('assets'))
 })
 
 gulp.task('templates', function(cb) {
@@ -22,5 +28,6 @@ gulp.task('templates', function(cb) {
 
 gulp.task('default', function() {
   gulp.watch('assets/scss/**/*.scss', ['styles'])
+  gulp.watch('assets/css/**/*.css', ['concatStyles'])
   gulp.watch('templates/**/*.handlebars', ['templates'])
 })

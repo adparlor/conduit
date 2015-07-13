@@ -1,4 +1,2 @@
 
-window.env = {
-  SYSTEM_API: "/apollo/dev/api"
-}
+window.SYSTEM_API = "/conduit/dev/api"

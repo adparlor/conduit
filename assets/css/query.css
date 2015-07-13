@@ -1,0 +1,6 @@
+#queryRegion {
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  left: 25%;
+  border: 1px solid red; }

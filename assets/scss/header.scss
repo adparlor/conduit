@@ -1,0 +1,17 @@
+
+html, body, #appContent, #appContent > div {
+  height: 100%;
+}
+
+#appContent > div {
+  position: relative;
+}
+
+#conduitLabel {
+  width: 25%;
+  height: 50px;
+  font-size: 30px;
+  padding: 5px 0 5px 20px;
+  position: fixed;
+  border: 1px solid red;
+}

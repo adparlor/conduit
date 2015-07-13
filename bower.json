@@ -1,7 +1,7 @@
 {
-  "name": "apollo",
+  "name": "conduit",
   "version": "0.0.1",
-  "homepage": "https://github.com/AnthonyBobsin/apollo",
+  "homepage": "https://github.com/AnthonyBobsin/conduit",
   "authors": [
     "AnthonyBobsin <bobsinj@gmail.com>"
   ],
@@ -9,10 +9,12 @@
   "main": "index.html",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "~3.3.5",
-    "backbone": "~1.2.1",
-    "marionette": "~2.4.2",
-    "handlebars": "~3.0.3",
-    "requirejs": "~2.1.18"
+    "bootstrap": "3.3.5",
+    "backbone": "1.2.1",
+    "marionette": "2.4.2",
+    "handlebars": "3.0.3",
+    "requirejs": "2.1.18",
+    "backbone.stickit": "0.9.2",
+    "jquery": "2.1.4"
   }
 }

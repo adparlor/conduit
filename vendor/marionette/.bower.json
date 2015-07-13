@@ -48,7 +48,6 @@
     "commit": "b0711585b022cfeb4822129a4cde5591f21f06bc"
   },
   "_source": "git://github.com/marionettejs/backbone.marionette.git",
-  "_target": "~2.4.2",
-  "_originalSource": "marionette",
-  "_direct": true
+  "_target": "2.4.2",
+  "_originalSource": "marionette"
 }

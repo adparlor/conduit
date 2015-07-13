@@ -1,12 +1,19 @@
-define([], function() {
+
+define(function() {
 
   var SystemStorage = {
 
     requestQuery: function(query) {
       return $.ajax({
-        url: window.env.SYSTEM_API + "/query",
+        url: SYSTEM_API + "/queries",
         type: "POST",
         data: query
+      })
+    },
+
+    getKeyspaces: function() {
+      return $.ajax({
+        url: SYSTEM_API + "/keyspaces"
       })
     }
   }

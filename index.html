@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Apollo</title>
+  <title>Conduit</title>
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="assets/main.css">
 </head>
 <body>
-  <p>Hello <span id="test"></span></p>
+  <div id="appContent">Loading...</div>
 
   <!-- VENDOR -->
   <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
@@ -16,10 +17,12 @@
   <script type="text/javascript" src="vendor/backbone/backbone.js"></script>
   <script type="text/javascript" src="vendor/backbone.babysitter/lib/backbone.babysitter.js"></script>
   <script type="text/javascript" src="vendor/backbone.wreqr/lib/backbone.wreqr.js"></script>
+  <script type="text/javascript" src="vendor/backbone.stickit/backbone.stickit.js"></script>
   <script type="text/javascript" src="vendor/marionette/lib/backbone.marionette.js"></script>
   <script type="text/javascript" src="js/app/repositories/environments.js"></script>
+  <script type="text/javascript" src="js/templates/precompiled_templates.js"></script>
 
-   <script data-main="js/app/application" src="vendor/requirejs/require.js"></script>
+  <script data-main="js/app/application" src="vendor/requirejs/require.js"></script>
 
 </body>
 </html>

@@ -27,7 +27,6 @@
     "commit": "938a8ff934fd4de4f0009f68d43f500f5920b490"
   },
   "_source": "git://github.com/jashkenas/backbone.git",
-  "_target": "~1.2.1",
-  "_originalSource": "backbone",
-  "_direct": true
+  "_target": ">=0.9.9 <=1.2.1",
+  "_originalSource": "backbone"
 }

@@ -1,6 +1,6 @@
 module ResultFormatter
 
-  def format result
+  def format_table result
     formatted_result = []
 
     result.each do |row|
@@ -25,6 +25,10 @@ module ResultFormatter
       end
     end
     deserialized_row
+  end
+
+  def format_keyspaces result
+    result.to_a
   end
 
 end

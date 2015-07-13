@@ -85,6 +85,12 @@ module CassandraCoreMixin
     cassandra_execute(prepared_statement)
   end
 
+  def get_keyspaces
+    session = cassandra_cluster.connect
+    keyspaces = session.execute("SELECT * FROM system.schema_keyspaces")
+    keyspaces
+  end
+
   # def cast_string_to_cassandra_datatype(cassandra_datatype, string)
   #   ruby_type = map_cassandra_datatype_to_ruby_type(cassandra_datatype)
   #   if string.nil?

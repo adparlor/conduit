@@ -1,17 +1,21 @@
 {
-  "name": "apollo",
+  "name": "conduit",
   "version": "0.0.1",
   "description": "Cassandra UI",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npm install -g gulp@3.9.0",
+    "preinstall": "npm install -g handlebars@3.0.3"
   },
   "author": "",
   "license": "ISC",
-  "repository": "https://github.com/AnthonyBobsin/apollo.git",
+  "repository": "https://github.com/AnthonyBobsin/conduit.git",
   "dependencies": {
     "gulp": "3.9.0",
-    "gulp-ruby-sass": "^1.0.5",
-    "handlebars": "1.3.0"
+    "gulp-autoprefixer": "2.3.1",
+    "gulp-concat": "2.6.0",
+    "gulp-ruby-sass": "1.0.5",
+    "handlebars": "3.0.3"
   }
 }
