@@ -5,6 +5,9 @@ define(['ColumnsView'], function(ColumnsView) {
     initialize: function(options) {
       this.options = options
       this.collection = this.model.get("columns")
+      this.presenterModel = new Backbone.Model({
+        isCollapsed: true
+      })
     },
 
     template: Handlebars.templates['sidebar/tables_layout'],
@@ -13,14 +16,36 @@ define(['ColumnsView'], function(ColumnsView) {
 
     childViewContainer: '.columns-container',
 
-    className: 'table',
+    className: 'table-row',
 
     events: {
-
+      'click .table-collapse-toggle': 'collapseColumns'
     },
 
-    bindings: {
+    presenterBindings: {
+      'span.table-collapse-icon': {
+        attributes: [{
+          observe: 'isCollapsed',
+          name: 'class',
+          onGet: function(isCollapsed) {
+            return isCollapsed ? "glyphicon-chevron-right" : "glyphicon-chevron-down"
+          }
+        }]
+      },
+      '.columns-container': {
+        attributes: [{
+          observe: 'isCollapsed',
+          name: 'class',
+          onGet: function(isCollapsed) {
+            return isCollapsed ? "hide" : ""
+          }
+        }]
+      }
+    },
 
+    collapseColumns: function(e) {
+      e.stopPropagation()
+      this.presenterModel.set("isCollapsed", !this.presenterModel.get("isCollapsed"))
     },
 
     onDestroy: function() {
@@ -28,9 +53,9 @@ define(['ColumnsView'], function(ColumnsView) {
     },
 
     render: function() {
-      this.unstickit()
+      this.unstickit(this.presenterModel, this.presenterBindings)
       Backbone.Marionette.CompositeView.prototype.render.call(this)
-      this.stickit()
+      this.stickit(this.presenterModel, this.presenterBindings)
     }
   })
 

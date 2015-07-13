@@ -15,32 +15,63 @@ $alizarin: #e74c3c;
   margin-top: 50px;
   position: fixed;
   background-color: $clouds;
-  padding: 20px 30px;
+  padding: 20px 20px;
   overflow-y: scroll;
 
-  .table-collapse, .column-collapse {
+  .collapse-icon, .column-collapse {
     color: $midnight;
   }
 
-  .keyspace {
-    position: relative;
+  .keyspace-row {
     padding: 10px 0;
-    .collapse-toggle {
+    .keyspace-collapse-toggle {
+      position: relative;
       cursor: pointer;
-      .table-collapse {
+      .keyspace-collapse-icon {
         font-size: 16px;
         color: $silver;
       }
       .keyspace-name {
         position: absolute;
         font-size: 18px;
-        top: 5px;
-        left: 25px;
+        top: -7px;
+        left: 20px;
       }
       &:hover {
-        .table-collapse {
+        .keyspace-collapse-icon {
           color: $river;
         }
+      }
+    }
+  }
+  .tables-container {
+    padding-left: 15px;
+    .table-row {
+      padding: 5px 0;
+      .table-collapse-toggle {
+        position: relative;
+        cursor: pointer;
+        .table-collapse-icon {
+          color: $silver;
+        }
+        .table-name {
+          position: absolute;
+          left: 20px;
+        }
+        &:hover {
+          .table-collapse-icon {
+            color: $river;
+          }
+        }
+      }
+    }
+  }
+  .columns-container {
+    padding-left: 30px;
+    .column-row {
+      padding: 5px 0;
+      .column-name {
+        font-weight: 300;
       }
     }
   }

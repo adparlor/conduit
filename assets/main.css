@@ -26,22 +26,42 @@ html, body, #appContent, #appContent > div {
   margin-top: 50px;
   position: fixed;
   background-color: #ecf0f1;
-  padding: 20px 30px;
+  padding: 20px 20px;
   overflow-y: scroll; }
-  #sidebarRegion .table-collapse, #sidebarRegion .column-collapse {
+  #sidebarRegion .collapse-icon, #sidebarRegion .column-collapse {
     color: #2c3e50; }
-  #sidebarRegion .keyspace {
-    position: relative;
+  #sidebarRegion .keyspace-row {
     padding: 10px 0; }
-    #sidebarRegion .keyspace .collapse-toggle {
+    #sidebarRegion .keyspace-row .keyspace-collapse-toggle {
+      position: relative;
       cursor: pointer; }
-      #sidebarRegion .keyspace .collapse-toggle .table-collapse {
+      #sidebarRegion .keyspace-row .keyspace-collapse-toggle .keyspace-collapse-icon {
         font-size: 16px;
         color: #bdc3c7; }
-      #sidebarRegion .keyspace .collapse-toggle .keyspace-name {
+      #sidebarRegion .keyspace-row .keyspace-collapse-toggle .keyspace-name {
         position: absolute;
         font-size: 18px;
-        top: 5px;
-        left: 25px; }
-      #sidebarRegion .keyspace .collapse-toggle:hover .table-collapse {
+        top: -7px;
+        left: 20px; }
+      #sidebarRegion .keyspace-row .keyspace-collapse-toggle:hover .keyspace-collapse-icon {
         color: #3498db; }
+  #sidebarRegion .tables-container {
+    padding-left: 15px; }
+    #sidebarRegion .tables-container .table-row {
+      padding: 5px 0; }
+      #sidebarRegion .tables-container .table-row .table-collapse-toggle {
+        position: relative;
+        cursor: pointer; }
+        #sidebarRegion .tables-container .table-row .table-collapse-toggle .table-collapse-icon {
+          color: #bdc3c7; }
+        #sidebarRegion .tables-container .table-row .table-collapse-toggle .table-name {
+          position: absolute;
+          left: 20px; }
+        #sidebarRegion .tables-container .table-row .table-collapse-toggle:hover .table-collapse-icon {
+          color: #3498db; }
+  #sidebarRegion .columns-container {
+    padding-left: 30px; }
+    #sidebarRegion .columns-container .column-row {
+      padding: 5px 0; }
+      #sidebarRegion .columns-container .column-row .column-name {
+        font-weight: 300; }

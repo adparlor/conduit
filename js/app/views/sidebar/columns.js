@@ -8,6 +8,8 @@ define([], function() {
 
     template: Handlebars.templates['sidebar/columns_layout'],
 
+    className: 'column-row',
+
     events: {
 
     },

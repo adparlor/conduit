@@ -24,12 +24,14 @@ templates['query/tabs_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"mai
 templates['sidebar/columns_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
 
-  return this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)));
+  return "<span class=\"column-name\">"
+    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</span>";
 },"useData":true});
 templates['sidebar/keyspaces_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
 
-  return "<span class=\"collapse-toggle\">\n  <span class=\"glyphicon table-collapse\">\n  </span>\n  <span class=\"keyspace-name\">"
+  return "<span class=\"keyspace-collapse-toggle\">\n  <span class=\"glyphicon keyspace-collapse-icon\">\n  </span>\n  <span class=\"keyspace-name\">"
     + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\n</span>\n<div class=\"tables-container\">\n</div>";
 },"useData":true});
@@ -39,7 +41,8 @@ templates['sidebar/sidebar_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"]
 templates['sidebar/tables_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
 
-  return this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "\n<div class=\"columns-container\"></div>";
+  return "<span class=\"table-collapse-toggle\">\n  <span class=\"glyphicon table-collapse-icon\"></span>\n  <span class=\"table-name\">"
+    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</span>\n</span>\n<div class=\"columns-container\"></div>";
 },"useData":true});
 })();

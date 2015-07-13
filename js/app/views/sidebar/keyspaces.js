@@ -12,18 +12,18 @@ define(['TablesView'], function(TablesView) {
 
     template: Handlebars.templates['sidebar/keyspaces_layout'],
 
-    className: 'keyspace',
+    className: 'keyspace-row',
 
     childView: TablesView,
 
     childViewContainer: '.tables-container',
 
     events: {
-      'click .collapse-toggle': 'collapseTables'
+      'click .keyspace-collapse-toggle': 'collapseTables'
     },
 
     presenterBindings: {
-      'span.table-collapse': {
+      'span.keyspace-collapse-icon': {
         attributes: [{
           observe: 'isCollapsed',
           name: 'class',
@@ -50,7 +50,9 @@ define(['TablesView'], function(TablesView) {
     },
 
     onDestroy: function() {
-
+      this.options = null
+      this.collection = null
+      this.model = null
     },
 
     render: function() {
