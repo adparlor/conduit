@@ -23,5 +23,6 @@ html, body, #appContent, #appContent > div {
   font-size: 30px;
   padding: 5px 0 5px 20px;
   position: fixed;
-  border: 1px solid red;
+  background-color: $asphalt;
+  color: $clouds;
 }
