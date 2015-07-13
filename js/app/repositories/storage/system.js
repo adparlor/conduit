@@ -5,15 +5,15 @@ define(function() {
 
     requestQuery: function(query) {
       return $.ajax({
-        url: SYSTEM_API + "/queries",
+        url: SYSTEM_API + "/query",
         type: "POST",
         data: query
       })
     },
 
-    getKeyspaces: function() {
+    getKeyspaceHierarchy: function() {
       return $.ajax({
-        url: SYSTEM_API + "/keyspaces"
+        url: SYSTEM_API + "/hierarchy"
       })
     }
   }

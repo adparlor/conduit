@@ -85,10 +85,27 @@ module CassandraCoreMixin
     cassandra_execute(prepared_statement)
   end
 
-  def get_keyspaces
-    session = cassandra_cluster.connect
-    keyspaces = session.execute("SELECT * FROM system.schema_keyspaces")
-    keyspaces
+  def get_keyspace_hierarchy
+    hierarchy = []
+    cassandra_cluster.keyspaces.each do |k|
+      keyspace = Hash.new
+      keyspace[:name] = k.name
+      keyspace[:tables] = []
+      cassandra_cluster.keyspace(keyspace[:name]).tables.each do |t|
+        table = Hash.new
+        table[:name] = t.name
+        table[:columns] = []
+        cassandra_cluster.keyspace(keyspace[:name]).table(table[:name]).columns.each do |c|
+          column = Hash.new
+          column[:name] = c.name
+          column[:type] = c.type
+          table[:columns] << column
+        end
+        keyspace[:tables] << table
+      end
+      hierarchy << keyspace
+    end
+    hierarchy
   end
 
   # def cast_string_to_cassandra_datatype(cassandra_datatype, string)

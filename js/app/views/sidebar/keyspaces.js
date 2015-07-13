@@ -4,13 +4,14 @@ define(['TablesView'], function(TablesView) {
   var KeyspacesView = Backbone.Marionette.CompositeView.extend({
     initialize: function(options) {
       this.options = options
-      this.model = new Backbone.Model()
-      this.collection = new Backbone.Collection()
+      this.collection = this.model.get("tables")
     },
 
     template: Handlebars.templates['sidebar/keyspaces_layout'],
 
-    itemView: TablesView,
+    childView: TablesView,
+
+    childViewContainer: '.tables-container',
 
     events: {
 

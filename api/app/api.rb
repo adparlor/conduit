@@ -15,16 +15,12 @@ module Conduit
         prepare_and_execute_cql params[:query], params[:keyspace]
       end
 
-      def request_keyspaces
-        get_keyspaces
+      def request_hierarchy
+        get_keyspace_hierarchy
       end
 
       def table_to_json result
         _format_tables result
-      end
-
-      def keyspaces_to_json result
-        format_keyspaces result
       end
     end
 
@@ -38,9 +34,10 @@ module Conduit
       to_json cass_result
     end
 
-    desc "Submits query to cassandra to return all available keyspaces"
-    get :keyspaces do
-      keyspaces_to_json request_keyspaces
+    desc "Submits query to cassandra to return all available
+          keyspaces with tables and columns"
+    get :hierarchy do
+      request_hierarchy
     end
 
   end

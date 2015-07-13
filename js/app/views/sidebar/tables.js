@@ -1,12 +1,19 @@
 
-define(function() {
+define(['ColumnsView'], function(ColumnsView) {
 
-  var TablesView = Backbone.Marionette.ItemView.extend({
+  var TablesView = Backbone.Marionette.CompositeView.extend({
     initialize: function(options) {
       this.options = options
+      this.collection = this.model.get("columns")
     },
 
     template: Handlebars.templates['sidebar/tables_layout'],
+
+    childView: ColumnsView,
+
+    childViewContainer: '.columns-container',
+
+    className: 'table',
 
     events: {
 
@@ -22,7 +29,7 @@ define(function() {
 
     render: function() {
       this.unstickit()
-      Backbone.Marionette.ItemView.prototype.render.call(this)
+      Backbone.Marionette.CompositeView.prototype.render.call(this)
       this.stickit()
     }
   })

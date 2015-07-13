@@ -10,7 +10,7 @@ define(['ResultView'], function(ResultView) {
 
     template: Handlebars.templates['query/results_layout'],
 
-    itemView: ResultView,
+    childView: ResultView,
 
     events: {
 

@@ -9,7 +9,7 @@ define(['TabView'], function(TabView) {
 
     template: Handlebars.templates['query/tabs_layout'],
 
-    itemView: TabView,
+    childView: TabView,
 
     events: {
 

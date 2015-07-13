@@ -5,13 +5,15 @@ define(['KeyspacesView'], function(KeyspacesView) {
     initialize: function(options) {
       this.options = options
       this.model = new Backbone.Model()
-      // Collection of databases
-      this.collection = new Backbone.Collection()
     },
 
     template: Handlebars.templates['sidebar/sidebar_layout'],
 
-    itemView: KeyspacesView,
+    id: 'sidebar',
+
+    childView: KeyspacesView,
+
+    childViewContainer: '#keyspacesContainer',
 
     events: {
 
