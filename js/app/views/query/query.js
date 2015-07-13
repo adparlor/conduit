@@ -8,7 +8,7 @@ function(TabsView, QueriesView, Query, Queries) {
       this.model = new Backbone.Model()
       this.tabsCollection = new Queries(),
       this.queriesCollection = new Queries()
-      this.addQuery()
+      this.addQueryTab()
 
       this.tabsView = new TabsView({
         collection: this.tabsCollection
@@ -17,7 +17,7 @@ function(TabsView, QueriesView, Query, Queries) {
         collection: this.queriesCollection
       })
 
-      this.listenTo(this.options.vent, "addNewQuery", this.addQuery)
+      this.listenTo(this.options.vent, "addNewQuery", this.addQueryTab)
     },
 
     template: Handlebars.templates['query/query_layout'],
@@ -35,7 +35,7 @@ function(TabsView, QueriesView, Query, Queries) {
 
     },
 
-    addQuery: function(query) {
+    addQueryTab: function(query) {
       var newQuery = query || new Query({})
 
       this.tabsCollection.add(newQuery)

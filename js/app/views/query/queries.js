@@ -5,7 +5,6 @@ define([], function() {
     initialize: function(options) {
       this.options = options
       this.model = new Backbone.Model()
-      this.collection = new Backbone.Collection()
     },
 
     template: Handlebars.templates['query/queries_layout'],
