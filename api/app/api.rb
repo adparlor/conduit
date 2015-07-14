@@ -20,7 +20,7 @@ module Conduit
       end
 
       def table_to_json result
-        _format_tables result
+        format_table result
       end
     end
 
@@ -31,7 +31,7 @@ module Conduit
     end
     post :queries do
       cass_result = request_query params
-      to_json cass_result
+      table_to_json cass_result
     end
 
     desc "Submits query to cassandra to return all available

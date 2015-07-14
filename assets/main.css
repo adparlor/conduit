@@ -108,7 +108,8 @@ html, body, #appContent, #appContent > div {
   #sidebarRegion .columns-container {
     padding: 5px 0 0 30px; }
     #sidebarRegion .columns-container .column-row {
-      padding: 3px 0; }
+      padding: 3px 0;
+      border-bottom: 1px solid #E1E5E7; }
       #sidebarRegion .columns-container .column-row .column-name {
         font-weight: 300; }
         #sidebarRegion .columns-container .column-row .column-name .fa {
