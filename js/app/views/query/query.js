@@ -37,7 +37,9 @@ function(TabsView, QueriesView, Query, Queries) {
     },
 
     addQueryTab: function(query) {
-      var newQuery = query || new Query({})
+      var newQuery = query || new Query({
+        results: new Backbone.Collection()
+      })
 
       this.tabsCollection.add(newQuery)
       this.queriesCollection.add(newQuery)

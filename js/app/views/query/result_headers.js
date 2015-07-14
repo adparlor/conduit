@@ -1,12 +1,12 @@
 
-define(['ResultHeadersView'], function(ResultHeadersView) {
+define(['ResultHeaderView'], function(ResultHeaderView) {
 
   var ResultHeadersView = Backbone.Marionette.CollectionView.extend({
     initialize: function(options) {
       this.presenterModel = new Backbone.Model()
     },
 
-    childView: ResultHeadersView,
+    childView: ResultHeaderView,
 
     tagName: 'tr',
 

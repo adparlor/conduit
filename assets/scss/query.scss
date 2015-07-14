@@ -97,12 +97,23 @@ $alizarin: #e74c3c;
   .resultsRegion {
     height: 70%;
     border-top: 1px solid $clouds;
-    padding: 0 1%;
+    margin: 0 1%;
+    overflow: scroll;
+    position: relative;
+    border: 1px solid $asphalt;
     .results-table {
       height: 100%;
       width: 100%;
       background-color: $clouds;
-      border: 1px solid $cloudsD;
+      thead > tr {
+        background-color: $asphalt;
+        th {
+          color: white;
+          padding: 5px 6px;
+          border: 1px solid $silver;
+          font-weight: 200;
+        }
+      }
     }
   }
 }

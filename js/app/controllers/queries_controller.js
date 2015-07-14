@@ -15,9 +15,8 @@ function(QueryView, SystemRepo) {
     },
 
     makeQueryRequest: function(queryModel) {
-
       var onSuccess = function(resultsCollection) {
-        debugger
+        queryModel.get("results").reset(resultsCollection.models)
       }
 
       var onFailure = function(err) {
@@ -27,7 +26,6 @@ function(QueryView, SystemRepo) {
       SystemRepo.makeQueryRequest(queryModel)
         .done(onSuccess)
         .fail(onFailure)
-
     }
   })
 

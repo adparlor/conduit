@@ -14,6 +14,8 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
       this.resultRowsView = new ResultRowsView({
         collection: this.resultRows
       })
+
+      this.listenTo(this.resultsCollection, 'reset', this.divideResultsCollectionIntoHeadersAndRows)
     },
 
     template: Handlebars.templates['query/results_layout'],
@@ -36,7 +38,17 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
     },
 
     divideResultsCollectionIntoHeadersAndRows: function() {
+      var view = this
 
+      this.resultsCollection.each(function(result) {
+        for (var key in result.attributes) {
+          if (result.attributes.hasOwnProperty(key) && !view.resultHeaders.findWhere({header: key})) {
+            view.resultHeaders.add(new Backbone.Model({
+              header: key
+            }))
+          }
+        }
+      })
     },
 
     onDestroy: function() {

@@ -8,6 +8,8 @@ define([], function() {
 
     template: Handlebars.templates['query/result_layout'],
 
+    tagName: 'tr',
+
     events: {
 
     },
