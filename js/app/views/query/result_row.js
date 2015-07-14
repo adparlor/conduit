@@ -1,7 +1,7 @@
 
-define([], function() {
+define(['ResultDataView'], function(ResultDataView) {
 
-  var ResultRowView = Backbone.Marionette.ItemView.extend({
+  var ResultRowView = Backbone.Marionette.CompositeView.extend({
     initialize: function(options) {
       this.options = options
     },
@@ -9,6 +9,8 @@ define([], function() {
     template: Handlebars.templates['query/result_layout'],
 
     tagName: 'tr',
+
+    childView: ResultDataView,
 
     events: {
 
@@ -24,7 +26,7 @@ define([], function() {
 
     render: function() {
       this.unstickit()
-      Backbone.Marionette.ItemView.prototype.render.call(this)
+      Backbone.Marionette.CompositeView.prototype.render.call(this)
       this.stickit()
     }
   })

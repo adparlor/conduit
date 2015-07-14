@@ -7,7 +7,19 @@ define(function() {
       var resultsCollection = new Backbone.Collection()
 
       rows.forEach(function(row) {
-        resultsCollection.add(new Backbone.Model(row))
+        // resultsCollection.add(new Backbone.Model(row))
+        var rowModel = new Backbone.Model({
+          tableDataCollection: new Backbone.Collection()
+        })
+        for (var key in row) {
+          if (row.hasOwnProperty(key)) {
+            rowModel.get("tableDataCollection").add(new Backbone.Model({
+              header: key,
+              value: row[key]
+            }))
+          }
+        }
+        resultsCollection.add(rowModel)
       })
 
       return resultsCollection

@@ -15,7 +15,7 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
         collection: this.resultRows
       })
 
-      this.listenTo(this.resultsCollection, 'reset', this.divideResultsCollectionIntoHeadersAndRows)
+      this.listenTo(this.resultsCollection, 'reset', this.getHeadersFromResultsCollection)
     },
 
     template: Handlebars.templates['query/results_layout'],
@@ -37,17 +37,27 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
 
     },
 
-    divideResultsCollectionIntoHeadersAndRows: function() {
+    getHeadersFromResultsCollection: function() {
       var view = this
-
+      // FILL HEADERS COLLECTION
       this.resultsCollection.each(function(result) {
-        for (var key in result.attributes) {
-          if (result.attributes.hasOwnProperty(key) && !view.resultHeaders.findWhere({header: key})) {
-            view.resultHeaders.add(new Backbone.Model({
-              header: key
-            }))
+        result.get("tableDataCollection").each(function(data) {
+          var dataHeader = data.get("header")
+          if (!view.resultHeaders.findWhere({header: dataHeader}))
+            view.resultHeaders.add(new Backbone.Model({header: dataHeader}))
+        })
+      })
+      // FOR EACH ROW, LOOP THROUGH HEADERS. IF ROW'S DATA COLLECTION DOESN'T CONTAIN
+      // THAT HEADER, INSERT BLANK MODEL AT THAT INDEX TO FILL IN BLANK SPOTS
+      this.resultsCollection.each(function(row) {
+        view.resultHeaders.each(function(header, index) {
+          if (!row.get("tableDataCollection").findWhere({header: header})) {
+            row.get("tableDataCollection").add(new Backbone.Model({
+              header: header,
+              value: "Undefined"
+            }), { at: index })
           }
-        }
+        })
       })
     },
 

@@ -24,20 +24,12 @@ requirejs.config({
     ResultHeadersView: "views/query/result_headers",
     ResultRowsView: "views/query/result_rows",
     ResultRowView: "views/query/result_row",
+    ResultDataView: "views/query/result_data",
     ResultHeaderView: "views/query/result_header",
     Query: "models/query",
     Queries: "collections/queries"
   }
 })
-
-// require(["PromiseAdapter", "SystemStorage", "SystemDeserializer"], function(PromiseAdapter, SystemStorage, SystemDeserializer) {
-//   var query = {
-//     query: "SELECT * FROM tw_raw_promoted_tweet_facts_hourly LIMIT 1",
-//     keyspace: "rainmaker"
-//   }
-//   var promise = new PromiseAdapter(SystemStorage.requestQuery(query), SystemDeserializer.deserializeResult)
-//   promise.done(function() { console.log("done") })
-// })
 
 require (['Router', 'MainView'], function(Router, MainView) {
 
