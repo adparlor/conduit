@@ -1,16 +1,31 @@
 
-define(['ResultView'], function(ResultView) {
+define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, ResultRowsView) {
 
-  var ResultsView = Backbone.Marionette.CompositeView.extend({
+  var ResultsView = Backbone.Marionette.LayoutView.extend({
     initialize: function(options) {
       this.options = options
+      this.resultsCollection = this.options.results
+      this.resultHeaders = new Backbone.Collection()
+      this.resultRows = new Backbone.Collection()
       this.model = new Backbone.Model()
-      this.collection = new Backbone.Collection()
+      this.resultHeadersView = new ResultHeadersView({
+        collection: this.resultHeaders
+      })
+      this.resultRowsView = new ResultRowsView({
+        collection: this.resultRows
+      })
     },
 
     template: Handlebars.templates['query/results_layout'],
 
-    childView: ResultView,
+    tagName: 'table',
+
+    className: 'results-table',
+
+    regions: {
+      'headers': 'thead',
+      'rows': 'tbody'
+    },
 
     events: {
 
@@ -20,13 +35,19 @@ define(['ResultView'], function(ResultView) {
 
     },
 
+    divideResultsCollectionIntoHeadersAndRows: function() {
+
+    },
+
     onDestroy: function() {
 
     },
 
     render: function() {
       this.unstickit()
-      Backbone.Marionette.CompositeView.prototype.render.call(this)
+      Backbone.Marionette.LayoutView.prototype.render.call(this)
+      this.headers.show(this.resultHeadersView)
+      this.rows.show(this.resultRowsView)
       this.stickit()
     }
   })

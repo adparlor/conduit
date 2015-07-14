@@ -3,25 +3,30 @@ define(['ResultsView'], function(ResultsView) {
 
   var QueryBuilderView = Backbone.Marionette.LayoutView.extend({
     initialize: function(options) {
-      this.options = options
-      this.model = new Backbone.Model()
+      this.vent = options.vent
       this.resultsView = new ResultsView({
-
+        results: this.model.get("results")
       })
     },
 
-    template: Handlebars.templates['query/query_builder_layout.handlebars'],
+    template: Handlebars.templates['query/query_builder_layout'],
+
+    className: 'query-builder',
 
     regions: {
-      results: '.results'
+      results: '.resultsRegion'
     },
 
     events: {
-
+      'click .run-query': 'sendQueryRequest'
     },
 
     bindings: {
+      '.query-field > textarea': 'query'
+    },
 
+    sendQueryRequest: function() {
+      this.vent.trigger("query:makeRequest", this.model)
     },
 
     onDestroy: function() {

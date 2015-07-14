@@ -9,14 +9,12 @@
     color: #2c3e50; }
   #sidebarRegion .fa {
     display: inline; }
-  #sidebarRegion #sidebar {
-    border-top: 2px solid #2c3e50; }
-    #sidebarRegion #sidebar #keyspaceHeader {
-      height: 50px;
-      border-top: 2x solid #bdc3c7;
-      border-bottom: 1px solid #7f8c8d;
-      font-size: 20px;
-      padding: 10px 0 0 20px; }
+  #sidebarRegion #sidebar #keyspaceHeader {
+    height: 50px;
+    border-top: 2x solid #bdc3c7;
+    border-bottom: 1px solid #7f8c8d;
+    font-size: 20px;
+    padding: 10px 0 0 20px; }
   #sidebarRegion .keyspace-row {
     border-top: 0.1em solid #E1E5E7;
     border-bottom: 0.1em solid #bdc3c7;

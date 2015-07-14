@@ -1,7 +1,7 @@
 
 define([], function() {
 
-  var ResultView = Backbone.Marionette.ItemView.extend({
+  var ResultRowView = Backbone.Marionette.ItemView.extend({
     initialize: function(options) {
       this.options = options
     },
@@ -27,5 +27,5 @@ define([], function() {
     }
   })
 
-  return ResultView
+  return ResultRowView
 })

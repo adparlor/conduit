@@ -1,16 +1,12 @@
 
-define(['QueryBuilderView'], function(QueryBuilderView) {
+define(['ResultRowView'], function(ResultRowView) {
 
-  var QueriesView = Backbone.Marionette.CollectionView.extend({
+  var ResultRowsView = Backbone.Marionette.CollectionView.extend({
     initialize: function(options) {
       this.presenterModel = new Backbone.Model()
-
-      this.childViewOptions = {
-        vent: options.vent
-      }
     },
 
-    childView: QueryBuilderView,
+    childView: ResultRowView,
 
     events: {
 
@@ -31,5 +27,5 @@ define(['QueryBuilderView'], function(QueryBuilderView) {
     }
   })
 
-  return QueriesView
+  return ResultRowsView
 })

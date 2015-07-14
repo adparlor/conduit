@@ -1,6 +1,6 @@
 
-define(['SidebarController', 'QueryController'],
-function(SidebarController, QueryController) {
+define(['SidebarController', 'QueriesController'],
+function(SidebarController, QueriesController) {
 
   var MainView = Backbone.Marionette.LayoutView.extend({
     initialize: function(options) {
@@ -28,11 +28,13 @@ function(SidebarController, QueryController) {
     },
 
     onDomRefresh: function() {
-      this.queryController = new QueryController({
-        queryRegion: this.query
+      this.queriesController = new QueriesController({
+        queryRegion: this.query,
+        vent: this.options.vent
       })
       this.sidebarController = new SidebarController({
-        sidebarRegion: this.sidebar
+        sidebarRegion: this.sidebar,
+        vent: this.options.vent
       })
     },
 

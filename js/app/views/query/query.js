@@ -14,6 +14,7 @@ function(TabsView, QueriesView, Query, Queries) {
         collection: this.tabsCollection
       })
       this.queriesView = new QueriesView({
+        vent: this.options.vent,
         collection: this.queriesCollection
       })
 

@@ -3,7 +3,7 @@ define(function() {
 
   var Deserializer = {
 
-    deserializeQueryResult: function(rows) {
+    deserializeQueryResponse: function(rows) {
       debugger
     },
 

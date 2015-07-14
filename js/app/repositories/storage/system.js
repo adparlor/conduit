@@ -5,7 +5,7 @@ define(function() {
 
     requestQuery: function(query) {
       return $.ajax({
-        url: SYSTEM_API + "/query",
+        url: SYSTEM_API + "/queries",
         type: "POST",
         data: query
       })

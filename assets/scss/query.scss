@@ -1,8 +1,10 @@
 
 $midnight: #2c3e50;
 $asphalt: #34495e;
+$asbestos: #7f8c8d;
 $silver: #bdc3c7;
 $clouds: #ecf0f1;
+$cloudsD: #E1E5E7;
 $wisteria: #8e44ad;
 $amethyst: #9b59b6;
 $belize: #2980b9;
@@ -41,11 +43,59 @@ $alizarin: #e74c3c;
         .tab-name {
           width: inherit;
           text-overflow: ellipsis;
+          white-space: nowrap;
           overflow: hidden;
           display: block;
           padding: 0 10px;
         }
       }
     }
+  }
+
+  #queries {
+    height: calc(100% - 50px)
+  }
+
+  #queries > div, .query-builder {
+    height: 100%;
+  }
+
+  .query-field {
+    height: 30%;
+    position: relative;
+    border-bottom: 1px solid $cloudsD;
+    > textarea {
+      width: 90%;
+      height: 60%;
+      position: absolute;
+      top: 12.5%;
+      left: 5%;
+      resize: none;
+      font-size: 18px;
+      padding: 10px 15px;
+      border-radius: 3px;
+      background-color: $clouds;
+      border-color: $cloudsD;
+      &:focus {
+        outline-color: $river;
+      }
+    }
+    > .run-query {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      color: $clouds;
+      background-color: $river;
+      &:hover {
+        background-color: $belize
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .resultsRegion {
+    height: 70%;
+    border-top: 1px solid $clouds;
   }
 }

@@ -28,6 +28,42 @@
         #queryRegion > div #tabsRegion .query-tabs .query-tab .tab-name {
           width: inherit;
           text-overflow: ellipsis;
+          white-space: nowrap;
           overflow: hidden;
           display: block;
           padding: 0 10px; }
+  #queryRegion > div #queries {
+    height: calc(100% - 50px); }
+  #queryRegion > div #queries > div, #queryRegion > div .query-builder {
+    height: 100%; }
+  #queryRegion > div .query-field {
+    height: 30%;
+    position: relative;
+    border-bottom: 1px solid #E1E5E7; }
+    #queryRegion > div .query-field > textarea {
+      width: 90%;
+      height: 60%;
+      position: absolute;
+      top: 12.5%;
+      left: 5%;
+      resize: none;
+      font-size: 18px;
+      padding: 10px 15px;
+      border-radius: 3px;
+      background-color: #ecf0f1;
+      border-color: #E1E5E7; }
+      #queryRegion > div .query-field > textarea:focus {
+        outline-color: #3498db; }
+    #queryRegion > div .query-field > .run-query {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      color: #ecf0f1;
+      background-color: #3498db; }
+      #queryRegion > div .query-field > .run-query:hover {
+        background-color: #2980b9; }
+      #queryRegion > div .query-field > .run-query:focus {
+        outline: none; }
+  #queryRegion > div .resultsRegion {
+    height: 70%;
+    border-top: 1px solid #ecf0f1; }

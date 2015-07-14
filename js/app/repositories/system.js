@@ -6,6 +6,12 @@ function(PromiseAdapter, SystemStorage, SystemDeserializer, SystemSerializer) {
     getKeyspaceHierarchy: function() {
       return new PromiseAdapter(SystemStorage.getKeyspaceHierarchy(),
                                     SystemDeserializer.deserializeHierarchyResult)
+    },
+
+    makeQueryRequest: function(queryModel) {
+      var adapterPromise = SystemStorage.requestQuery(SystemSerializer.serializeQueryRequest(queryModel))
+
+      return new PromiseAdapter(adapterPromise, SystemDeserializer.deserializeQueryResponse)
     }
 
   }

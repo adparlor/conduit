@@ -29,8 +29,4 @@ module ResultFormatter
   #   deserialized_row
   # end
 
-  def format_keyspaces result
-    result.to_a
-  end
-
 end
