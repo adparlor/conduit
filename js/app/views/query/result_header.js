@@ -8,6 +8,8 @@ define([], function() {
 
     template: Handlebars.templates['query/result_header_layout'],
 
+    tagName: 'th',
+
     events: {
 
     },

@@ -8,6 +8,8 @@ define(['ResultRowView'], function(ResultRowView) {
 
     childView: ResultRowView,
 
+    tagName: 'tr',
+
     events: {
 
     },

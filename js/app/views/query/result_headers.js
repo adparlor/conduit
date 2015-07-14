@@ -8,6 +8,8 @@ define(['ResultHeadersView'], function(ResultHeadersView) {
 
     childView: ResultHeadersView,
 
+    tagName: 'tr',
+
     events: {
 
     },

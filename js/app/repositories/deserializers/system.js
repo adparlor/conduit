@@ -4,7 +4,13 @@ define(function() {
   var Deserializer = {
 
     deserializeQueryResponse: function(rows) {
-      debugger
+      var resultsCollection = new Backbone.Collection()
+
+      rows.forEach(function(row) {
+        resultsCollection.add(new Backbone.Model(row))
+      })
+
+      return resultsCollection
     },
 
     deserializeHierarchyResult: function(keyspaces) {

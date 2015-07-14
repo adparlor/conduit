@@ -81,7 +81,13 @@ html, body, #appContent, #appContent > div {
         outline: none; }
   #queryRegion > div .resultsRegion {
     height: 70%;
-    border-top: 1px solid #ecf0f1; }
+    border-top: 1px solid #ecf0f1;
+    padding: 0 1%; }
+    #queryRegion > div .resultsRegion .results-table {
+      height: 100%;
+      width: 100%;
+      background-color: #ecf0f1;
+      border: 1px solid #E1E5E7; }
 
 #sidebarRegion {
   width: 25%;

@@ -97,5 +97,12 @@ $alizarin: #e74c3c;
   .resultsRegion {
     height: 70%;
     border-top: 1px solid $clouds;
+    padding: 0 1%;
+    .results-table {
+      height: 100%;
+      width: 100%;
+      background-color: $clouds;
+      border: 1px solid $cloudsD;
+    }
   }
 }

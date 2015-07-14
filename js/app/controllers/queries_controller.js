@@ -16,15 +16,15 @@ function(QueryView, SystemRepo) {
 
     makeQueryRequest: function(queryModel) {
 
-      var onSuccess = function(response) {
-
+      var onSuccess = function(resultsCollection) {
+        debugger
       }
 
       var onFailure = function(err) {
 
       }
 
-      SystemRepo.makeQueryRequest(query)
+      SystemRepo.makeQueryRequest(queryModel)
         .done(onSuccess)
         .fail(onFailure)
 
