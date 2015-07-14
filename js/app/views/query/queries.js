@@ -1,5 +1,5 @@
 
-define([], function() {
+define(['QueryBuilder'], function(QueryBuilder) {
 
   var QueriesView = Backbone.Marionette.CompositeView.extend({
     initialize: function(options) {
@@ -8,6 +8,8 @@ define([], function() {
     },
 
     template: Handlebars.templates['query/queries_layout'],
+
+    childView: QueryBuilder,
 
     events: {
 
