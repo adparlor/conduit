@@ -46,7 +46,7 @@ An executable file is included in the /api folder to start up the server.
 $ ./server
 ```
 
-This project ofcourse also needs Apache Cassandra to get the information from. If you don't already have it installed, I highly suggest using brew
+This project ofcourse also needs Apache Cassandra to get the data from. If you don't already have it installed, I highly suggest using brew
 
 ```sh
 $ brew install cassandra
