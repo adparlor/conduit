@@ -51,15 +51,6 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
     },
 
     dynamicResize: function() {
-      // FIRST LOOP THROUGH AND GET GREATEST WIDTH & SET HEADER WIDTH
-      _.each(this.resultRowsView.el.childNodes, function(tr) {
-        this.resultHeaders.each(function(header, index) {
-          var currentRowDataWidth = $($(tr).children()[index]).outerWidth()
-          if (header.get("width") < currentRowDataWidth)
-            header.set("width", currentRowDataWidth)
-        }, this)
-      }, this)
-      // SECOND LOOP THROUGH AND SET WIDTH TO DATA
       this.resultsCollection.each(function(result) {
         this.resultHeaders.each(function(header, index) {
           result.get("tableDataCollection").at(index).set("width", header.get("width"))
