@@ -16,12 +16,15 @@ GEM
       columnize (= 0.9.0)
     cassandra-driver (2.1.4)
       ione (~> 1.2)
+    celluloid (0.16.0)
+      timers (~> 4.0.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     columnize (0.9.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     equalizer (0.0.11)
+    ffi (1.9.10)
     grape (0.12.0)
       activesupport
       builder
@@ -33,10 +36,15 @@ GEM
       rack-mount
       virtus (>= 1.0.0)
     hashie (3.4.2)
+    hitimes (1.2.2)
     i18n (0.7.0)
     ice_nine (0.11.1)
     ione (1.2.1)
     json (1.8.3)
+    listen (2.10.1)
+      celluloid (~> 0.16.0)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
     minitest (5.7.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
@@ -47,7 +55,14 @@ GEM
     rack-mount (0.8.3)
       rack (>= 1.0.0)
     rake (10.4.2)
+    rb-fsevent (0.9.5)
+    rb-inotify (0.9.5)
+      ffi (>= 0.5.0)
+    rerun (0.10.0)
+      listen (~> 2.7, >= 2.7.3)
     thread_safe (0.3.5)
+    timers (4.0.1)
+      hitimes
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     virtus (1.0.5)
@@ -66,6 +81,7 @@ DEPENDENCIES
   oj
   rack
   rake
+  rerun
 
 BUNDLED WITH
    1.10.5
