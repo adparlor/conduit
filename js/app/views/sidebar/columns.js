@@ -15,7 +15,24 @@ define([], function() {
     },
 
     bindings: {
-
+      '.column-name, .column-name > .fa-key': {
+        attributes: [{
+          observe: 'primary',
+          name: 'style',
+          onGet: function(isPrimary) {
+            return isPrimary ? "font-weight: bold" : ""
+          }
+        }]
+      },
+      '.fa-key': {
+        attributes: [{
+          observe: ['primary', 'clusterColumn'],
+          name: 'class',
+          onGet: function(attrs) {
+            return attrs[0] || attrs[1] ? "" : "hide"
+          }
+        }]
+      }
     },
 
     onDestroy: function() {

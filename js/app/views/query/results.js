@@ -62,13 +62,15 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
       var view = this
 
       var setHeadersCollection = function() {
+        var headersCollection = new Backbone.Collection()
         view.resultsCollection.each(function(result) {
           result.get("tableDataCollection").each(function(data) {
             var dataHeader = data.get("header")
-            if (!view.resultHeaders.findWhere({header: dataHeader}))
-              view.resultHeaders.add(new Backbone.Model({header: dataHeader}))
+            if (!headersCollection.findWhere({header: dataHeader}))
+              headersCollection.add(new Backbone.Model({header: dataHeader}))
           })
         })
+        view.resultHeaders.reset(headersCollection.models)
       }
       setHeadersCollection()
 
@@ -90,7 +92,8 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
     },
 
     onDestroy: function() {
-
+      this.options = null
+      this.resultsCollection = null
     },
 
     render: function() {

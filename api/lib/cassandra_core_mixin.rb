@@ -102,7 +102,8 @@ module CassandraCoreMixin
           column = Hash.new
           column[:name] = c.name
           column[:type] = c.type
-          column[:primary] = true if partition_key.include?(column[:name]) || clustering_columns.include?(column[:name])
+          column[:primary] = true if partition_key.include? column[:name]
+          column[:cluster_column] = true if clustering_columns.include? column[:name]
           table[:columns] << column
         end
         keyspace[:tables] << table

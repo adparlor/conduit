@@ -42,7 +42,8 @@ define(function() {
             var column = new Backbone.Model({
               name: columnObject.name,
               type: columnObject.type,
-              primary: columnObject.primary
+              primary: columnObject.primary,
+              clusterColumn: columnObject.cluster_column
             })
             table.get("columns").add(column)
           })
