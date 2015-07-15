@@ -10,26 +10,18 @@ We use Handlebars for templating. In order to precompile these templates, along 
 $ npm install
 ```
 
-give permissions if necessary. If it gives the warning
-
-```sh
-WARN cannot run in wd
-```
-
-run
+Give permissions if necessary.
+If you receive the warning, "cannot run in wd", run
 
 ```sh
 $ npm install --unsafe-perm
 ```
 
-again with permissions if necessary.
-While developing for the frontend, run
+While developing for the frontend, in order to watch for any changes to templates and sass files, run
 
 ```sh
 $ gulp
 ```
-
-in order to watch for any changes to templates and sass files.
 
 ## Backend Setup
 
@@ -41,13 +33,14 @@ $ gem install rerun
 $ gem install byebug
 ```
 
-with permissions if necesssary. After you've installed those, run
+Give permissions if necesssary.
+After you've installed those, in order to install the rest of the local dependencies, run
 
 ```sh
 $ bundle install
 ```
 
-in order to install the rest of the local dependencies. An executable file is included in the /api folder to start up the server.
+An executable file is included in the /api folder to start up the server.
 
 ```sh
 $ ./server
