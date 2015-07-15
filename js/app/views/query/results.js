@@ -55,8 +55,13 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
     },
 
     setFixedHeader: function() {
-      var topOfResults = this.$el.scrollTop()
-      this.$('.headers-container').css({top: topOfResults})
+      var topOfResults = this.$el.scrollTop(),
+          view = this
+      view.$('.headers-container').hide()
+      setTimeout(function() {
+        view.$('.headers-container').css({top: topOfResults})
+        view.$('.headers-container').show()
+      }, 50)
     },
 
     setGreatestWidthForHeader(width, index) {
