@@ -15,7 +15,7 @@ define(function() {
           if (row.hasOwnProperty(key)) {
             rowModel.get("tableDataCollection").add(new Backbone.Model({
               header: key,
-              value: row[key]
+              value: row[key] || "null"
             }))
           }
         }

@@ -113,13 +113,12 @@ $alizarin: #e74c3c;
         }
       }
       .result-rows .result-data-container {
-        height: 30px;
         border: 1px solid $cloudsD;
         overflow-x: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         max-width: 300px;
-        padding: 0 10px 0 5px;
+        padding: 3px 10px 3px 5px;
       }
     }
   }
