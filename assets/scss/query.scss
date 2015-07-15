@@ -101,18 +101,25 @@ $alizarin: #e74c3c;
     overflow: scroll;
     position: relative;
     border: 1px solid $asphalt;
+    background-color: $clouds;
     .results-table {
-      height: 100%;
-      width: 100%;
-      background-color: $clouds;
-      thead > tr {
+      .result-headers > tr {
         background-color: $asphalt;
-        th {
+        th > div {
           color: white;
           padding: 5px 6px;
           border: 1px solid $silver;
           font-weight: 200;
         }
+      }
+      .result-rows .result-data-container {
+        height: 30px;
+        border: 1px solid $cloudsD;
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 300px;
+        padding: 0 10px 0 5px;
       }
     }
   }

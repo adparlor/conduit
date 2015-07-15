@@ -13,31 +13,35 @@ templates['query/query_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"ma
     return "<div id=\"tabsRegion\"></div>\n<div id=\"queries\"></div>";
 },"useData":true});
 templates['query/result_data_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "";
+    var helper;
+
+  return "<div class=\"result-data-container\">"
+    + this.escapeExpression(((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper)))
+    + "</div>";
 },"useData":true});
 templates['query/result_header_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
 
-  return this.escapeExpression(((helper = (helper = helpers.header || (depth0 != null ? depth0.header : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"header","hash":{},"data":data}) : helper)));
-},"useData":true});
-templates['query/result_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "";
-},"useData":true});
-templates['query/result_rows_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "";
+  return "<div class=\"result-header-container\">"
+    + this.escapeExpression(((helper = (helper = helpers.header || (depth0 != null ? depth0.header : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"header","hash":{},"data":data}) : helper)))
+    + "</div>";
 },"useData":true});
 templates['query/results_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<thead></thead>\n<tbody></tbody>";
+    return "<table>\n  <thead class=\"result-headers\"></thead>\n</table>\n<table>\n  <tbody class=\"result-rows\"></tbody>\n</table>";
 },"useData":true});
 templates['query/tab_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<span class=\"tab-name\"></span>";
 },"useData":true});
-templates['sidebar/columns_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+templates['sidebar/columns_layout'] = template({"1":function(depth0,helpers,partials,data) {
+    return "    <i class=\"fa fa-key\"></i>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "<span class=\"column-name\"><i class=\"fa fa-columns\"></i>"
+  return "<span class=\"column-name\">\n  <i class=\"fa fa-columns\"></i>\n"
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.primary : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "  "
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</span>\n<span class=\"pull-right\">"
+    + "\n</span>\n<span class=\"pull-right\">"
     + alias3(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"type","hash":{},"data":data}) : helper)))
     + "</span>\n";
 },"useData":true});

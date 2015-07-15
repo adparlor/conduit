@@ -95,10 +95,14 @@ module CassandraCoreMixin
         table = Hash.new
         table[:name] = t.name
         table[:columns] = []
-        cassandra_cluster.keyspace(keyspace[:name]).table(table[:name]).columns.each do |c|
+        current_table = cassandra_cluster.keyspace(keyspace[:name]).table(table[:name])
+        partition_key = current_table.instance_variable_get(:@partition_key).map{|key| key.name}
+        clustering_columns = current_table.instance_variable_get(:@clustering_columns).map{|col| col.name}
+        current_table.columns.each do |c|
           column = Hash.new
           column[:name] = c.name
           column[:type] = c.type
+          column[:primary] = true if partition_key.include?(column[:name]) || clustering_columns.include?(column[:name])
           table[:columns] << column
         end
         keyspace[:tables] << table

@@ -1,2 +1,8 @@
-<span class="column-name"><i class="fa fa-columns"></i>{{name}}</span>
+<span class="column-name">
+  <i class="fa fa-columns"></i>
+  {{#if primary}}
+    <i class="fa fa-key"></i>
+  {{/if}}
+  {{name}}
+</span>
 <span class="pull-right">{{type}}</span>

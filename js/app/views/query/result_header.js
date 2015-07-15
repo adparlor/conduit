@@ -15,7 +15,15 @@ define([], function() {
     },
 
     bindings: {
-
+      '.result-header-container': {
+        attributes: [{
+          observe: 'width',
+          name: 'style',
+          onGet: function(width) {
+            return "width: " + width + "px"
+          }
+        }]
+      }
     },
 
     onDestroy: function() {

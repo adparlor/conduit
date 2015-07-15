@@ -10,16 +10,30 @@ define([], function() {
 
     tagName: 'td',
 
+    className: 'result-data',
+
     events: {
 
     },
 
     bindings: {
-
+      '.result-data-container': {
+        attributes: [{
+          observe: 'width',
+          name: 'style',
+          onGet: function(width) {
+            return "width: " + width + "px"
+          }
+        }]
+      }
     },
 
     onDestroy: function() {
 
+    },
+
+    onDomRefresh: function() {
+      this.model.trigger('sendCurrentWidth', this.$el.outerWidth(), this.model.collection.indexOf(this.model))
     },
 
     render: function() {

@@ -6,6 +6,8 @@ define(['ResultRowView'], function(ResultRowView) {
       this.presenterModel = new Backbone.Model()
     },
 
+    tagName: 'tr',
+
     childView: ResultRowView,
 
     events: {
@@ -14,6 +16,10 @@ define(['ResultRowView'], function(ResultRowView) {
 
     presenterBindings: {
 
+    },
+
+    onDomRefresh: function() {
+      this.trigger('resultsChange')
     },
 
     onDestroy: function() {

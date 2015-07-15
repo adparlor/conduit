@@ -41,7 +41,8 @@ define(function() {
           tableObject.columns.forEach(function(columnObject) {
             var column = new Backbone.Model({
               name: columnObject.name,
-              type: columnObject.type
+              type: columnObject.type,
+              primary: columnObject.primary
             })
             table.get("columns").add(column)
           })
