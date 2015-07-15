@@ -7,7 +7,7 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
       this.resultsCollection = this.options.results
       this.resultHeaders = new Backbone.Collection()
       // this.resultRows = new Backbone.Collection()
-      this.model = new Backbone.Model()
+      this.model = this.options.model
       this.resultHeadersView = new ResultHeadersView({
         collection: this.resultHeaders
       })
@@ -30,11 +30,33 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
     },
 
     events: {
-
+      'scroll': 'setFixedHeader'
     },
 
     bindings: {
+      '.fa-spinner': {
+        attributes: [{
+          observe: 'loading',
+          name: 'class',
+          onGet: function(loading) {
+            return loading ? "" : "hide"
+          }
+        }]
+      },
+      'table': {
+        attributes: [{
+          observe: 'loading',
+          name: 'class',
+          onGet: function(loading) {
+            return loading ? "hide" : ""
+          }
+        }]
+      }
+    },
 
+    setFixedHeader: function() {
+      var topOfResults = this.$el.scrollTop()
+      this.$('.headers-container').css({top: topOfResults})
     },
 
     setGreatestWidthForHeader(width, index) {

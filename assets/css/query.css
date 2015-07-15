@@ -68,21 +68,31 @@
     height: 70%;
     border-top: 1px solid #ecf0f1;
     margin: 0 1%;
-    overflow: scroll;
-    position: relative;
     border: 1px solid #34495e;
     background-color: #ecf0f1; }
-    #queryRegion > div .resultsRegion .results-table .result-headers > tr {
-      background-color: #34495e; }
-      #queryRegion > div .resultsRegion .results-table .result-headers > tr th > div {
-        color: white;
-        padding: 5px 6px;
-        border: 1px solid #bdc3c7;
-        font-weight: 200; }
-    #queryRegion > div .resultsRegion .results-table .result-rows .result-data-container {
-      border: 1px solid #E1E5E7;
-      overflow-x: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      max-width: 300px;
-      padding: 3px 10px 3px 5px; }
+    #queryRegion > div .resultsRegion .results-table {
+      height: 100%;
+      overflow: scroll;
+      position: relative; }
+      #queryRegion > div .resultsRegion .results-table .fa-spinner {
+        font-size: 100px;
+        position: absolute;
+        top: 40%;
+        left: 45%;
+        color: #3498db; }
+      #queryRegion > div .resultsRegion .results-table .headers-container {
+        position: absolute; }
+      #queryRegion > div .resultsRegion .results-table .result-headers > tr {
+        background-color: #34495e; }
+        #queryRegion > div .resultsRegion .results-table .result-headers > tr th > div {
+          color: white;
+          padding: 5px 6px;
+          border: 1px solid #bdc3c7;
+          font-weight: 200; }
+      #queryRegion > div .resultsRegion .results-table .result-rows .result-data-container {
+        border: 1px solid #E1E5E7;
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 300px;
+        padding: 3px 10px 3px 5px; }

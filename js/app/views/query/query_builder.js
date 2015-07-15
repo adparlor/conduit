@@ -4,8 +4,12 @@ define(['ResultsView'], function(ResultsView) {
   var QueryBuilderView = Backbone.Marionette.LayoutView.extend({
     initialize: function(options) {
       this.vent = options.vent
+      this.presenterModel = new Backbone.Model({
+        loading: false
+      })
       this.resultsView = new ResultsView({
-        results: this.model.get("results")
+        results: this.model.get("results"),
+        model: this.presenterModel
       })
     },
 
@@ -26,7 +30,12 @@ define(['ResultsView'], function(ResultsView) {
     },
 
     sendQueryRequest: function() {
-      this.vent.trigger("query:makeRequest", this.model)
+      this.presenterModel.set("loading", true)
+      var view = this
+      var onSuccess = function() {
+        view.presenterModel.set("loading", false)
+      }
+      this.vent.trigger("query:makeRequest", this.model, onSuccess)
     },
 
     onDestroy: function() {

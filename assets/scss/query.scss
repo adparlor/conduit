@@ -98,11 +98,22 @@ $alizarin: #e74c3c;
     height: 70%;
     border-top: 1px solid $clouds;
     margin: 0 1%;
-    overflow: scroll;
-    position: relative;
     border: 1px solid $asphalt;
     background-color: $clouds;
     .results-table {
+      height: 100%;
+      overflow: scroll;
+      position: relative;
+      .fa-spinner {
+        font-size: 100px;
+        position: absolute;
+        top: 40%;
+        left: 45%;
+        color: $river;
+      }
+      .headers-container {
+        position: absolute;
+      }
       .result-headers > tr {
         background-color: $asphalt;
         th > div {

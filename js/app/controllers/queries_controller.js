@@ -14,8 +14,9 @@ function(QueryView, SystemRepo) {
       this.listenTo(this.options.vent, "query:makeRequest", this.makeQueryRequest)
     },
 
-    makeQueryRequest: function(queryModel) {
+    makeQueryRequest: function(queryModel, successCallback) {
       var onSuccess = function(resultsCollection) {
+        successCallback()
         queryModel.get("results").reset(resultsCollection.models)
       }
 

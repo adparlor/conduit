@@ -27,7 +27,7 @@ templates['query/result_header_layout'] = template({"compiler":[6,">= 2.0.0-beta
     + "</div>";
 },"useData":true});
 templates['query/results_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<table>\n  <thead class=\"result-headers\"></thead>\n</table>\n<table>\n  <tbody class=\"result-rows\"></tbody>\n</table>";
+    return "<i class=\"fa fa-spinner fa-spin\"></i>\n<table class=\"headers-container\">\n  <thead class=\"result-headers\"></thead>\n</table>\n<table>\n  <tbody class=\"result-rows\"></tbody>\n</table>";
 },"useData":true});
 templates['query/tab_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<span class=\"tab-name\"></span>";
