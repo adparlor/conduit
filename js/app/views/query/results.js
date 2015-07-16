@@ -8,7 +8,6 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       this.resultsCollection = this.options.results
       this.lazyResultsBlock = 50
       this.resultHeaders = new Backbone.Collection()
-      // this.resultRows = new Backbone.Collection()
       this.model = this.options.model
       this.resultHeadersView = new ResultHeadersView({
         collection: this.resultHeaders
@@ -20,7 +19,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       // this.listenTo(this.resultsCollection, 'reset add', this.fillInResultRowBlank)
       this.listenTo(this.resultsCollection, 'sendCurrentWidth', this.setGreatestWidthForHeader)
       this.listenTo(this.resultRowsView, 'collection:rendered', this.dynamicResize)
-      this.listenTo(this.model, 'change:resultsArray', this.lazyRenderCollection)
+      this.listenTo(this.model, 'newQueryResults', this.lazyRenderCollection)
     },
 
     template: Handlebars.templates['query/results_layout'],
@@ -39,10 +38,10 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
     bindings: {
       '.fa-spinner': {
         attributes: [{
-          observe: 'loading',
+          observe: ['loading', 'lazyLoading'],
           name: 'class',
-          onGet: function(loading) {
-            return loading ? "" : "hide"
+          onGet: function(attrs) {
+            return attrs[0] || attrs[1] ? "" : "hide"
           }
         }]
       },
@@ -65,11 +64,12 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
 
       if (this.model.get("lazyIteration") == 0) this.setHeadersCollection(collectionToAdd)
 
-      this.model.set("lazyLoading", true)
       this.resultsCollection.add(collectionToAdd.models)
-      this.model.set("currentIndex", this.resultsCollection.length)
-      this.model.set("lazyIteration", this.model.get("lazyIteration") + 1)
-      this.model.set("lazyLoading", false)
+      this.model.set({
+        currentIndex: this.resultsCollection.length,
+        lazyIteration: this.model.get("lazyIteration") + 1,
+        lazyLoading: false,
+      })
     },
 
     triggerLazyRender: function(e) {

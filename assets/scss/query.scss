@@ -100,10 +100,10 @@ $alizarin: #e74c3c;
     margin: 0 1%;
     border: 1px solid $asphalt;
     background-color: $clouds;
+    position: relative;
     .results-table {
       height: 100%;
       overflow-x: scroll;
-      position: relative;
       .fa-spinner {
         font-size: 100px;
         position: absolute;

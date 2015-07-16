@@ -69,11 +69,11 @@
     border-top: 1px solid #ecf0f1;
     margin: 0 1%;
     border: 1px solid #34495e;
-    background-color: #ecf0f1; }
+    background-color: #ecf0f1;
+    position: relative; }
     #queryRegion > div .resultsRegion .results-table {
       height: 100%;
-      overflow-x: scroll;
-      position: relative; }
+      overflow-x: scroll; }
       #queryRegion > div .resultsRegion .results-table .fa-spinner {
         font-size: 100px;
         position: absolute;

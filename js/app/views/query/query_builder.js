@@ -35,14 +35,13 @@ define(['ResultsView'], function(ResultsView) {
       this.model.get("results").reset()
       var view = this
       var onSuccess = function(resultsArr) {
-        // view.presenterModel.set("loading", false)
-        // view.presenterModel.set("resultsArray", resultsArr)
         view.presenterModel.set({
           loading: false,
           resultsArray: resultsArr,
           currentIndex: 0,
           lazyIteration: 0
         })
+        view.presenterModel.trigger('newQueryResults')
       }
       this.vent.trigger("query:makeRequest", this.model, onSuccess)
     },
