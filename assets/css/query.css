@@ -72,7 +72,7 @@
     background-color: #ecf0f1; }
     #queryRegion > div .resultsRegion .results-table {
       height: 100%;
-      overflow: scroll;
+      overflow-x: scroll;
       position: relative; }
       #queryRegion > div .resultsRegion .results-table .fa-spinner {
         font-size: 100px;
@@ -80,8 +80,6 @@
         top: 40%;
         left: 45%;
         color: #3498db; }
-      #queryRegion > div .resultsRegion .results-table .headers-container {
-        position: absolute; }
       #queryRegion > div .resultsRegion .results-table .result-headers > tr {
         background-color: #34495e; }
         #queryRegion > div .resultsRegion .results-table .result-headers > tr th > div {

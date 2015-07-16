@@ -5,7 +5,8 @@ define(['ResultsView'], function(ResultsView) {
     initialize: function(options) {
       this.vent = options.vent
       this.presenterModel = new Backbone.Model({
-        loading: false
+        loading: false,
+        lazyLoading: false
       })
       this.resultsView = new ResultsView({
         results: this.model.get("results"),
@@ -31,9 +32,17 @@ define(['ResultsView'], function(ResultsView) {
 
     sendQueryRequest: function() {
       this.presenterModel.set("loading", true)
+      this.model.get("results").reset()
       var view = this
-      var onSuccess = function() {
-        view.presenterModel.set("loading", false)
+      var onSuccess = function(resultsArr) {
+        // view.presenterModel.set("loading", false)
+        // view.presenterModel.set("resultsArray", resultsArr)
+        view.presenterModel.set({
+          loading: false,
+          resultsArray: resultsArr,
+          currentIndex: 0,
+          lazyIteration: 0
+        })
       }
       this.vent.trigger("query:makeRequest", this.model, onSuccess)
     },

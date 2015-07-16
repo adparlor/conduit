@@ -1,12 +1,13 @@
 
-define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, ResultRowsView) {
+define(['ResultHeadersView', 'ResultRowsView', 'SystemDeserializer'],
+function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
 
   var ResultsView = Backbone.Marionette.LayoutView.extend({
     initialize: function(options) {
       this.options = options
       this.resultsCollection = this.options.results
+      this.lazyResultsBlock = 50
       this.resultHeaders = new Backbone.Collection()
-      // this.resultRows = new Backbone.Collection()
       this.model = this.options.model
       this.resultHeadersView = new ResultHeadersView({
         collection: this.resultHeaders
@@ -15,9 +16,10 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
         collection: this.resultsCollection
       })
 
-      this.listenTo(this.resultsCollection, 'reset', this.setHeadersAndOrderRowData)
+      this.listenTo(this.resultsCollection, 'reset add', this.setHeadersAndOrderRowData)
       this.listenTo(this.resultsCollection, 'sendCurrentWidth', this.setGreatestWidthForHeader)
-      this.listenTo(this.resultRowsView, 'resultsChange', this.dynamicResize)
+      this.listenTo(this.resultRowsView, 'collection:rendered', this.dynamicResize)
+      this.listenTo(this.model, 'change:resultsArray', this.lazyRenderCollection)
     },
 
     template: Handlebars.templates['query/results_layout'],
@@ -30,7 +32,7 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
     },
 
     events: {
-      'scroll': 'setFixedHeader'
+      'scroll': 'triggerLazyRender'
     },
 
     bindings: {
@@ -54,14 +56,36 @@ define(['ResultHeadersView', 'ResultRowsView'], function(ResultHeadersView, Resu
       }
     },
 
-    setFixedHeader: function() {
+    lazyRenderCollection: function() {
+      var currentIndex = this.model.get("currentIndex"),
+          resultsToAdd = this.model.get("resultsArray").slice(currentIndex, currentIndex + this.lazyResultsBlock)
+
+      this.model.set("lazyLoading", true)
+      this.resultsCollection.add(SystemDeserializer.deserializeQueryResponse(resultsToAdd).models)
+      this.model.set("currentIndex", this.resultsCollection.length)
+      this.model.set("lazyIteration", this.model.get("lazyIteration") + 1)
+      this.model.set("lazyLoading", false)
+    },
+
+    triggerLazyRender: function(e) {
+      e.stopPropagation()
       var topOfResults = this.$el.scrollTop(),
+          rowHeight = 25,
+          resultsBlockHeight = rowHeight * this.lazyResultsBlock,
+          currentResultsHeight = (this.model.get("lazyIteration") * resultsBlockHeight) - this.$el.height(),
           view = this
-      view.$('.headers-container').hide()
-      setTimeout(function() {
-        view.$('.headers-container').css({top: topOfResults})
-        view.$('.headers-container').show()
-      }, 50)
+
+      // this.$('.headers-container').css({top: topOfResults})
+      if (currentResultsHeight < topOfResults && !this.model.get("lazyLoading")) {
+        this.model.set("lazyLoading", true)
+        this.lazyRenderCollection()
+      }
+
+      // view.$('.headers-container').hide()
+      // setTimeout(function() {
+      //   view.$('.headers-container').css({top: topOfResults})
+      //   view.$('.headers-container').show()
+      // }, 25)
     },
 
     setGreatestWidthForHeader(width, index) {

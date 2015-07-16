@@ -15,9 +15,9 @@ function(QueryView, SystemRepo) {
     },
 
     makeQueryRequest: function(queryModel, successCallback) {
-      var onSuccess = function(resultsCollection) {
-        successCallback()
-        queryModel.get("results").reset(resultsCollection.models)
+      var onSuccess = function(resultsArr) {
+        successCallback(resultsArr)
+        // queryModel.get("results").reset(resultsCollection.models)
       }
 
       var onFailure = function(err) {

@@ -3,6 +3,10 @@ define(function() {
 
   var Deserializer = {
 
+    deserializeBasic: function(result) {
+      return result
+    },
+
     deserializeQueryResponse: function(rows) {
       var resultsCollection = new Backbone.Collection()
 

@@ -18,8 +18,8 @@ define(['ResultRowView'], function(ResultRowView) {
 
     },
 
-    onDomRefresh: function() {
-      this.trigger('resultsChange')
+    onAddChild: function() {
+      if (this.children.length == this.collection.length) this.trigger('collection:rendered')
     },
 
     onDestroy: function() {

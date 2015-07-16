@@ -102,7 +102,7 @@ $alizarin: #e74c3c;
     background-color: $clouds;
     .results-table {
       height: 100%;
-      overflow: scroll;
+      overflow-x: scroll;
       position: relative;
       .fa-spinner {
         font-size: 100px;
@@ -111,9 +111,9 @@ $alizarin: #e74c3c;
         left: 45%;
         color: $river;
       }
-      .headers-container {
-        position: absolute;
-      }
+      // .headers-container {
+      //   position: absolute;
+      // }
       .result-headers > tr {
         background-color: $asphalt;
         th > div {
@@ -123,6 +123,9 @@ $alizarin: #e74c3c;
           font-weight: 200;
         }
       }
+      // .results-container {
+      //   margin-top: 31px;
+      // }
       .result-rows .result-data-container {
         border: 1px solid $cloudsD;
         overflow-x: hidden;
