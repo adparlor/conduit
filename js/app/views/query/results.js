@@ -8,6 +8,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       this.resultsCollection = this.options.results
       this.lazyResultsBlock = 50
       this.resultHeaders = new Backbone.Collection()
+      // this.resultRows = new Backbone.Collection()
       this.model = this.options.model
       this.resultHeadersView = new ResultHeadersView({
         collection: this.resultHeaders
@@ -16,7 +17,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
         collection: this.resultsCollection
       })
 
-      this.listenTo(this.resultsCollection, 'reset add', this.setHeadersAndOrderRowData)
+      this.listenTo(this.resultsCollection, 'reset add', this.fillInResultRowBlank)
       this.listenTo(this.resultsCollection, 'sendCurrentWidth', this.setGreatestWidthForHeader)
       this.listenTo(this.resultRowsView, 'collection:rendered', this.dynamicResize)
       this.listenTo(this.model, 'change:resultsArray', this.lazyRenderCollection)
@@ -57,11 +58,15 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
     },
 
     lazyRenderCollection: function() {
+
       var currentIndex = this.model.get("currentIndex"),
-          resultsToAdd = this.model.get("resultsArray").slice(currentIndex, currentIndex + this.lazyResultsBlock)
+          resultsToAdd = this.model.get("resultsArray").slice(currentIndex, currentIndex + this.lazyResultsBlock),
+          collectionToAdd = SystemDeserializer.deserializeQueryResponse(resultsToAdd)
+
+      if (this.model.get("lazyIteration") == 0) this.setHeadersCollection(collectionToAdd)
 
       this.model.set("lazyLoading", true)
-      this.resultsCollection.add(SystemDeserializer.deserializeQueryResponse(resultsToAdd).models)
+      this.resultsCollection.add(collectionToAdd.models)
       this.model.set("currentIndex", this.resultsCollection.length)
       this.model.set("lazyIteration", this.model.get("lazyIteration") + 1)
       this.model.set("lazyLoading", false)
@@ -88,7 +93,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       // }, 25)
     },
 
-    setGreatestWidthForHeader(width, index) {
+    setGreatestWidthForHeader: function(width, index) {
       var currentHeader = this.resultHeaders.at(index)
 
       if (currentHeader.get("width") < width) currentHeader.set("width", width)
@@ -109,37 +114,31 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       }, this)
     },
 
-    setHeadersAndOrderRowData: function() {
-      var view = this
-
-      var setHeadersCollection = function() {
-        var headersCollection = new Backbone.Collection()
-        view.resultsCollection.each(function(result) {
-          result.get("tableDataCollection").each(function(data) {
-            var dataHeader = data.get("header")
-            if (!headersCollection.findWhere({header: dataHeader}))
-              headersCollection.add(new Backbone.Model({header: dataHeader}))
-          })
+    setHeadersCollection: function(collection) {
+      var headersCollection = new Backbone.Collection()
+      collection.each(function(result) {
+        result.get("tableDataCollection").each(function(data) {
+          var dataHeader = data.get("header")
+          if (!headersCollection.findWhere({header: dataHeader}))
+            headersCollection.add(new Backbone.Model({header: dataHeader}))
         })
-        view.resultHeaders.reset(headersCollection.models)
-      }
-      setHeadersCollection()
-
-      var fillInResultRowBlanks = function () {
-        view.resultsCollection.each(function(row) {
-          view.resultHeaders.each(function(header, index) {
-            var currentHeaderDataModel = row.get("tableDataCollection").findWhere({header: header.get("header")})
-            if (!(currentHeaderDataModel && row.get("tableDataCollection").indexOf(currentHeaderDataModel) == index)) {
-              row.get("tableDataCollection").add(new Backbone.Model({
-                header: header.get("header"),
-                value: "Undefined"
-              }), { at: index })
-            }
-          })
-        })
-      }
-      fillInResultRowBlanks()
+      })
+      this.resultHeaders.reset(headersCollection.models)
       this.assignHeaderModelsInitialWidths()
+    },
+
+    fillInResultRowBlanks: function() {
+      this.resultsCollection.each(function(row) {
+        this.resultHeaders.each(function(header, index) {
+          var currentHeaderDataModel = row.get("tableDataCollection").findWhere({header: header.get("header")})
+          if (!(currentHeaderDataModel && row.get("tableDataCollection").indexOf(currentHeaderDataModel) == index)) {
+            row.get("tableDataCollection").add(new Backbone.Model({
+              header: header.get("header"),
+              value: "Undefined"
+            }), { at: index })
+          }
+        })
+      })
     },
 
     onDestroy: function() {
