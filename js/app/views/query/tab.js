@@ -10,8 +10,10 @@ define([], function() {
 
     className: "query-tab",
 
-    events: {
+    tagName: 'li',
 
+    events: {
+      'click': 'toggleActive'
     },
 
     bindings: {
@@ -20,7 +22,20 @@ define([], function() {
         onGet: function(query) {
           return query ? query : "Untitled"
         }
+      },
+      ':el': {
+        attributes: [{
+          observe: 'isActive',
+          name: 'class',
+          onGet: function(isActive) {
+            return isActive ? "active" : ""
+          }
+        }]
       }
+    },
+
+    toggleActive: function() {
+
     },
 
     onDestroy: function() {

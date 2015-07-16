@@ -8,6 +8,8 @@ define(['TabView'], function(TabView) {
 
     className: "query-tabs",
 
+    tagName: 'ul',
+
     childView: TabView,
 
     events: {

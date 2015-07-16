@@ -7,23 +7,24 @@
 #queryRegion > div {
   height: 100%; }
   #queryRegion > div #tabsRegion {
-    width: 100%;
+    width: 94%;
     height: 50px;
-    background-color: #34495e; }
+    background-color: #34495e;
+    display: inline-block;
+    position: relative; }
     #queryRegion > div #tabsRegion .query-tabs {
-      height: 100%;
-      position: relative;
+      position: absolute;
+      top: 10px;
       padding: 0 25px; }
       #queryRegion > div #tabsRegion .query-tabs .query-tab {
         height: 40px;
         background-color: white;
         display: inline-block;
         width: 175px;
-        position: absolute;
-        bottom: 0;
         border-radius: 7px 7px 0 0;
         text-align: center;
         padding-top: 10px;
+        margin-right: 3px;
         font-size: 18px; }
         #queryRegion > div #tabsRegion .query-tabs .query-tab .tab-name {
           width: inherit;

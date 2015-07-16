@@ -8,7 +8,10 @@ function(TabsView, QueriesView, Query, Queries) {
       this.model = new Backbone.Model()
       this.tabsCollection = new Queries(),
       this.queriesCollection = new Queries()
-      this.addQueryTab()
+      this.addQueryTab(new Backbone.Model({
+        results: new Backbone.Collection(),
+        isActive: true
+      }))
 
       this.tabsView = new TabsView({
         collection: this.tabsCollection
@@ -29,7 +32,7 @@ function(TabsView, QueriesView, Query, Queries) {
     },
 
     events: {
-
+      'click .add-tab': 'addQueryTab'
     },
 
     bindings: {
@@ -37,9 +40,10 @@ function(TabsView, QueriesView, Query, Queries) {
     },
 
     addQueryTab: function(query) {
-      var newQuery = query || new Query({
-        results: new Backbone.Collection()
-      })
+      var newQuery
+
+      if (query instanceof Backbone.Model) newQuery = query
+      else newQuery = new Query({results: new Backbone.Collection()})
 
       this.tabsCollection.add(newQuery)
       this.queriesCollection.add(newQuery)

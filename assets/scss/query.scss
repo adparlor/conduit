@@ -22,23 +22,24 @@ $alizarin: #e74c3c;
   height: 100%;
 
   #tabsRegion {
-    width: 100%;
+    width: 94%;
     height: 50px;
     background-color: $asphalt;
+    display: inline-block;
+    position: relative;
     .query-tabs {
-      height: 100%;
-      position: relative;
+      position: absolute;
+      top: 10px;
       padding: 0 25px;
       .query-tab {
         height: 40px;
         background-color: white;
         display: inline-block;
         width: 175px;
-        position: absolute;
-        bottom: 0;
         border-radius: 7px 7px 0 0;
         text-align: center;
         padding-top: 10px;
+        margin-right: 3px;
         font-size: 18px;
         .tab-name {
           width: inherit;
