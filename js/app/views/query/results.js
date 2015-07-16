@@ -17,7 +17,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
         collection: this.resultsCollection
       })
 
-      this.listenTo(this.resultsCollection, 'reset add', this.fillInResultRowBlank)
+      // this.listenTo(this.resultsCollection, 'reset add', this.fillInResultRowBlank)
       this.listenTo(this.resultsCollection, 'sendCurrentWidth', this.setGreatestWidthForHeader)
       this.listenTo(this.resultRowsView, 'collection:rendered', this.dynamicResize)
       this.listenTo(this.model, 'change:resultsArray', this.lazyRenderCollection)
