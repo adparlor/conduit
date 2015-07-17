@@ -10,7 +10,7 @@ templates['query/query_builder_layout'] = template({"compiler":[6,">= 2.0.0-beta
     return "<div class=\"query-field\">\n  <textarea spellcheck=\"false\"></textarea>\n  <button class=\"run-query btn\">Run Query</button>\n</div>\n<div class=\"resultsRegion\"></div>";
 },"useData":true});
 templates['query/query_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div id=\"tabsRegion\"></div>\n<span class=\"add-tab\">ADD TAB</span>\n<div id=\"queries\"></div>";
+    return "<div id=\"tabsRegion\"></div>\n<div class=\"query-button-container\"><i class=\"add-query fa fa-plus\"></i></div>\n<div id=\"queries\"></div>";
 },"useData":true});
 templates['query/result_data_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;

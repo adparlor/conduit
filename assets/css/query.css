@@ -33,6 +33,17 @@
           overflow: hidden;
           display: block;
           padding: 0 10px; }
+  #queryRegion > div .query-button-container {
+    display: inline-block;
+    height: 50px;
+    background-color: #34495e;
+    width: 6%;
+    position: fixed; }
+    #queryRegion > div .query-button-container .add-query {
+      font-size: 50px;
+      color: white;
+      position: absolute;
+      left: 10px; }
   #queryRegion > div #queries {
     height: calc(100% - 50px); }
   #queryRegion > div #queries > div, #queryRegion > div .query-builder {

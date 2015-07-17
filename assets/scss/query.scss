@@ -53,6 +53,20 @@ $alizarin: #e74c3c;
     }
   }
 
+  .query-button-container {
+    display: inline-block;
+    height: 50px;
+    background-color: $asphalt;
+    width: 6%;
+    position: fixed;
+    .add-query {
+      font-size: 50px;
+      color: white;
+      position: absolute;
+      left: 10px;
+    }
+  }
+
   #queries {
     height: calc(100% - 50px)
   }
