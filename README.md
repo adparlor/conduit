@@ -4,7 +4,7 @@ Conduit is a database manager for Apache Cassandra that runs in the browser. The
 
 ## Frontend Setup
 
-We use Handlebars for templating. In order to precompile these templates, along with all sass files, we use Gulp. The package.json file is set-up so you should be able to install both these packages by running
+We use Handlebars for templating. In order to precompile these templates, along with all sass files, we use Gulp. The package.json file is set-up so you should be able to install both these packages by switching to the /www directory and running
 
 ```sh
 $ npm install
@@ -17,7 +17,7 @@ If you receive the warning, "cannot run in wd", run
 $ npm install --unsafe-perm
 ```
 
-While developing for the frontend, in order to watch for any changes to templates and sass files, run
+While developing for the frontend, in order to watch for any changes to templates and sass files, in the /www directory, run
 
 ```sh
 $ gulp
