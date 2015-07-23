@@ -6,6 +6,7 @@ define([], function() {
       this.options = options
 
       this.model = new Backbone.Model({
+        header: this.options.header['value'],
         json: this.syntaxHighlight(JSON.stringify(this.options.jsonToDisplay, undefined, 4))
       })
     },

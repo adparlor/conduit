@@ -8,9 +8,10 @@ define(['JSONModalView'], function(JSONModalView) {
       this.listenTo(this.options.vent, "openJSONModal", this.openJSONModal)
     },
 
-    openJSONModal: function(json) {
+    openJSONModal: function(header, json) {
       var jsonModalView = new JSONModalView({
         vent: this.options.vent,
+        header: header,
         jsonToDisplay: json
       })
 

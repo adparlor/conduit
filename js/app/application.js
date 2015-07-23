@@ -50,8 +50,8 @@ require (['Router', 'MainView'], function(Router, MainView) {
   Backbone.history.start()
 
   $(document).ready(function() {
-    window.openJSONModal = function(json) {
-      window.Conduit.vent.trigger("openJSONModal", json)
+    window.openJSONModal = function(header, json) {
+      window.Conduit.vent.trigger("openJSONModal", header, json)
     }
   })
 

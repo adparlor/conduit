@@ -6,11 +6,11 @@ function(QueryView, SystemRepo) {
     initialize: function(options) {
       this.options = options
 
-      var queryView = new QueryView({
+      this.queryView = new QueryView({
         vent: this.options.vent
       })
 
-      this.options.queryRegion.show(queryView)
+      this.options.queryRegion.show(this.queryView)
       this.listenTo(this.options.vent, "query:makeRequest", this.makeQueryRequest)
     },
 
