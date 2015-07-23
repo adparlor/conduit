@@ -6,7 +6,7 @@ define([], function() {
 
     },
 
-    template: Handlebars.templates['query/result_header_layout'],
+    template: Handlebars.templates['query/results/result_header_layout'],
 
     tagName: 'th',
 

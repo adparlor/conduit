@@ -22,7 +22,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       this.listenTo(this.model, 'newQueryResults', this.lazyRenderCollection)
     },
 
-    template: Handlebars.templates['query/results_layout'],
+    template: Handlebars.templates['query/results/results_layout'],
 
     className: 'results-table',
 
@@ -93,12 +93,6 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       // }, 25)
     },
 
-    setGreatestWidthForHeader: function(width, index) {
-      var currentHeader = this.resultHeaders.at(index)
-
-      if (currentHeader.get("width") < width) currentHeader.set("width", width)
-    },
-
     assignHeaderModelsInitialWidths: function() {
       this.resultHeaders.each(function(header, index) {
         var currentHeaderWidth = $(this.resultHeadersView.el.childNodes[index]).outerWidth()
@@ -106,22 +100,30 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       }, this)
     },
 
+    // FIX IMPLEMENTATION
     dynamicResize: function() {
-      this.resultsCollection.each(function(result) {
-        this.resultHeaders.each(function(header, index) {
-          result.get("tableDataCollection").at(index).set("width", header.get("width"))
-        })
-      }, this)
+      this.resultHeaders.each(function(header) {
+        var dataForHeader = this.$('.data-' + header.get("header") + ' > div'),
+            dataWidth = dataForHeader.outerWidth()
+
+        if (header.get("width") < dataWidth) header.set("width", dataWidth)
+        else if (header.get("width") > dataWidth) dataForHeader.outerWidth(header.get("width"))
+      })
     },
 
     setHeadersCollection: function(collection) {
       var headersCollection = new Backbone.Collection()
-      collection.each(function(result) {
-        result.get("tableDataCollection").each(function(data) {
-          var dataHeader = data.get("header")
-          if (!headersCollection.findWhere({header: dataHeader}))
-            headersCollection.add(new Backbone.Model({header: dataHeader}))
-        })
+      // collection.each(function(result) {
+      //   result.get("tableDataCollection").each(function(data) {
+      //     var dataHeader = data.get("header")
+      //     if (!headersCollection.findWhere({header: dataHeader}))
+      //       headersCollection.add(new Backbone.Model({header: dataHeader}))
+      //   })
+      // })
+      collection.at(0).get("headers").forEach(function(header) {
+        headersCollection.add(new Backbone.Model({
+          header: header
+        }))
       })
       this.resultHeaders.reset(headersCollection.models)
       this.assignHeaderModelsInitialWidths()

@@ -20,12 +20,11 @@ requirejs.config({
     TabView: "views/query/tab",
     QueriesView: "views/query/queries",
     QueryBuilderView: "views/query/query_builder",
-    ResultsView: "views/query/results",
-    ResultHeadersView: "views/query/result_headers",
-    ResultRowsView: "views/query/result_rows",
-    ResultRowView: "views/query/result_row",
-    ResultDataView: "views/query/result_data",
-    ResultHeaderView: "views/query/result_header",
+    ResultsView: "views/query/results/results",
+    ResultHeadersView: "views/query/results/result_headers",
+    ResultRowsView: "views/query/results/result_rows",
+    ResultRowView: "views/query/results/result_row",
+    ResultHeaderView: "views/query/results/result_header",
     Query: "models/query",
     Queries: "collections/queries"
   }

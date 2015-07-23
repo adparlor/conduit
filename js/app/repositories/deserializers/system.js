@@ -7,7 +7,7 @@ define(function() {
       return result
     },
 
-    deserializeQueryResponse: function(rows) {
+    deserializeQueryResponseLegacy: function(rows) {
       var resultsCollection = new Backbone.Collection()
 
       rows.forEach(function(row) {
@@ -24,6 +24,26 @@ define(function() {
           }
         }
         resultsCollection.add(rowModel)
+      })
+
+      return resultsCollection
+    },
+
+    deserializeQueryResponse: function(rows) {
+      var resultsCollection = new Backbone.Collection()
+
+      rows.forEach(function(row) {
+       var rowModel = new Backbone.Model({
+        headers: []
+       })
+
+       for (var key in row) {
+        if (row.hasOwnProperty(key)) {
+          rowModel.set(key, row[key] || 'null')
+          rowModel.get("headers").push(key)
+        }
+       }
+       resultsCollection.add(rowModel)
       })
 
       return resultsCollection
