@@ -1,6 +1,6 @@
 
-define(['SidebarController', 'QueriesController'],
-function(SidebarController, QueriesController) {
+define(['SidebarController', 'QueriesController', 'ModalController'],
+function(SidebarController, QueriesController, ModalController) {
 
   var MainView = Backbone.Marionette.LayoutView.extend({
     initialize: function(options) {
@@ -12,7 +12,8 @@ function(SidebarController, QueriesController) {
 
     regions: {
       'sidebar': '#sidebarRegion',
-      'query': '#queryRegion'
+      'query': '#queryRegion',
+      'modal': '#modalRegion'
     },
 
     events: {
@@ -34,6 +35,10 @@ function(SidebarController, QueriesController) {
       })
       this.sidebarController = new SidebarController({
         sidebarRegion: this.sidebar,
+        vent: this.options.vent
+      })
+      this.modalController = new ModalController({
+        modalRegion: this.modal,
         vent: this.options.vent
       })
     },

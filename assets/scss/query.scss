@@ -22,7 +22,8 @@ $alizarin: #e74c3c;
   height: 100%;
 
   #tabsRegion {
-    width: 94%;
+    width: 100%;
+    // width: 94%;
     height: 50px;
     background-color: $asphalt;
     display: inline-block;
@@ -31,6 +32,7 @@ $alizarin: #e74c3c;
       position: absolute;
       top: 10px;
       padding: 0 25px;
+      margin-bottom: 0px;
       .query-tab {
         height: 40px;
         background-color: white;
@@ -68,7 +70,7 @@ $alizarin: #e74c3c;
   }
 
   #queries {
-    height: calc(100% - 50px)
+    height: calc(100% - 55px)
   }
 
   #queries > div, .query-builder {
@@ -119,6 +121,7 @@ $alizarin: #e74c3c;
     .results-table {
       height: 100%;
       overflow-x: scroll;
+      position: relative;
       .fa-spinner {
         font-size: 100px;
         position: absolute;
@@ -126,9 +129,9 @@ $alizarin: #e74c3c;
         left: 45%;
         color: $river;
       }
-      // .headers-container {
-      //   position: absolute;
-      // }
+      .headers-container {
+        position: absolute;
+      }
       .result-headers > tr {
         background-color: $asphalt;
         th > div {
@@ -138,15 +141,21 @@ $alizarin: #e74c3c;
           font-weight: 200;
         }
       }
-      // .results-container {
-      //   margin-top: 31px;
-      // }
+      .results-container {
+        margin-top: 31px;
+      }
       .result-rows .result-data-container {
         border: 1px solid $cloudsD;
         overflow-x: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         padding: 3px 10px 3px 5px;
+      }
+      .json-data {
+        cursor: pointer;
+        &:hover {
+          background-color: $silver;
+        }
       }
     }
   }

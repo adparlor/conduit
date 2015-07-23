@@ -42,10 +42,8 @@ define([], function() {
 
       var data
       var response = xhr.responseText
-      var add_to_log = true
       if(response === ""){
         response = {}
-        add_to_log = false
       }
 
       if(typeof response === "string"){
@@ -53,18 +51,7 @@ define([], function() {
           response = $.parseJSON(xhr.responseText)
         }catch(e){
           response = {message: "An unknown error has occurred."}
-          add_to_log = false
         }
-      }
-
-      if(logger && add_to_log){
-        request_params = {original_url: this.url, original_type: this.type}
-
-        if(this.data){
-          request_params["original_data"] = this.data
-        }
-
-        logger.warn({response: response, request: request_params})
       }
 
       if(! options.skipParsingOnFailure){

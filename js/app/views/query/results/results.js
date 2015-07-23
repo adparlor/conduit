@@ -78,20 +78,21 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
           rowHeight = 25,
           resultsBlockHeight = rowHeight * this.lazyResultsBlock,
           currentResultsHeight = (this.model.get("lazyIteration") * resultsBlockHeight) - this.$el.height(),
+          currentHeaderPositionTop = parseInt(this.$('.headers-container').css('top'), 10),
           view = this
 
-      // this.$('.headers-container').css({top: topOfResults})
       if (currentResultsHeight < topOfResults && !this.model.get("lazyLoading")) {
         this.model.set("lazyLoading", true)
         this.lazyRenderCollection()
       }
 
-      // BEGINNING OF FIXED HEADERS IMPLEMENTATION
-      // view.$('.headers-container').hide()
-      // setTimeout(function() {
-      //   view.$('.headers-container').css({top: topOfResults})
-      //   view.$('.headers-container').show()
-      // }, 25)
+      if (currentHeaderPositionTop != topOfResults) {
+        view.$('.headers-container').hide()
+        setTimeout(function() {
+          view.$('.headers-container').css({top: topOfResults})
+          view.$('.headers-container').show()
+        }, 25)
+      }
     },
 
     assignHeaderModelsInitialWidths: function() {
@@ -103,17 +104,17 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
 
     dynamicResize: function() {
       this.resultHeaders.each(function(header) {
-        var dataForHeader = this.$('.data-' + header.get("header") + ' > div'),
-            dataWidth = dataForHeader.outerWidth()
+        var dataForHeader = this.$('.data-' + header.get("header") + ' > div')
 
         // LETS LIMIT WIDTH AND SHOW THE PARSED JSON IN A TOOLTIP O SUMTHIN
         if (header.get("header").indexOf('_json') != -1) {
-          header.set("width", 400)
-          dataForHeader.outerWidth(header.get("width"))
-        } else {
-          if (header.get("width") < dataWidth) header.set("width", dataWidth)
-          else if (header.get("width") > dataWidth) dataForHeader.outerWidth(header.get("width"))
+          dataForHeader.css({"max-width": 400})
         }
+
+        var dataWidth = dataForHeader.outerWidth()
+
+        if (header.get("width") < dataWidth) header.set("width", dataWidth)
+        else if (header.get("width") > dataWidth) dataForHeader.outerWidth(header.get("width"))
       })
     },
 

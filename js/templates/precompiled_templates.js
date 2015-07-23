@@ -1,7 +1,14 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['main_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div id=\"conduitLabel\">Conduit</div>\n<div id=\"sidebarRegion\"></div>\n<div id=\"queryRegion\"></div>";
+    return "<div id=\"conduitLabel\">Conduit</div>\n<div id=\"sidebarRegion\"></div>\n<div id=\"queryRegion\"></div>\n<div id=\"modalRegion\"></div>";
+},"useData":true});
+templates['modal/json_modal_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, helper;
+
+  return "<div class=\"modal fade\" id=\"jsonModal\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\">Parsed JSON</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"parsed-json\">"
+    + ((stack1 = ((helper = (helper = helpers.json || (depth0 != null ? depth0.json : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"json","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn close-btn\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->";
 },"useData":true});
 templates['query/queries_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "";
@@ -10,7 +17,7 @@ templates['query/query_builder_layout'] = template({"compiler":[6,">= 2.0.0-beta
     return "<div class=\"query-field\">\n  <textarea spellcheck=\"false\"></textarea>\n  <button class=\"run-query btn\">Run Query</button>\n</div>\n<div class=\"resultsRegion\"></div>";
 },"useData":true});
 templates['query/query_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div id=\"tabsRegion\"></div>\n<div class=\"query-button-container\"><i class=\"add-query fa fa-plus\"></i></div>\n<div id=\"queries\"></div>";
+    return "<div id=\"tabsRegion\"></div>\n<div id=\"queries\"></div>";
 },"useData":true});
 templates['query/results/result_header_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;

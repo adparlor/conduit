@@ -1,0 +1,19 @@
+#jsonModal .modal-body {
+  padding: 15px 30px; }
+  #jsonModal .modal-body > .parsed-json {
+    white-space: pre-wrap; }
+    #jsonModal .modal-body > .parsed-json .string {
+      color: #16a085; }
+    #jsonModal .modal-body > .parsed-json .number {
+      color: #9b59b6; }
+    #jsonModal .modal-body > .parsed-json .boolean {
+      color: #e67e22; }
+    #jsonModal .modal-body > .parsed-json .null {
+      color: #bdc3c7; }
+    #jsonModal .modal-body > .parsed-json .key {
+      color: #2980b9; }
+#jsonModal .close-btn {
+  background-color: #3498db;
+  color: #ecf0f1; }
+  #jsonModal .close-btn:hover {
+    background-color: #2980b9; }

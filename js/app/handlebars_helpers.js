@@ -1,10 +1,20 @@
 
+var buildTemplateForJSON = function(header, rowModel) {
+  var finalTemplate = '<td class=" json-data result-data data-' + header +
+                      '" onclick=\'openJSONModal(' +  rowModel[header] +
+                       ')\'><div class="result-data-container">'
+
+  return finalTemplate
+}
+
 var getRowTemplate = function(rowModel) {
   var finalTemplate = ''
 
   rowModel["headers"].forEach(function(header) {
     var currentDataValue = rowModel[header],
         currentDataTemplate = '<td class="result-data data-' + header + '"><div class="result-data-container">'
+
+    if (header.indexOf("_json") != -1) currentDataTemplate = buildTemplateForJSON(header, rowModel)
 
     if (currentDataValue) currentDataTemplate += currentDataValue
 

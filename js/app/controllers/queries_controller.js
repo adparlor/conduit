@@ -14,14 +14,13 @@ function(QueryView, SystemRepo) {
       this.listenTo(this.options.vent, "query:makeRequest", this.makeQueryRequest)
     },
 
-    makeQueryRequest: function(queryModel, successCallback) {
+    makeQueryRequest: function(queryModel, successCallback, failureCallback) {
       var onSuccess = function(resultsArr) {
         successCallback(resultsArr)
-        // queryModel.get("results").reset(resultsCollection.models)
       }
 
       var onFailure = function(err) {
-
+        failureCallback(err)
       }
 
       SystemRepo.makeQueryRequest(queryModel)

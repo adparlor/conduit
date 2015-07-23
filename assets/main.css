@@ -13,6 +13,26 @@ html, body, #appContent, #appContent > div {
   background-color: #34495e;
   color: #ecf0f1; }
 
+#jsonModal .modal-body {
+  padding: 15px 30px; }
+  #jsonModal .modal-body > .parsed-json {
+    white-space: pre-wrap; }
+    #jsonModal .modal-body > .parsed-json .string {
+      color: #16a085; }
+    #jsonModal .modal-body > .parsed-json .number {
+      color: #9b59b6; }
+    #jsonModal .modal-body > .parsed-json .boolean {
+      color: #e67e22; }
+    #jsonModal .modal-body > .parsed-json .null {
+      color: #bdc3c7; }
+    #jsonModal .modal-body > .parsed-json .key {
+      color: #2980b9; }
+#jsonModal .close-btn {
+  background-color: #3498db;
+  color: #ecf0f1; }
+  #jsonModal .close-btn:hover {
+    background-color: #2980b9; }
+
 #queryRegion {
   position: absolute;
   width: 75%;
@@ -22,7 +42,7 @@ html, body, #appContent, #appContent > div {
 #queryRegion > div {
   height: 100%; }
   #queryRegion > div #tabsRegion {
-    width: 94%;
+    width: 100%;
     height: 50px;
     background-color: #34495e;
     display: inline-block;
@@ -30,7 +50,8 @@ html, body, #appContent, #appContent > div {
     #queryRegion > div #tabsRegion .query-tabs {
       position: absolute;
       top: 10px;
-      padding: 0 25px; }
+      padding: 0 25px;
+      margin-bottom: 0px; }
       #queryRegion > div #tabsRegion .query-tabs .query-tab {
         height: 40px;
         background-color: white;
@@ -60,7 +81,7 @@ html, body, #appContent, #appContent > div {
       position: absolute;
       left: 10px; }
   #queryRegion > div #queries {
-    height: calc(100% - 50px); }
+    height: calc(100% - 55px); }
   #queryRegion > div #queries > div, #queryRegion > div .query-builder {
     height: 100%; }
   #queryRegion > div .query-field {
@@ -100,13 +121,16 @@ html, body, #appContent, #appContent > div {
     position: relative; }
     #queryRegion > div .resultsRegion .results-table {
       height: 100%;
-      overflow-x: scroll; }
+      overflow-x: scroll;
+      position: relative; }
       #queryRegion > div .resultsRegion .results-table .fa-spinner {
         font-size: 100px;
         position: absolute;
         top: 40%;
         left: 45%;
         color: #3498db; }
+      #queryRegion > div .resultsRegion .results-table .headers-container {
+        position: absolute; }
       #queryRegion > div .resultsRegion .results-table .result-headers > tr {
         background-color: #34495e; }
         #queryRegion > div .resultsRegion .results-table .result-headers > tr th > div {
@@ -114,12 +138,18 @@ html, body, #appContent, #appContent > div {
           padding: 5px 6px;
           border: 1px solid #bdc3c7;
           font-weight: 200; }
+      #queryRegion > div .resultsRegion .results-table .results-container {
+        margin-top: 31px; }
       #queryRegion > div .resultsRegion .results-table .result-rows .result-data-container {
         border: 1px solid #E1E5E7;
         overflow-x: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         padding: 3px 10px 3px 5px; }
+      #queryRegion > div .resultsRegion .results-table .json-data {
+        cursor: pointer; }
+        #queryRegion > div .resultsRegion .results-table .json-data:hover {
+          background-color: #bdc3c7; }
 
 #sidebarRegion {
   width: 25%;

@@ -43,7 +43,13 @@ define(['ResultsView'], function(ResultsView) {
         })
         view.presenterModel.trigger('newQueryResults')
       }
-      this.vent.trigger("query:makeRequest", this.model, onSuccess)
+
+      var onFailure = function(err) {
+        view.presenterModel.set({
+          loading: false
+        })
+      }
+      this.vent.trigger("query:makeRequest", this.model, onSuccess, onFailure)
     },
 
     onDestroy: function() {

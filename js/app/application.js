@@ -26,7 +26,9 @@ requirejs.config({
     ResultRowView: "views/query/results/result_row",
     ResultHeaderView: "views/query/results/result_header",
     Query: "models/query",
-    Queries: "collections/queries"
+    Queries: "collections/queries",
+    ModalController: "controllers/modal_controller",
+    JSONModalView: "views/modal/json_modal"
   }
 })
 
@@ -46,5 +48,11 @@ require (['Router', 'MainView'], function(Router, MainView) {
   window.Conduit.appContent.show(mainView)
 
   Backbone.history.start()
+
+  $(document).ready(function() {
+    window.openJSONModal = function(json) {
+      window.Conduit.vent.trigger("openJSONModal", json)
+    }
+  })
 
 })

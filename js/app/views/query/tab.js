@@ -10,8 +10,6 @@ define([], function() {
 
     className: "query-tab",
 
-    tagName: 'li',
-
     events: {
       'click': 'toggleActive'
     },
