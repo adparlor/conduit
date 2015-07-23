@@ -110,8 +110,6 @@ html, body, #appContent, #appContent > div {
       background-color: #3498db; }
       #queryRegion > div .query-field > .run-query:hover {
         background-color: #2980b9; }
-      #queryRegion > div .query-field > .run-query:focus {
-        outline: none; }
   #queryRegion > div .resultsRegion {
     height: 70%;
     border-top: 1px solid #ecf0f1;
@@ -149,7 +147,7 @@ html, body, #appContent, #appContent > div {
       #queryRegion > div .resultsRegion .results-table .json-data {
         cursor: pointer; }
         #queryRegion > div .resultsRegion .results-table .json-data:hover {
-          background-color: #bdc3c7; }
+          background-color: #E1E5E7; }
 
 #sidebarRegion {
   width: 25%;

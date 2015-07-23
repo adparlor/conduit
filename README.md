@@ -53,3 +53,7 @@ $ brew install cassandra
 ```
 
 The Cassandra host settings are in the /api/config.yml file, currently set to localhost, but you can provide changes to that file to supply a different host.
+
+## License
+
+Conduit is released under the MIT License.

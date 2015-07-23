@@ -106,9 +106,6 @@ $alizarin: #e74c3c;
       &:hover {
         background-color: $belize
       }
-      &:focus {
-        outline: none;
-      }
     }
   }
   .resultsRegion {
@@ -154,7 +151,7 @@ $alizarin: #e74c3c;
       .json-data {
         cursor: pointer;
         &:hover {
-          background-color: $silver;
+          background-color: $cloudsD;
         }
       }
     }
