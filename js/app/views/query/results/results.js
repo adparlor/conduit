@@ -6,7 +6,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
     initialize: function(options) {
       this.options = options
       this.resultsCollection = this.options.results
-      this.lazyResultsBlock = 50
+      this.lazyResultsBlock = 100
       this.resultHeaders = new Backbone.Collection()
       this.model = this.options.model
       this.resultHeadersView = new ResultHeadersView({
@@ -86,6 +86,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
         this.lazyRenderCollection()
       }
 
+      // BEGINNING OF FIXED HEADERS IMPLEMENTATION
       // view.$('.headers-container').hide()
       // setTimeout(function() {
       //   view.$('.headers-container').css({top: topOfResults})
@@ -100,26 +101,24 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       }, this)
     },
 
-    // FIX IMPLEMENTATION
     dynamicResize: function() {
       this.resultHeaders.each(function(header) {
         var dataForHeader = this.$('.data-' + header.get("header") + ' > div'),
             dataWidth = dataForHeader.outerWidth()
 
-        if (header.get("width") < dataWidth) header.set("width", dataWidth)
-        else if (header.get("width") > dataWidth) dataForHeader.outerWidth(header.get("width"))
+        // LETS LIMIT WIDTH AND SHOW THE PARSED JSON IN A TOOLTIP O SUMTHIN
+        if (header.get("header").indexOf('_json') != -1) {
+          header.set("width", 400)
+          dataForHeader.outerWidth(header.get("width"))
+        } else {
+          if (header.get("width") < dataWidth) header.set("width", dataWidth)
+          else if (header.get("width") > dataWidth) dataForHeader.outerWidth(header.get("width"))
+        }
       })
     },
 
     setHeadersCollection: function(collection) {
       var headersCollection = new Backbone.Collection()
-      // collection.each(function(result) {
-      //   result.get("tableDataCollection").each(function(data) {
-      //     var dataHeader = data.get("header")
-      //     if (!headersCollection.findWhere({header: dataHeader}))
-      //       headersCollection.add(new Backbone.Model({header: dataHeader}))
-      //   })
-      // })
       collection.at(0).get("headers").forEach(function(header) {
         headersCollection.add(new Backbone.Model({
           header: header

@@ -119,7 +119,6 @@ html, body, #appContent, #appContent > div {
         overflow-x: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        max-width: 300px;
         padding: 3px 10px 3px 5px; }
 
 #sidebarRegion {
