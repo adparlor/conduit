@@ -47,7 +47,7 @@ define([], function() {
     },
 
     formatMessage: function(message) {
-      if (message) return "<b>" + message.errorClass + "</b> " + message.errorMessage
+      if (message) return "<b>" + message.errorClass + "</b> - " + message.errorMessage
     },
 
     clearAlert: function() {
