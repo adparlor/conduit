@@ -9,7 +9,7 @@ templates['main_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":fun
 templates['modal/json_modal_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function";
 
-  return "<div class=\"modal fade\" id=\"jsonModal\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\">"
+  return "<div class=\"modal fade\" id=\"jsonModal\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\"><span>&times;</span></button>\n        <h4 class=\"modal-title\">"
     + this.escapeExpression(((helper = (helper = helpers.header || (depth0 != null ? depth0.header : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"header","hash":{},"data":data}) : helper)))
     + "</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"parsed-json\">"
     + ((stack1 = ((helper = (helper = helpers.json || (depth0 != null ? depth0.json : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"json","hash":{},"data":data}) : helper))) != null ? stack1 : "")

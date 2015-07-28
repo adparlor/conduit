@@ -25,6 +25,9 @@ $greensea: #16a085;
 
 
 #jsonModal {
+  .modal-title {
+    text-align: center;
+  }
   .modal-body {
     padding: 15px 30px;
     > .parsed-json {

@@ -2,6 +2,8 @@
   #modalRegion .modal-dialog {
     width: 767px; } }
 
+#jsonModal .modal-title {
+  text-align: center; }
 #jsonModal .modal-body {
   padding: 15px 30px; }
   #jsonModal .modal-body > .parsed-json {
