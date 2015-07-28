@@ -11,7 +11,8 @@ define([], function() {
     className: "query-tab",
 
     events: {
-      'click': 'toggleActive'
+      'click': 'toggleActive',
+      'click .close-tab': 'destroyQuery'
     },
 
     bindings: {
@@ -32,12 +33,22 @@ define([], function() {
       }
     },
 
-    toggleActive: function() {
+    destroyQuery: function(e) {
+      e.stopPropagation()
+      var tabsCollection = this.model.collection
+      this.model.destroy()
+      if (tabsCollection.length) tabsCollection.at(0).set("isActive", true)
+    },
 
+    toggleActive: function() {
+      this.model.collection.each(function(model) {
+        model.set("isActive", false)
+      })
+      this.model.set("isActive", true)
     },
 
     onDestroy: function() {
-
+      this.options = null
     },
 
     render: function() {

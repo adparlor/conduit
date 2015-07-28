@@ -36,7 +36,7 @@
         left: 20px; }
         #sidebarRegion .keyspace-row .keyspace-collapse-toggle .keyspace-name .fa {
           padding-right: 5px; }
-      #sidebarRegion .keyspace-row .keyspace-collapse-toggle:hover .keyspace-collapse-icon {
+      #sidebarRegion .keyspace-row .keyspace-collapse-toggle:hover .keyspace-collapse-icon, #sidebarRegion .keyspace-row .keyspace-collapse-toggle:focus .keyspace-collapse-icon {
         color: #3498db; }
   #sidebarRegion .tables-container {
     padding: 5px 0 0 15px; }
@@ -52,7 +52,7 @@
           left: 20px; }
           #sidebarRegion .tables-container .table-row .table-collapse-toggle .table-name .fa {
             padding-right: 5px; }
-        #sidebarRegion .tables-container .table-row .table-collapse-toggle:hover .table-collapse-icon {
+        #sidebarRegion .tables-container .table-row .table-collapse-toggle:hover .table-collapse-icon, #sidebarRegion .tables-container .table-row .table-collapse-toggle:focus .table-collapse-icon {
           color: #3498db; }
   #sidebarRegion .columns-container {
     padding: 5px 0 0 30px; }

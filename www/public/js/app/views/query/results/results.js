@@ -113,7 +113,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
 
         if (header.get("width") < dataWidth) header.set("width", dataWidth)
         else if (header.get("width") > dataWidth) dataForHeader.outerWidth(header.get("width"))
-      })
+      }, this)
     },
 
     setHeadersCollection: function(collection) {

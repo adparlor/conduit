@@ -27,7 +27,16 @@ define(['ResultsView'], function(ResultsView) {
     },
 
     bindings: {
-      '.query-field > textarea': 'query'
+      '.query-field > textarea': 'query',
+      ':el': {
+        attributes: [{
+          observe: 'isActive',
+          name: 'class',
+          onGet: function(isActive) {
+            return isActive ? "" : "hide"
+          }
+        }]
+      }
     },
 
     sendQueryRequest: function() {

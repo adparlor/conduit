@@ -22,7 +22,7 @@ templates['query/query_builder_layout'] = template({"compiler":[6,">= 2.0.0-beta
     return "<div class=\"query-field\">\n  <textarea spellcheck=\"false\"></textarea>\n  <button class=\"run-query btn\">Run Query</button>\n</div>\n<div class=\"resultsRegion\"></div>";
 },"useData":true});
 templates['query/query_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div id=\"tabsRegion\"></div>\n<div id=\"queries\"></div>";
+    return "<div id=\"tabsRegion\"></div>\n<div class=\"query-button-container\"><i class=\"add-query fa fa-plus\"></i></div>\n<div id=\"queries\"></div>";
 },"useData":true});
 templates['query/results/result_header_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
@@ -40,7 +40,7 @@ templates['query/results/results_layout'] = template({"compiler":[6,">= 2.0.0-be
     return "<i class=\"fa fa-spinner fa-spin\"></i>\n<table class=\"headers-container\">\n  <thead class=\"result-headers\"></thead>\n</table>\n<table class=\"results-container\">\n  <tbody class=\"result-rows\"></tbody>\n</table>";
 },"useData":true});
 templates['query/tab_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<span class=\"tab-name\"></span>";
+    return "<span class=\"close-tab\">&times;</span>\n<span class=\"tab-name\"></span>";
 },"useData":true});
 templates['sidebar/columns_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;

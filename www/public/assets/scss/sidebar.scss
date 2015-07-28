@@ -68,7 +68,7 @@ $alizarin: #e74c3c;
           padding-right: 5px;
         }
       }
-      &:hover {
+      &:hover, &:focus {
         .keyspace-collapse-icon {
           color: $river;
         }
@@ -92,7 +92,7 @@ $alizarin: #e74c3c;
             padding-right: 5px;
           }
         }
-        &:hover {
+        &:hover, &:focus {
           .table-collapse-icon {
             color: $river;
           }

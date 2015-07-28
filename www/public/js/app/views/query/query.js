@@ -8,10 +8,7 @@ function(TabsView, QueriesView, Query, Queries) {
       this.model = new Backbone.Model()
       this.tabsCollection = new Queries(),
       this.queriesCollection = new Queries()
-      this.addQueryTab(new Backbone.Model({
-        results: new Backbone.Collection(),
-        isActive: true
-      }))
+      this.addQueryTab()
 
       this.tabsView = new TabsView({
         collection: this.tabsCollection
@@ -20,8 +17,6 @@ function(TabsView, QueriesView, Query, Queries) {
         vent: this.options.vent,
         collection: this.queriesCollection
       })
-
-      this.listenTo(this.options.vent, "addNewQuery", this.addQueryTab)
     },
 
     template: Handlebars.templates['query/query_layout'],
@@ -32,18 +27,22 @@ function(TabsView, QueriesView, Query, Queries) {
     },
 
     events: {
-      'click .add-tab': 'addQueryTab'
+      'click .add-query': 'addQueryTab'
     },
 
     bindings: {
 
     },
 
-    addQueryTab: function(query) {
-      var newQuery
+    addQueryTab: function() {
+      this.tabsCollection.each(function(model) {
+        model.set("isActive", false)
+      })
 
-      if (query instanceof Backbone.Model) newQuery = query
-      else newQuery = new Query({results: new Backbone.Collection()})
+      var newQuery = new Query({
+        results: new Backbone.Collection(),
+        isActive: true
+      })
 
       this.tabsCollection.add(newQuery)
       this.queriesCollection.add(newQuery)

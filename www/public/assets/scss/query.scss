@@ -22,8 +22,7 @@ $alizarin: #e74c3c;
   height: 100%;
 
   #tabsRegion {
-    width: 100%;
-    // width: 94%;
+    width: 94%;
     height: 50px;
     background-color: $asphalt;
     display: inline-block;
@@ -33,7 +32,10 @@ $alizarin: #e74c3c;
       top: 10px;
       padding: 0 25px;
       margin-bottom: 0px;
+      height: 40px;
+      overflow: hidden;
       .query-tab {
+        position: relative;
         height: 40px;
         background-color: white;
         display: inline-block;
@@ -43,8 +45,28 @@ $alizarin: #e74c3c;
         padding-top: 10px;
         margin-right: 3px;
         font-size: 18px;
+        cursor: default;
+        &:not(.active) {
+          opacity: 0.4;
+          filter: alpha(opacity=40); /* For IE8 and earlier */
+          cursor: pointer;
+          &:hover, &:focus {
+            opacity: 0.5;
+            filter: alpha(opacity=50); /* For IE8 and earlier */
+          }
+        }
+        .close-tab {
+          font-size: 20px;
+          position: absolute;
+          top: 5px;
+          right: 10px;
+          cursor: pointer;
+          &:hover, &:focus {
+            color: $alizarin;
+          }
+        }
         .tab-name {
-          width: inherit;
+          width: calc(100% - 20px);
           font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -67,6 +89,10 @@ $alizarin: #e74c3c;
       color: white;
       position: absolute;
       left: 10px;
+      cursor: pointer;
+      &:hover, &:focus {
+        color: $cloudsD;
+      }
     }
   }
 
@@ -105,7 +131,7 @@ $alizarin: #e74c3c;
       right: 5%;
       color: $clouds;
       background-color: $river;
-      &:hover {
+      &:hover, &:focus {
         background-color: $belize
       }
     }

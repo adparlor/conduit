@@ -7,7 +7,7 @@
 #queryRegion > div {
   height: 100%; }
   #queryRegion > div #tabsRegion {
-    width: 100%;
+    width: 94%;
     height: 50px;
     background-color: #34495e;
     display: inline-block;
@@ -16,8 +16,11 @@
       position: absolute;
       top: 10px;
       padding: 0 25px;
-      margin-bottom: 0px; }
+      margin-bottom: 0px;
+      height: 40px;
+      overflow: hidden; }
       #queryRegion > div #tabsRegion .query-tabs .query-tab {
+        position: relative;
         height: 40px;
         background-color: white;
         display: inline-block;
@@ -26,9 +29,27 @@
         text-align: center;
         padding-top: 10px;
         margin-right: 3px;
-        font-size: 18px; }
+        font-size: 18px;
+        cursor: default; }
+        #queryRegion > div #tabsRegion .query-tabs .query-tab:not(.active) {
+          opacity: 0.4;
+          filter: alpha(opacity=40);
+          /* For IE8 and earlier */
+          cursor: pointer; }
+          #queryRegion > div #tabsRegion .query-tabs .query-tab:not(.active):hover, #queryRegion > div #tabsRegion .query-tabs .query-tab:not(.active):focus {
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            /* For IE8 and earlier */ }
+        #queryRegion > div #tabsRegion .query-tabs .query-tab .close-tab {
+          font-size: 20px;
+          position: absolute;
+          top: 5px;
+          right: 10px;
+          cursor: pointer; }
+          #queryRegion > div #tabsRegion .query-tabs .query-tab .close-tab:hover, #queryRegion > div #tabsRegion .query-tabs .query-tab .close-tab:focus {
+            color: #e74c3c; }
         #queryRegion > div #tabsRegion .query-tabs .query-tab .tab-name {
-          width: inherit;
+          width: calc(100% - 20px);
           font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -45,7 +66,10 @@
       font-size: 50px;
       color: white;
       position: absolute;
-      left: 10px; }
+      left: 10px;
+      cursor: pointer; }
+      #queryRegion > div .query-button-container .add-query:hover, #queryRegion > div .query-button-container .add-query:focus {
+        color: #E1E5E7; }
   #queryRegion > div #queries {
     height: calc(100% - 55px); }
   #queryRegion > div #queries > div, #queryRegion > div .query-builder {
@@ -75,7 +99,7 @@
       right: 5%;
       color: #ecf0f1;
       background-color: #3498db; }
-      #queryRegion > div .query-field > .run-query:hover {
+      #queryRegion > div .query-field > .run-query:hover, #queryRegion > div .query-field > .run-query:focus {
         background-color: #2980b9; }
   #queryRegion > div .resultsRegion {
     height: 70%;
