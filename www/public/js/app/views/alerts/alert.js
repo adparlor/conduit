@@ -10,7 +10,7 @@ define([], function() {
       this.listenTo(this.options.vent, "triggerAlert", this.triggerAlert)
     },
 
-    template: Handlebars.templates['alerts/alerts_layout'],
+    template: Handlebars.templates['alerts/alert_layout'],
 
     regions: {
 

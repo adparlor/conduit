@@ -1,29 +1,29 @@
 
-define(['ColumnsView'], function(ColumnsView) {
+define(['TableView'], function(TableView) {
 
-  var TablesView = Backbone.Marionette.CompositeView.extend({
+  var KeyspaceView = Backbone.Marionette.CompositeView.extend({
     initialize: function(options) {
       this.options = options
-      this.collection = this.model.get("columns")
+      this.collection = this.model.get("tables")
       this.presenterModel = new Backbone.Model({
         isCollapsed: true
       })
     },
 
-    template: Handlebars.templates['sidebar/tables_layout'],
+    template: Handlebars.templates['sidebar/keyspace_layout'],
 
-    childView: ColumnsView,
+    className: 'keyspace-row',
 
-    childViewContainer: '.columns-container',
+    childView: TableView,
 
-    className: 'table-row',
+    childViewContainer: '.tables-container',
 
     events: {
-      'click .table-collapse-toggle': 'collapseColumns'
+      'click .keyspace-collapse-toggle': 'collapseTables'
     },
 
     presenterBindings: {
-      'span.table-collapse-icon': {
+      'span.keyspace-collapse-icon': {
         attributes: [{
           observe: 'isCollapsed',
           name: 'class',
@@ -32,7 +32,8 @@ define(['ColumnsView'], function(ColumnsView) {
           }
         }]
       },
-      '.columns-container': {
+
+      '.tables-container': {
         attributes: [{
           observe: 'isCollapsed',
           name: 'class',
@@ -40,25 +41,18 @@ define(['ColumnsView'], function(ColumnsView) {
             return isCollapsed ? "hide" : ""
           }
         }]
-      },
-      '.table-name > .fa': {
-        attributes: [{
-          observe: 'isCollapsed',
-          name: 'class',
-          onGet: function(isCollapsed) {
-            return isCollapsed ? "fa-folder" : "fa-folder-open"
-          }
-        }]
       }
     },
 
-    collapseColumns: function(e) {
+    collapseTables: function(e) {
       e.stopPropagation()
       this.presenterModel.set("isCollapsed", !this.presenterModel.get("isCollapsed"))
     },
 
     onDestroy: function() {
-
+      this.options = null
+      this.collection = null
+      this.model = null
     },
 
     render: function() {
@@ -68,5 +62,5 @@ define(['ColumnsView'], function(ColumnsView) {
     }
   })
 
-  return TablesView
+  return KeyspaceView
 })

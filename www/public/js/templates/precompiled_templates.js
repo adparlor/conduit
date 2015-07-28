@@ -1,6 +1,6 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-templates['alerts/alerts_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+templates['alerts/alert_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<div class=\"alert alert-dismissible\" style=\"position: fixed; height: 50px;\">\n  <button type=\"button\" class=\"close\"><span>&times;</span></button>\n  <span class=\"alert-message\"></span>\n</div>";
 },"useData":true});
 templates['main_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
@@ -42,7 +42,7 @@ templates['query/results/results_layout'] = template({"compiler":[6,">= 2.0.0-be
 templates['query/tab_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<span class=\"close-tab\">&times;</span>\n<span class=\"tab-name\"></span>";
 },"useData":true});
-templates['sidebar/columns_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+templates['sidebar/column_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
   return "<span class=\"column-name\">\n  <i class=\"fa fa-columns\"></i>\n  <i class=\"fa column-logo\"></i>\n  "
@@ -51,7 +51,7 @@ templates['sidebar/columns_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"]
     + alias3(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"type","hash":{},"data":data}) : helper)))
     + "</span>\n";
 },"useData":true});
-templates['sidebar/keyspaces_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+templates['sidebar/keyspace_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
 
   return "<span class=\"keyspace-collapse-toggle\">\n  <span class=\"glyphicon keyspace-collapse-icon\">\n  </span>\n  <span class=\"keyspace-name\"><i class=\"fa fa-database\"></i>"
@@ -61,7 +61,7 @@ templates['sidebar/keyspaces_layout'] = template({"compiler":[6,">= 2.0.0-beta.1
 templates['sidebar/sidebar_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<div id=\"keyspaceHeader\">Keyspaces</div>\n<div id=\"keyspacesContainer\"></div>";
 },"useData":true});
-templates['sidebar/tables_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+templates['sidebar/table_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
 
   return "<span class=\"table-collapse-toggle\">\n  <span class=\"glyphicon table-collapse-icon\"></span>\n  <span class=\"table-name\"><i class=\"fa\"></i>"

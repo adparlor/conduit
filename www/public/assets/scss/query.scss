@@ -85,10 +85,11 @@ $alizarin: #e74c3c;
     width: 6%;
     position: fixed;
     .add-query {
-      font-size: 50px;
+      font-size: 45px;
       color: white;
       position: absolute;
-      left: 10px;
+      left: 20px;
+      top: 2.5px;
       cursor: pointer;
       &:hover, &:focus {
         color: $cloudsD;

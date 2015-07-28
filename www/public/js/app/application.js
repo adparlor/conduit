@@ -11,9 +11,9 @@ requirejs.config({
     MainView: "views/main",
     SidebarController: "controllers/sidebar_controller",
     SidebarView: "views/sidebar/sidebar",
-    KeyspacesView: "views/sidebar/keyspaces",
-    TablesView: "views/sidebar/tables",
-    ColumnsView: "views/sidebar/columns",
+    KeyspaceView: "views/sidebar/keyspace",
+    TableView: "views/sidebar/table",
+    ColumnView: "views/sidebar/column",
     QueriesController: "controllers/queries_controller",
     QueryView: "views/query/query",
     TabsView: "views/query/tabs",
@@ -30,7 +30,7 @@ requirejs.config({
     ModalController: "controllers/modal_controller",
     JSONModalView: "views/modal/json_modal",
     AlertsController: "controllers/alerts_controller",
-    AlertsView: "views/alerts/alerts"
+    AlertView: "views/alerts/alert"
   }
 })
 

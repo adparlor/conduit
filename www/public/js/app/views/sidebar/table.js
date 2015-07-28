@@ -1,29 +1,29 @@
 
-define(['TablesView'], function(TablesView) {
+define(['ColumnView'], function(ColumnView) {
 
-  var KeyspacesView = Backbone.Marionette.CompositeView.extend({
+  var TableView = Backbone.Marionette.CompositeView.extend({
     initialize: function(options) {
       this.options = options
-      this.collection = this.model.get("tables")
+      this.collection = this.model.get("columns")
       this.presenterModel = new Backbone.Model({
         isCollapsed: true
       })
     },
 
-    template: Handlebars.templates['sidebar/keyspaces_layout'],
+    template: Handlebars.templates['sidebar/table_layout'],
 
-    className: 'keyspace-row',
+    childView: ColumnView,
 
-    childView: TablesView,
+    childViewContainer: '.columns-container',
 
-    childViewContainer: '.tables-container',
+    className: 'table-row',
 
     events: {
-      'click .keyspace-collapse-toggle': 'collapseTables'
+      'click .table-collapse-toggle': 'collapseColumns'
     },
 
     presenterBindings: {
-      'span.keyspace-collapse-icon': {
+      'span.table-collapse-icon': {
         attributes: [{
           observe: 'isCollapsed',
           name: 'class',
@@ -32,8 +32,7 @@ define(['TablesView'], function(TablesView) {
           }
         }]
       },
-
-      '.tables-container': {
+      '.columns-container': {
         attributes: [{
           observe: 'isCollapsed',
           name: 'class',
@@ -41,18 +40,25 @@ define(['TablesView'], function(TablesView) {
             return isCollapsed ? "hide" : ""
           }
         }]
+      },
+      '.table-name > .fa': {
+        attributes: [{
+          observe: 'isCollapsed',
+          name: 'class',
+          onGet: function(isCollapsed) {
+            return isCollapsed ? "fa-folder" : "fa-folder-open"
+          }
+        }]
       }
     },
 
-    collapseTables: function(e) {
+    collapseColumns: function(e) {
       e.stopPropagation()
       this.presenterModel.set("isCollapsed", !this.presenterModel.get("isCollapsed"))
     },
 
     onDestroy: function() {
-      this.options = null
-      this.collection = null
-      this.model = null
+
     },
 
     render: function() {
@@ -62,5 +68,5 @@ define(['TablesView'], function(TablesView) {
     }
   })
 
-  return KeyspacesView
+  return TableView
 })

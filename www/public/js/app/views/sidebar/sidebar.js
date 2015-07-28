@@ -1,5 +1,5 @@
 
-define(['KeyspacesView'], function(KeyspacesView) {
+define(['KeyspaceView'], function(KeyspaceView) {
 
   var SidebarView = Backbone.Marionette.CompositeView.extend({
     initialize: function(options) {
@@ -11,7 +11,7 @@ define(['KeyspacesView'], function(KeyspacesView) {
 
     id: 'sidebar',
 
-    childView: KeyspacesView,
+    childView: KeyspaceView,
 
     childViewContainer: '#keyspacesContainer',
 

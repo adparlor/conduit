@@ -34,7 +34,7 @@ $alizarin: #e74c3c;
       border-top: 2x solid $silver;
       border-bottom: 1px solid $asbestos;
       font-size: 20px;
-      padding: 10px 0 0 20px;
+      padding: 10px 0 0 15px;
     }
 
     #keyspacesContainer {
@@ -45,7 +45,7 @@ $alizarin: #e74c3c;
   .keyspace-row {
     border-top: 0.1em solid $cloudsD;
     border-bottom: 0.1em solid $silver;
-    padding: 10px 20px;
+    padding: 10px 15px;
     &:first-child {
       border-top: 1px solid $cloudsD;
     }
@@ -103,13 +103,22 @@ $alizarin: #e74c3c;
   .columns-container {
     padding: 5px 0 0 30px;
     .column-row {
+      height: 27px;
       padding: 3px 0;
+      position: relative;
       border-bottom: 1px solid $cloudsD;
+      cursor: default;
       .column-name {
         font-weight: 300;
         .fa {
           padding-right: 5px;
         }
+      }
+      .pull-right {
+        position: absolute;
+        background-color: $clouds;
+        padding-left: 10px;
+        right: 0;
       }
     }
   }

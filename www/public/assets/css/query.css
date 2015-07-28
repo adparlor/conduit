@@ -63,10 +63,11 @@
     width: 6%;
     position: fixed; }
     #queryRegion > div .query-button-container .add-query {
-      font-size: 50px;
+      font-size: 45px;
       color: white;
       position: absolute;
-      left: 10px;
+      left: 20px;
+      top: 2.5px;
       cursor: pointer; }
       #queryRegion > div .query-button-container .add-query:hover, #queryRegion > div .query-button-container .add-query:focus {
         color: #E1E5E7; }

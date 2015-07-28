@@ -14,11 +14,11 @@
     border-top: 2x solid #bdc3c7;
     border-bottom: 1px solid #7f8c8d;
     font-size: 20px;
-    padding: 10px 0 0 20px; }
+    padding: 10px 0 0 15px; }
   #sidebarRegion .keyspace-row {
     border-top: 0.1em solid #E1E5E7;
     border-bottom: 0.1em solid #bdc3c7;
-    padding: 10px 20px; }
+    padding: 10px 15px; }
     #sidebarRegion .keyspace-row:first-child {
       border-top: 1px solid #E1E5E7; }
     #sidebarRegion .keyspace-row:last-child {
@@ -57,9 +57,17 @@
   #sidebarRegion .columns-container {
     padding: 5px 0 0 30px; }
     #sidebarRegion .columns-container .column-row {
+      height: 27px;
       padding: 3px 0;
-      border-bottom: 1px solid #E1E5E7; }
+      position: relative;
+      border-bottom: 1px solid #E1E5E7;
+      cursor: default; }
       #sidebarRegion .columns-container .column-row .column-name {
         font-weight: 300; }
         #sidebarRegion .columns-container .column-row .column-name .fa {
           padding-right: 5px; }
+      #sidebarRegion .columns-container .column-row .pull-right {
+        position: absolute;
+        background-color: #ecf0f1;
+        padding-left: 10px;
+        right: 0; }
