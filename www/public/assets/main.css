@@ -13,9 +13,24 @@ html, body, #appContent, #appContent > div {
   background-color: #34495e;
   color: #ecf0f1; }
 
+#alertsRegion .alert {
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.975;
+  filter: alpha(opacity=97.5);
+  /* For IE8 and earlier */
+  text-align: center; }
+
+@media (min-width: 768px) {
+  #modalRegion .modal-dialog {
+    width: 767px; } }
+
 #jsonModal .modal-body {
   padding: 15px 30px; }
   #jsonModal .modal-body > .parsed-json {
+    font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
     white-space: pre-wrap; }
     #jsonModal .modal-body > .parsed-json .string {
       color: #16a085; }
@@ -64,6 +79,7 @@ html, body, #appContent, #appContent > div {
         font-size: 18px; }
         #queryRegion > div #tabsRegion .query-tabs .query-tab .tab-name {
           width: inherit;
+          font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
           text-overflow: ellipsis;
           white-space: nowrap;
           overflow: hidden;
@@ -95,7 +111,8 @@ html, body, #appContent, #appContent > div {
       top: 12.5%;
       left: 5%;
       resize: none;
-      font-size: 18px;
+      font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
+      font-size: 16px;
       padding: 10px 15px;
       border-radius: 3px;
       background-color: #ecf0f1;
@@ -139,6 +156,7 @@ html, body, #appContent, #appContent > div {
       #queryRegion > div .resultsRegion .results-table .results-container {
         margin-top: 31px; }
       #queryRegion > div .resultsRegion .results-table .result-rows .result-data-container {
+        font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
         border: 1px solid #E1E5E7;
         overflow-x: hidden;
         white-space: nowrap;

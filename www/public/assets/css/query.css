@@ -29,6 +29,7 @@
         font-size: 18px; }
         #queryRegion > div #tabsRegion .query-tabs .query-tab .tab-name {
           width: inherit;
+          font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
           text-overflow: ellipsis;
           white-space: nowrap;
           overflow: hidden;
@@ -60,7 +61,8 @@
       top: 12.5%;
       left: 5%;
       resize: none;
-      font-size: 18px;
+      font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
+      font-size: 16px;
       padding: 10px 15px;
       border-radius: 3px;
       background-color: #ecf0f1;
@@ -104,6 +106,7 @@
       #queryRegion > div .resultsRegion .results-table .results-container {
         margin-top: 31px; }
       #queryRegion > div .resultsRegion .results-table .result-rows .result-data-container {
+        font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
         border: 1px solid #E1E5E7;
         overflow-x: hidden;
         white-space: nowrap;

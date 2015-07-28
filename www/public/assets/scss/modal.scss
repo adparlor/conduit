@@ -15,11 +15,20 @@ $pomegranate: #c0392b;
 $greensea: #16a085;
 
 
+#modalRegion {
+  @media (min-width: 768px) {
+    .modal-dialog {
+      width: 767px;
+    }
+  }
+}
+
 
 #jsonModal {
   .modal-body {
     padding: 15px 30px;
     > .parsed-json {
+      font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
       white-space: pre-wrap;
       .string { color: $greensea; }
       .number { color: $amethyst }

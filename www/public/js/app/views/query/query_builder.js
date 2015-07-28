@@ -33,6 +33,7 @@ define(['ResultsView'], function(ResultsView) {
     sendQueryRequest: function() {
       this.presenterModel.set("loading", true)
       this.model.get("results").reset()
+      this.resultsView.resultHeaders.reset()
       var view = this
       var onSuccess = function(resultsArr) {
         view.presenterModel.set({
@@ -48,6 +49,7 @@ define(['ResultsView'], function(ResultsView) {
         view.presenterModel.set({
           loading: false
         })
+        view.vent.trigger("triggerAlert", "danger", err)
       }
       this.vent.trigger("query:makeRequest", this.model, onSuccess, onFailure)
     },

@@ -45,6 +45,7 @@ $alizarin: #e74c3c;
         font-size: 18px;
         .tab-name {
           width: inherit;
+          font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
           text-overflow: ellipsis;
           white-space: nowrap;
           overflow: hidden;
@@ -88,7 +89,8 @@ $alizarin: #e74c3c;
       top: 12.5%;
       left: 5%;
       resize: none;
-      font-size: 18px;
+      font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
+      font-size: 16px;
       padding: 10px 15px;
       border-radius: 3px;
       background-color: $clouds;
@@ -142,6 +144,7 @@ $alizarin: #e74c3c;
         margin-top: 31px;
       }
       .result-rows .result-data-container {
+        font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
         border: 1px solid $cloudsD;
         overflow-x: hidden;
         white-space: nowrap;

@@ -1,6 +1,6 @@
 
-define(['SidebarController', 'QueriesController', 'ModalController'],
-function(SidebarController, QueriesController, ModalController) {
+define(['AlertsController', 'SidebarController', 'QueriesController', 'ModalController'],
+function(AlertsController, SidebarController, QueriesController, ModalController) {
 
   var MainView = Backbone.Marionette.LayoutView.extend({
     initialize: function(options) {
@@ -11,6 +11,7 @@ function(SidebarController, QueriesController, ModalController) {
     template: Handlebars.templates['main_layout'],
 
     regions: {
+      'alerts': '#alertsRegion',
       'sidebar': '#sidebarRegion',
       'query': '#queryRegion',
       'modal': '#modalRegion'
@@ -29,6 +30,10 @@ function(SidebarController, QueriesController, ModalController) {
     },
 
     onDomRefresh: function() {
+      this.alertsController = new AlertsController({
+        alertsRegion: this.alerts,
+        vent: this.options.vent
+      })
       this.queriesController = new QueriesController({
         queryRegion: this.query,
         vent: this.options.vent

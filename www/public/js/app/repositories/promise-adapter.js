@@ -34,11 +34,6 @@ define([], function() {
       if(xhr && xhr.statusText == "abort"){
         return
       }
-      // if(options.handleAuthentication && xhr && xhr.status == 403){
-      //   localStorage.removeItem("WSSE")
-      //   window.location.reload(true)
-      //   return
-      // }
 
       var data
       var response = xhr.responseText
@@ -60,7 +55,9 @@ define([], function() {
         data = response
       }
 
-      deferred.reject(data, errorsParser(response))
+      var errorParsedResponse = errorsParser(response)
+
+      deferred.reject(errorParsedResponse || data)
     })
 
 

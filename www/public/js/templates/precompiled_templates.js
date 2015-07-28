@@ -1,7 +1,10 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['alerts/alerts_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<div class=\"alert alert-dismissible\" style=\"position: fixed; height: 50px;\">\n  <button type=\"button\" class=\"close\"><span>&times;</span></button>\n  <span class=\"alert-message\"></span>\n</div>";
+},"useData":true});
 templates['main_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div id=\"conduitLabel\">Conduit</div>\n<div id=\"sidebarRegion\"></div>\n<div id=\"queryRegion\"></div>\n<div id=\"modalRegion\"></div>";
+    return "<div id=\"conduitLabel\">Conduit</div>\n<div id=\"alertsRegion\"></div>\n<div id=\"sidebarRegion\"></div>\n<div id=\"queryRegion\"></div>\n<div id=\"modalRegion\"></div>";
 },"useData":true});
 templates['modal/json_modal_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function";

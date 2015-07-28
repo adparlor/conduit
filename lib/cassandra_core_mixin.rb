@@ -80,7 +80,12 @@ module CassandraCoreMixin
 
   def prepare_and_execute_cql(cql, keyspace)
     @keyspace = keyspace
-    prepared_statement = prep(cql)
+
+    begin
+      prepared_statement = prep(cql)
+    rescue Exception => e
+      return e
+    end
 
     cassandra_execute(prepared_statement)
   end

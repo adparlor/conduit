@@ -7,6 +7,15 @@ define(function() {
       return result
     },
 
+    deserializeQueryError: function(error) {
+      var errorObject = {
+        errorClass: error.error_class,
+        errorMessage: error.error_message
+      }
+
+      return errorObject
+    },
+
     deserializeQueryResponseLegacy: function(rows) {
       var resultsCollection = new Backbone.Collection()
 

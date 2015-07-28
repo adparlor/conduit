@@ -29,4 +29,8 @@ module ResultFormatter
   #   deserialized_row
   # end
 
+  def format_error error
+    {error_class: error.class.name, error_message: error.message}
+  end
+
 end

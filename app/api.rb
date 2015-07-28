@@ -22,6 +22,10 @@ module Conduit
       def table_to_json result
         format_table result
       end
+
+      def error_to_json error
+        format_error error
+      end
     end
 
     desc "Submits query to cassandra and returns result"
@@ -31,7 +35,12 @@ module Conduit
     end
     post :queries do
       cass_result = request_query params
-      table_to_json cass_result
+      cass_result.is_a?(Cassandra::Results::Paged) ? table_to_json(cass_result) : format_error(cass_result)
+      if cass_result.is_a? Cassandra::Results::Paged
+        table_to_json cass_result
+      else
+        error! format_error(cass_result), 500
+      end
     end
 
     desc "Submits query to cassandra to return all available

@@ -11,8 +11,7 @@ function(PromiseAdapter, SystemStorage, SystemDeserializer, SystemSerializer) {
     makeQueryRequest: function(queryModel) {
       var adapterPromise = SystemStorage.requestQuery(SystemSerializer.serializeQueryRequest(queryModel))
 
-      // return new PromiseAdapter(adapterPromise, SystemDeserializer.deserializeQueryResponse)
-      return new PromiseAdapter(adapterPromise, SystemDeserializer.deserializeBasic)
+      return new PromiseAdapter(adapterPromise, SystemDeserializer.deserializeBasic, SystemDeserializer.deserializeQueryError)
     }
 
   }

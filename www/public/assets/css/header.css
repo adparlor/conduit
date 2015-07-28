@@ -12,3 +12,13 @@ html, body, #appContent, #appContent > div {
   position: fixed;
   background-color: #34495e;
   color: #ecf0f1; }
+
+#alertsRegion .alert {
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.975;
+  filter: alpha(opacity=97.5);
+  /* For IE8 and earlier */
+  text-align: center; }
