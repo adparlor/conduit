@@ -104,6 +104,7 @@ module CassandraCoreMixin
           column[:type] = c.type
           column[:primary] = true if partition_key.include? column[:name]
           column[:cluster_column] = true if clustering_columns.include? column[:name]
+          column[:secondary_index] = true if c.index
           table[:columns] << column
         end
         keyspace[:tables] << table

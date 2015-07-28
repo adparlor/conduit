@@ -67,7 +67,8 @@ define(function() {
               name: columnObject.name,
               type: columnObject.type,
               primary: columnObject.primary,
-              clusterColumn: columnObject.cluster_column
+              clusterColumn: columnObject.cluster_column,
+              secondaryIndex: columnObject.secondary_index
             })
             table.get("columns").add(column)
           })
