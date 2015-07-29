@@ -5,6 +5,8 @@ define(['KeyspaceView'], function(KeyspaceView) {
     initialize: function(options) {
       this.options = options
       this.model = new Backbone.Model()
+
+      this.listenTo(this.collection, 'makeActive', this.toggleActiveKeyspace)
     },
 
     template: Handlebars.templates['sidebar/sidebar_layout'],
@@ -21,6 +23,14 @@ define(['KeyspaceView'], function(KeyspaceView) {
 
     bindings: {
 
+    },
+
+    toggleActiveKeyspace: function(keyspace) {
+      this.collection.each(function(model) {
+        model.set("isActive", false)
+      })
+
+      keyspace.set("isActive", true)
     },
 
     onDestroy: function() {

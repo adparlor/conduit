@@ -142,11 +142,11 @@ html, body, #appContent, #appContent > div {
     position: relative;
     border-bottom: 1px solid #E1E5E7; }
     #queryRegion > div .query-field > textarea {
-      width: 90%;
-      height: 60%;
+      width: 98%;
+      height: 75%;
       position: absolute;
-      top: 12.5%;
-      left: 5%;
+      top: 3%;
+      left: 1%;
       resize: none;
       font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
       font-size: 16px;
@@ -158,8 +158,8 @@ html, body, #appContent, #appContent > div {
         outline-color: #3498db; }
     #queryRegion > div .query-field > .query-history-container, #queryRegion > div .query-field > .query-favorites-container {
       position: absolute;
-      bottom: 5%;
-      left: 5%; }
+      bottom: 3%;
+      left: 1%; }
       #queryRegion > div .query-field > .query-history-container .open-history, #queryRegion > div .query-field > .query-history-container .open-favorites, #queryRegion > div .query-field > .query-favorites-container .open-history, #queryRegion > div .query-field > .query-favorites-container .open-favorites {
         background-color: #ecf0f1; }
         #queryRegion > div .query-field > .query-history-container .open-history:hover, #queryRegion > div .query-field > .query-history-container .open-favorites:hover, #queryRegion > div .query-field > .query-favorites-container .open-history:hover, #queryRegion > div .query-field > .query-favorites-container .open-favorites:hover {
@@ -196,11 +196,11 @@ html, body, #appContent, #appContent > div {
               background-color: #3498db;
               color: white; }
     #queryRegion > div .query-field > .query-history-container {
-      left: calc(5% + 150px); }
+      left: calc(1% + 150px); }
     #queryRegion > div .query-field > .run-query, #queryRegion > div .query-field > .save-query {
       position: absolute;
-      bottom: 5%;
-      right: 5%;
+      bottom: 3%;
+      right: 1%;
       border-radius: 0 3px 3px 0;
       color: #ecf0f1;
       background-color: #3498db; }
@@ -211,7 +211,7 @@ html, body, #appContent, #appContent > div {
       #queryRegion > div .query-field > .run-query .fa-check, #queryRegion > div .query-field > .save-query .fa-check {
         width: 12px; }
     #queryRegion > div .query-field > .run-query {
-      right: calc(5% + 38px);
+      right: calc(1% + 38px);
       border-radius: 3px 0 0 3px;
       border-right: 1px solid #3E576F; }
     #queryRegion > div .query-field > .save-query {
@@ -309,7 +309,7 @@ html, body, #appContent, #appContent > div {
         #sidebarRegion .keyspace-row .keyspace-collapse-toggle .keyspace-name .fa {
           padding-right: 5px; }
       #sidebarRegion .keyspace-row .keyspace-collapse-toggle:hover .keyspace-collapse-icon, #sidebarRegion .keyspace-row .keyspace-collapse-toggle:focus .keyspace-collapse-icon {
-        color: #3498db; }
+        color: #2980b9; }
   #sidebarRegion .tables-container {
     padding: 5px 0 0 15px; }
     #sidebarRegion .tables-container .table-row {
@@ -325,7 +325,7 @@ html, body, #appContent, #appContent > div {
           #sidebarRegion .tables-container .table-row .table-collapse-toggle .table-name .fa {
             padding-right: 5px; }
         #sidebarRegion .tables-container .table-row .table-collapse-toggle:hover .table-collapse-icon, #sidebarRegion .tables-container .table-row .table-collapse-toggle:focus .table-collapse-icon {
-          color: #3498db; }
+          color: #2980b9; }
   #sidebarRegion .columns-container {
     padding: 5px 0 0 30px; }
     #sidebarRegion .columns-container .column-row {

@@ -5,9 +5,7 @@ define(['TableView'], function(TableView) {
     initialize: function(options) {
       this.options = options
       this.collection = this.model.get("tables")
-      this.presenterModel = new Backbone.Model({
-        isCollapsed: true
-      })
+      this.model.set("isCollapsed", true)
     },
 
     template: Handlebars.templates['sidebar/keyspace_layout'],
@@ -22,7 +20,7 @@ define(['TableView'], function(TableView) {
       'click .keyspace-collapse-toggle': 'collapseTables'
     },
 
-    presenterBindings: {
+    bindings: {
       'span.keyspace-collapse-icon': {
         attributes: [{
           observe: 'isCollapsed',
@@ -41,12 +39,22 @@ define(['TableView'], function(TableView) {
             return isCollapsed ? "hide" : ""
           }
         }]
+      },
+      '.keyspace-name, .keyspace-collapse-icon': {
+        attributes: [{
+          observe: 'isActive',
+          name: 'style',
+          onGet: function(isActive) {
+            return isActive ? "color: #2980b9" : ""
+          }
+        }]
       }
     },
 
     collapseTables: function(e) {
-      e.stopPropagation()
-      this.presenterModel.set("isCollapsed", !this.presenterModel.get("isCollapsed"))
+      // e.stopPropagation()
+      this.model.set("isCollapsed", !this.model.get("isCollapsed"))
+      this.model.trigger("makeActive", this.model)
     },
 
     onDestroy: function() {
@@ -56,9 +64,9 @@ define(['TableView'], function(TableView) {
     },
 
     render: function() {
-      this.unstickit(this.presenterModel, this.presenterBindings)
+      this.unstickit()
       Backbone.Marionette.CompositeView.prototype.render.call(this)
-      this.stickit(this.presenterModel, this.presenterBindings)
+      this.stickit()
     }
   })
 

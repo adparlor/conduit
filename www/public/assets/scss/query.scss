@@ -111,11 +111,11 @@ $alizarin: #e74c3c;
     position: relative;
     border-bottom: 1px solid $cloudsD;
     > textarea {
-      width: 90%;
-      height: 60%;
+      width: 98%;
+      height: 75%;
       position: absolute;
-      top: 12.5%;
-      left: 5%;
+      top: 3%;
+      left: 1%;
       resize: none;
       font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
       font-size: 16px;
@@ -129,8 +129,8 @@ $alizarin: #e74c3c;
     }
     > .query-history-container, > .query-favorites-container {
       position: absolute;
-      bottom: 5%;
-      left: 5%;
+      bottom: 3%;
+      left: 1%;
       .open-history, .open-favorites {
         background-color: $clouds;
         &:hover {
@@ -177,12 +177,12 @@ $alizarin: #e74c3c;
       }
     }
     > .query-history-container {
-      left: calc(5% + 150px);
+      left: calc(1% + 150px);
     }
     > .run-query, > .save-query {
       position: absolute;
-      bottom: 5%;
-      right: 5%;
+      bottom: 3%;
+      right: 1%;
       border-radius: 0 3px 3px 0;
       color: $clouds;
       background-color: $river;
@@ -197,7 +197,7 @@ $alizarin: #e74c3c;
       }
     }
     > .run-query {
-      right: calc(5% + 38px);
+      right: calc(1% + 38px);
       border-radius: 3px 0 0 3px;
       border-right: 1px solid $asphaltl;
     }

@@ -21,8 +21,6 @@ def load_config(env)
 
     config = all_configs[env]
 
-    puts "Booting Rainmaker in #{env.inspect} mode..."
-
     local_config_file = "#{BASE_PATH}/config.local.yml"
     local_config_for_env = {}
 
