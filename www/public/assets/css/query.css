@@ -56,20 +56,20 @@
           overflow: hidden;
           display: block;
           padding: 0 10px; }
-  #queryRegion > div .query-button-container {
+  #queryRegion > div .query-tab-button-container {
     display: inline-block;
     height: 50px;
     background-color: #34495e;
     width: 6%;
     position: fixed; }
-    #queryRegion > div .query-button-container .add-query {
+    #queryRegion > div .query-tab-button-container .add-query-tab {
       font-size: 45px;
       color: white;
       position: absolute;
       right: 30px;
       top: 2.5px;
       cursor: pointer; }
-      #queryRegion > div .query-button-container .add-query:hover, #queryRegion > div .query-button-container .add-query:focus {
+      #queryRegion > div .query-tab-button-container .add-query-tab:hover, #queryRegion > div .query-tab-button-container .add-query-tab:focus {
         color: #E1E5E7; }
   #queryRegion > div #queries {
     height: calc(100% - 55px); }
@@ -94,14 +94,64 @@
       border-color: #E1E5E7; }
       #queryRegion > div .query-field > textarea:focus {
         outline-color: #3498db; }
-    #queryRegion > div .query-field > .run-query {
+    #queryRegion > div .query-field > .query-history-container, #queryRegion > div .query-field > .query-favorites-container {
+      position: absolute;
+      bottom: 5%;
+      left: 5%; }
+      #queryRegion > div .query-field > .query-history-container .open-history, #queryRegion > div .query-field > .query-history-container .open-favorites, #queryRegion > div .query-field > .query-favorites-container .open-history, #queryRegion > div .query-field > .query-favorites-container .open-favorites {
+        background-color: #ecf0f1; }
+        #queryRegion > div .query-field > .query-history-container .open-history:hover, #queryRegion > div .query-field > .query-history-container .open-favorites:hover, #queryRegion > div .query-field > .query-favorites-container .open-history:hover, #queryRegion > div .query-field > .query-favorites-container .open-favorites:hover {
+          background-color: #E1E5E7; }
+        #queryRegion > div .query-field > .query-history-container .open-history:focus, #queryRegion > div .query-field > .query-history-container .open-favorites:focus, #queryRegion > div .query-field > .query-favorites-container .open-history:focus, #queryRegion > div .query-field > .query-favorites-container .open-favorites:focus {
+          outline: none; }
+      #queryRegion > div .query-field > .query-history-container .history-container, #queryRegion > div .query-field > .query-history-container .favorites-container, #queryRegion > div .query-field > .query-favorites-container .history-container, #queryRegion > div .query-field > .query-favorites-container .favorites-container {
+        position: absolute;
+        top: 36px;
+        z-index: 1;
+        background-color: white;
+        border-radius: 3px;
+        border: 1px solid #bdc3c7;
+        box-shadow: 0 3px 10px 0 #7f8c8d;
+        min-width: 350px; }
+        #queryRegion > div .query-field > .query-history-container .history-container .clear-history, #queryRegion > div .query-field > .query-history-container .history-container .clear-favorites, #queryRegion > div .query-field > .query-history-container .favorites-container .clear-history, #queryRegion > div .query-field > .query-history-container .favorites-container .clear-favorites, #queryRegion > div .query-field > .query-favorites-container .history-container .clear-history, #queryRegion > div .query-field > .query-favorites-container .history-container .clear-favorites, #queryRegion > div .query-field > .query-favorites-container .favorites-container .clear-history, #queryRegion > div .query-field > .query-favorites-container .favorites-container .clear-favorites {
+          margin: 10px 0;
+          padding: 0 10px;
+          cursor: pointer; }
+          #queryRegion > div .query-field > .query-history-container .history-container .clear-history:hover, #queryRegion > div .query-field > .query-history-container .history-container .clear-favorites:hover, #queryRegion > div .query-field > .query-history-container .favorites-container .clear-history:hover, #queryRegion > div .query-field > .query-history-container .favorites-container .clear-favorites:hover, #queryRegion > div .query-field > .query-favorites-container .history-container .clear-history:hover, #queryRegion > div .query-field > .query-favorites-container .history-container .clear-favorites:hover, #queryRegion > div .query-field > .query-favorites-container .favorites-container .clear-history:hover, #queryRegion > div .query-field > .query-favorites-container .favorites-container .clear-favorites:hover {
+            background-color: #3498db;
+            color: white; }
+        #queryRegion > div .query-field > .query-history-container .history-container .history-child-container, #queryRegion > div .query-field > .query-history-container .history-container .favorites-child-container, #queryRegion > div .query-field > .query-history-container .favorites-container .history-child-container, #queryRegion > div .query-field > .query-history-container .favorites-container .favorites-child-container, #queryRegion > div .query-field > .query-favorites-container .history-container .history-child-container, #queryRegion > div .query-field > .query-favorites-container .history-container .favorites-child-container, #queryRegion > div .query-field > .query-favorites-container .favorites-container .history-child-container, #queryRegion > div .query-field > .query-favorites-container .favorites-container .favorites-child-container {
+          padding: 10px 0;
+          border-top: 1px solid #E1E5E7; }
+          #queryRegion > div .query-field > .query-history-container .history-container .history-child-container .history-child, #queryRegion > div .query-field > .query-history-container .history-container .history-child-container .favorite-child, #queryRegion > div .query-field > .query-history-container .history-container .favorites-child-container .history-child, #queryRegion > div .query-field > .query-history-container .history-container .favorites-child-container .favorite-child, #queryRegion > div .query-field > .query-history-container .favorites-container .history-child-container .history-child, #queryRegion > div .query-field > .query-history-container .favorites-container .history-child-container .favorite-child, #queryRegion > div .query-field > .query-history-container .favorites-container .favorites-child-container .history-child, #queryRegion > div .query-field > .query-history-container .favorites-container .favorites-child-container .favorite-child, #queryRegion > div .query-field > .query-favorites-container .history-container .history-child-container .history-child, #queryRegion > div .query-field > .query-favorites-container .history-container .history-child-container .favorite-child, #queryRegion > div .query-field > .query-favorites-container .history-container .favorites-child-container .history-child, #queryRegion > div .query-field > .query-favorites-container .history-container .favorites-child-container .favorite-child, #queryRegion > div .query-field > .query-favorites-container .favorites-container .history-child-container .history-child, #queryRegion > div .query-field > .query-favorites-container .favorites-container .history-child-container .favorite-child, #queryRegion > div .query-field > .query-favorites-container .favorites-container .favorites-child-container .history-child, #queryRegion > div .query-field > .query-favorites-container .favorites-container .favorites-child-container .favorite-child {
+            padding: 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 500px;
+            cursor: pointer; }
+            #queryRegion > div .query-field > .query-history-container .history-container .history-child-container .history-child:hover, #queryRegion > div .query-field > .query-history-container .history-container .history-child-container .favorite-child:hover, #queryRegion > div .query-field > .query-history-container .history-container .favorites-child-container .history-child:hover, #queryRegion > div .query-field > .query-history-container .history-container .favorites-child-container .favorite-child:hover, #queryRegion > div .query-field > .query-history-container .favorites-container .history-child-container .history-child:hover, #queryRegion > div .query-field > .query-history-container .favorites-container .history-child-container .favorite-child:hover, #queryRegion > div .query-field > .query-history-container .favorites-container .favorites-child-container .history-child:hover, #queryRegion > div .query-field > .query-history-container .favorites-container .favorites-child-container .favorite-child:hover, #queryRegion > div .query-field > .query-favorites-container .history-container .history-child-container .history-child:hover, #queryRegion > div .query-field > .query-favorites-container .history-container .history-child-container .favorite-child:hover, #queryRegion > div .query-field > .query-favorites-container .history-container .favorites-child-container .history-child:hover, #queryRegion > div .query-field > .query-favorites-container .history-container .favorites-child-container .favorite-child:hover, #queryRegion > div .query-field > .query-favorites-container .favorites-container .history-child-container .history-child:hover, #queryRegion > div .query-field > .query-favorites-container .favorites-container .history-child-container .favorite-child:hover, #queryRegion > div .query-field > .query-favorites-container .favorites-container .favorites-child-container .history-child:hover, #queryRegion > div .query-field > .query-favorites-container .favorites-container .favorites-child-container .favorite-child:hover {
+              background-color: #3498db;
+              color: white; }
+    #queryRegion > div .query-field > .query-history-container {
+      left: calc(5% + 150px); }
+    #queryRegion > div .query-field > .run-query, #queryRegion > div .query-field > .save-query {
       position: absolute;
       bottom: 5%;
       right: 5%;
+      border-radius: 0 3px 3px 0;
       color: #ecf0f1;
       background-color: #3498db; }
-      #queryRegion > div .query-field > .run-query:hover, #queryRegion > div .query-field > .run-query:focus {
+      #queryRegion > div .query-field > .run-query:hover, #queryRegion > div .query-field > .save-query:hover {
         background-color: #2980b9; }
+      #queryRegion > div .query-field > .run-query:focus, #queryRegion > div .query-field > .save-query:focus {
+        outline: none; }
+    #queryRegion > div .query-field > .run-query {
+      right: calc(5% + 38px);
+      border-radius: 3px 0 0 3px;
+      border-right: 1px solid #3E576F; }
+    #queryRegion > div .query-field > .save-query {
+      border-left: 1px solid #2980b9; }
   #queryRegion > div .results-container {
     height: calc(70% - 25px);
     border-top: 1px solid #ecf0f1;

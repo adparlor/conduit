@@ -15,14 +15,30 @@ templates['modal/json_modal_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"
     + ((stack1 = ((helper = (helper = helpers.json || (depth0 != null ? depth0.json : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"json","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn close-btn\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->";
 },"useData":true});
+templates['query/dropdowns/favorite_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var helper;
+
+  return this.escapeExpression(((helper = (helper = helpers.query || (depth0 != null ? depth0.query : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"query","hash":{},"data":data}) : helper)));
+},"useData":true});
+templates['query/dropdowns/history_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var helper;
+
+  return this.escapeExpression(((helper = (helper = helpers.query || (depth0 != null ? depth0.query : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"query","hash":{},"data":data}) : helper)));
+},"useData":true});
+templates['query/dropdowns/query_favorites_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<div class=\"clear-favorites\">Clear favorites</div>\n<div class=\"favorites-child-container\"></div>";
+},"useData":true});
+templates['query/dropdowns/query_history_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<div class=\"clear-history\">Clear history</div>\n<div class=\"history-child-container\"></div>";
+},"useData":true});
 templates['query/queries_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "";
 },"useData":true});
 templates['query/query_builder_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"query-field\">\n  <textarea spellcheck=\"false\"></textarea>\n  <button class=\"run-query btn\">Run Query</button>\n</div>\n<div class=\"results-container\"></div>\n<div class=\"status-message\"></div>";
+    return "<div class=\"query-field\">\n  <textarea spellcheck=\"false\"></textarea>\n  <div class=\"query-favorites-container\">\n    <button class=\"open-favorites btn\">Query Favorites <i class=\"fa fa-chevron-down\"></i></button>\n    <div class=\"favorites-container\"></div>\n  </div>\n  <div class=\"query-history-container\">\n    <button class=\"open-history btn\">Query History <i class=\"fa fa-chevron-down\"></i></button>\n    <div class=\"history-container\"></div>\n  </div>\n  <button class=\"run-query btn\">Run Query</button>\n  <button class=\"save-query btn\"><i class=\"fa\"></i></button>\n</div>\n<div class=\"results-container\"></div>\n<div class=\"status-message\"></div>";
 },"useData":true});
 templates['query/query_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div id=\"tabsRegion\"></div>\n<div class=\"query-button-container\"><i class=\"add-query fa fa-plus\"></i></div>\n<div id=\"queries\"></div>";
+    return "<div id=\"tabsRegion\"></div>\n<div class=\"query-tab-button-container\"><i class=\"add-query-tab fa fa-plus\"></i></div>\n<div id=\"queries\"></div>";
 },"useData":true});
 templates['query/results/result_header_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;

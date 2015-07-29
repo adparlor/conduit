@@ -20,6 +20,10 @@ requirejs.config({
     TabView: "views/query/tab",
     QueriesView: "views/query/queries",
     QueryBuilderView: "views/query/query_builder",
+    QueryHistoryView: "views/query/dropdowns/query_history",
+    QueryFavoritesView: "views/query/dropdowns/query_favorites",
+    HistoryView: "views/query/dropdowns/history",
+    FavoriteView: "views/query/dropdowns/favorite",
     ResultsView: "views/query/results/results",
     ResultHeadersView: "views/query/results/result_headers",
     ResultRowsView: "views/query/results/result_rows",
@@ -53,7 +57,7 @@ require (['Router', 'MainView'], function(Router, MainView) {
 
   $(document).ready(function() {
     window.openJSONModal = function(header, json) {
-      window.Conduit.vent.trigger("openJSONModal", header, json)
+      window.Conduit.vent.trigger('openJSONModal', header, json)
     }
   })
 

@@ -9,8 +9,8 @@ define(function() {
 
     deserializeQueryError: function(error) {
       var errorObject = {
-        errorClass: error.error_class,
-        errorMessage: error.error_message
+        errorClass: error.error_class || "Error",
+        errorMessage: error.error_message || error.error
       }
 
       return errorObject

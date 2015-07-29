@@ -79,13 +79,13 @@ $alizarin: #e74c3c;
     }
   }
 
-  .query-button-container {
+  .query-tab-button-container {
     display: inline-block;
     height: 50px;
     background-color: $asphalt;
     width: 6%;
     position: fixed;
-    .add-query {
+    .add-query-tab {
       font-size: 45px;
       color: white;
       position: absolute;
@@ -127,15 +127,79 @@ $alizarin: #e74c3c;
         outline-color: $river;
       }
     }
-    > .run-query {
+    > .query-history-container, > .query-favorites-container {
+      position: absolute;
+      bottom: 5%;
+      left: 5%;
+      .open-history, .open-favorites {
+        background-color: $clouds;
+        &:hover {
+          background-color: $cloudsD;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      .history-container, .favorites-container {
+        position: absolute;
+        top: 36px;
+        z-index: 1;
+        background-color: white;
+        border-radius: 3px;
+        border: 1px solid $silver;
+        box-shadow: 0 3px 10px 0 $asbestos;
+        min-width: 350px;
+        .clear-history, .clear-favorites {
+          margin: 10px 0;
+          padding: 0 10px;
+          cursor: pointer;
+          &:hover {
+            background-color: $river;
+            color: white;
+          }
+        }
+        .history-child-container, .favorites-child-container {
+          padding: 10px 0;
+          border-top: 1px solid $cloudsD;
+          .history-child, .favorite-child {
+            padding: 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 500px;
+            cursor: pointer;
+            &:hover {
+              background-color: $river;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+    > .query-history-container {
+      left: calc(5% + 150px);
+    }
+    > .run-query, > .save-query {
       position: absolute;
       bottom: 5%;
       right: 5%;
+      border-radius: 0 3px 3px 0;
       color: $clouds;
       background-color: $river;
-      &:hover, &:focus {
+      &:hover {
         background-color: $belize
       }
+      &:focus {
+        outline: none;
+      }
+    }
+    > .run-query {
+      right: calc(5% + 38px);
+      border-radius: 3px 0 0 3px;
+      border-right: 1px solid $asphaltl;
+    }
+    > .save-query {
+      border-left: 1px solid $belize;
     }
   }
   .results-container {

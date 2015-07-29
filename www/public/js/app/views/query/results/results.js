@@ -78,7 +78,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
           lazyIteration: this.model.get("lazyIteration") + 1
         })
       } else if (this.model.get("pagingState")) {
-        this.trigger("resumeQuery")
+        this.trigger('resumeQuery')
       }
       this.model.set("lazyLoading", false)
     },

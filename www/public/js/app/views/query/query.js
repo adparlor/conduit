@@ -27,7 +27,7 @@ function(TabsView, QueriesView, Query, Queries) {
     },
 
     events: {
-      'click .add-query': 'addQueryTab'
+      'click .add-query-tab': 'addQueryTab'
     },
 
     bindings: {
