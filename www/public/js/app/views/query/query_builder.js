@@ -12,6 +12,8 @@ define(['ResultsView'], function(ResultsView) {
         results: this.model.get("results"),
         model: this.presenterModel
       })
+
+      this.listenTo(this.resultsView, 'resumeQuery', this.resumeQueryRequest)
     },
 
     template: Handlebars.templates['query/query_builder_layout'],
@@ -51,6 +53,35 @@ define(['ResultsView'], function(ResultsView) {
       this.presenterModel.set("statusMessage", errorsStatus + rowsAffected + timeTaking)
     },
 
+    resumeQueryRequest: function() {
+      this.presenterModel.set({
+        lazyLoading: true,
+        timeTaking: Date.now()
+      })
+      var view = this
+      var onSuccess = function(results) {
+        view.presenterModel.set({
+          lazyLoading: false,
+          resultsArray: view.presenterModel.get("resultsArray").concat(results.rows),
+          pagingState: results.paging_state,
+          timeTaking: Date.now() - view.presenterModel.get("timeTaking")
+        })
+        view.model.set("pagingState", results.paging_state)
+        view.setStatusMessage()
+        view.presenterModel.trigger('newQueryResults')
+      }
+      var onFailure = function(err) {
+        view.presenterModel.set({
+          lazyLoading: false,
+          errorMessage: err,
+          timeTaking: Date.now() - view.presenterModel.get("timeTaking")
+        })
+        view.presenterModel.unset("pagingState")
+        view.model.unset("pagingState")
+      }
+      this.vent.trigger("query:makeRequest", this.model, onSuccess, onFailure)
+    },
+
     sendQueryRequest: function() {
       this.presenterModel.set({
         loading: true,
@@ -58,6 +89,8 @@ define(['ResultsView'], function(ResultsView) {
         resultsArray: [],
         timeTaking: Date.now()
       })
+      view.presenterModel.unset("pagingState")
+      view.model.unset("pagingState")
       this.model.get("results").reset()
       this.resultsView.resultHeaders.reset()
       var view = this
@@ -70,6 +103,7 @@ define(['ResultsView'], function(ResultsView) {
           pagingState: results.paging_state,
           timeTaking: Date.now() - view.presenterModel.get("timeTaking")
         })
+        view.model.set("pagingState", results.paging_state)
         view.setStatusMessage()
         view.presenterModel.trigger('newQueryResults')
       }
@@ -80,6 +114,8 @@ define(['ResultsView'], function(ResultsView) {
           errorMessage: err,
           timeTaking: Date.now() - view.presenterModel.get("timeTaking")
         })
+        view.presenterModel.unset("pagingState")
+        view.model.unset("pagingState")
         view.setStatusMessage()
       }
       this.vent.trigger("query:makeRequest", this.model, onSuccess, onFailure)

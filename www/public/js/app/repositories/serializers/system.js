@@ -4,10 +4,11 @@ define([], function() {
   var SystemSerializer = {
 
     serializeQueryRequest: function(queryModel) {
-      var finalJSON = {}
-
-      finalJSON.keyspace = queryModel.get("keyspace") || "rainmaker"
-      finalJSON.query = queryModel.get("query")
+      var finalJSON = {
+        keyspace: queryModel.get("keyspace") || "rainmaker",
+        query: queryModel.get("query"),
+        paging_state: queryModel.get("pagingState")
+      }
 
       return finalJSON
     }

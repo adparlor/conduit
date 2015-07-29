@@ -89,7 +89,7 @@ module CassandraCoreMixin
 
     paging_state = Base64.decode64(paging_state) if paging_state
 
-    cassandra_execute(prepared_statement, page_size: 100000, paging_state: paging_state)
+    cassandra_execute(prepared_statement, page_size: 100, paging_state: paging_state)
   end
 
   def get_keyspace_hierarchy

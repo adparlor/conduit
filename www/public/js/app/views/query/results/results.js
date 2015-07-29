@@ -6,7 +6,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
     initialize: function(options) {
       this.options = options
       this.resultsCollection = this.options.results
-      this.lazyResultsBlock = 1000
+      this.lazyResultsBlock = 100
       this.resultHeaders = new Backbone.Collection()
       this.model = this.options.model
       this.resultHeadersView = new ResultHeadersView({
@@ -71,12 +71,16 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
 
       if (this.model.get("lazyIteration") == 0) this.setHeadersCollection(collectionToAdd)
 
-      this.resultsCollection.add(collectionToAdd.models)
-      this.model.set({
-        currentIndex: this.resultsCollection.length,
-        lazyIteration: this.model.get("lazyIteration") + 1,
-        lazyLoading: false,
-      })
+      if (collectionToAdd.length) {
+        this.resultsCollection.add(collectionToAdd.models)
+        this.model.set({
+          currentIndex: this.resultsCollection.length,
+          lazyIteration: this.model.get("lazyIteration") + 1
+        })
+      } else if (this.model.get("pagingState")) {
+        this.trigger("resumeQuery")
+      }
+      this.model.set("lazyLoading", false)
     },
 
     triggerLazyRender: function(e) {
