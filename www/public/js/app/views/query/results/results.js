@@ -113,7 +113,6 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
       this.resultHeaders.each(function(header) {
         var dataForHeader = this.$('.data-' + header.get("header") + ' > div')
 
-        // LETS LIMIT WIDTH AND SHOW THE PARSED JSON IN A TOOLTIP O SUMTHIN
         if (header.get("header").indexOf('_json') != -1) {
           dataForHeader.css({"max-width": 400})
         }

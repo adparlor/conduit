@@ -45,16 +45,18 @@ define(['ResultsView'], function(ResultsView) {
 
     setStatusMessage: function() {
       var errorsStatus = this.presenterModel.get("errorMessage") ? "Errors; " : "No errors; ",
-          rowsAffected = this.presenterModel.get("resultsArray").length + " rows affected"
+          rowsAffected = this.presenterModel.get("resultsArray").length + " rows affected, ",
+          timeTaking = "taking " + this.presenterModel.get("timeTaking") + " ms"
 
-      this.presenterModel.set("statusMessage", errorsStatus + rowsAffected)
+      this.presenterModel.set("statusMessage", errorsStatus + rowsAffected + timeTaking)
     },
 
     sendQueryRequest: function() {
       this.presenterModel.set({
         loading: true,
         errorMessage: null,
-        resultsArray: []
+        resultsArray: [],
+        timeTaking: Date.now()
       })
       this.model.get("results").reset()
       this.resultsView.resultHeaders.reset()
@@ -65,18 +67,19 @@ define(['ResultsView'], function(ResultsView) {
           resultsArray: results.rows,
           currentIndex: 0,
           lazyIteration: 0,
-          pagingState: results.paging_state
+          pagingState: results.paging_state,
+          timeTaking: Date.now() - view.presenterModel.get("timeTaking")
         })
-        view.presenterModel.trigger('newQueryResults')
         view.setStatusMessage()
+        view.presenterModel.trigger('newQueryResults')
       }
 
       var onFailure = function(err) {
         view.presenterModel.set({
           loading: false,
-          errorMessage: err
+          errorMessage: err,
+          timeTaking: Date.now() - view.presenterModel.get("timeTaking")
         })
-        // view.vent.trigger("triggerAlert", "danger", err)
         view.setStatusMessage()
       }
       this.vent.trigger("query:makeRequest", this.model, onSuccess, onFailure)
