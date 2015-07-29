@@ -164,45 +164,59 @@ html, body, #appContent, #appContent > div {
       background-color: #3498db; }
       #queryRegion > div .query-field > .run-query:hover, #queryRegion > div .query-field > .run-query:focus {
         background-color: #2980b9; }
-  #queryRegion > div .resultsRegion {
-    height: 70%;
+  #queryRegion > div .results-container {
+    height: calc(70% - 25px);
     border-top: 1px solid #ecf0f1;
-    margin: 0 1%;
     border: 1px solid #34495e;
     background-color: #ecf0f1;
     position: relative; }
-    #queryRegion > div .resultsRegion .results-table {
+    #queryRegion > div .results-container .results-table {
       height: 100%;
       overflow-x: scroll;
       position: relative; }
-      #queryRegion > div .resultsRegion .results-table .fa-spinner {
+      #queryRegion > div .results-container .results-table .fa-circle-o-notch {
         font-size: 100px;
         position: absolute;
         top: 40%;
         left: 45%;
         color: #3498db; }
-      #queryRegion > div .resultsRegion .results-table .headers-container {
+      #queryRegion > div .results-container .results-table .error-container {
+        position: absolute;
+        top: 45%;
+        left: 50%; }
+        #queryRegion > div .results-container .results-table .error-container .error-message {
+          font-size: 17px;
+          text-align: center;
+          position: relative;
+          top: -50%;
+          left: -50%; }
+      #queryRegion > div .results-container .results-table .headers-container {
         position: absolute; }
-      #queryRegion > div .resultsRegion .results-table .result-headers > tr {
+      #queryRegion > div .results-container .results-table .result-headers > tr {
         background-color: #34495e; }
-        #queryRegion > div .resultsRegion .results-table .result-headers > tr th > div {
+        #queryRegion > div .results-container .results-table .result-headers > tr th > div {
           color: white;
           padding: 5px 6px;
           border: 1px solid #bdc3c7;
           font-weight: 200; }
-      #queryRegion > div .resultsRegion .results-table .results-container {
+      #queryRegion > div .results-container .results-table .rows-container {
         margin-top: 31px; }
-      #queryRegion > div .resultsRegion .results-table .result-rows .result-data-container {
+      #queryRegion > div .results-container .results-table .result-rows .result-data-container {
         font-family: "Source Code Pro", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace, sans-serif;
         border: 1px solid #E1E5E7;
         overflow-x: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         padding: 3px 10px 3px 5px; }
-      #queryRegion > div .resultsRegion .results-table .json-data {
+      #queryRegion > div .results-container .results-table .json-data {
         cursor: pointer; }
-        #queryRegion > div .resultsRegion .results-table .json-data:hover {
+        #queryRegion > div .results-container .results-table .json-data:hover {
           background-color: #E1E5E7; }
+  #queryRegion > div .status-message {
+    background-color: #34495e;
+    height: 25px;
+    color: #ecf0f1;
+    padding: 3px 0px 0px 8px; }
 
 #sidebarRegion {
   width: 25%;

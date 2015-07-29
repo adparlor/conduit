@@ -19,11 +19,15 @@ define(['ResultsView'], function(ResultsView) {
     className: 'query-builder',
 
     regions: {
-      results: '.resultsRegion'
+      results: '.results-container'
     },
 
     events: {
       'click .run-query': 'sendQueryRequest'
+    },
+
+    presenterBindings: {
+      '.status-message': 'statusMessage'
     },
 
     bindings: {
@@ -39,26 +43,41 @@ define(['ResultsView'], function(ResultsView) {
       }
     },
 
+    setStatusMessage: function() {
+      var errorsStatus = this.presenterModel.get("errorMessage") ? "Errors; " : "No errors; ",
+          rowsAffected = this.presenterModel.get("resultsArray").length + " rows affected"
+
+      this.presenterModel.set("statusMessage", errorsStatus + rowsAffected)
+    },
+
     sendQueryRequest: function() {
-      this.presenterModel.set("loading", true)
+      this.presenterModel.set({
+        loading: true,
+        errorMessage: null,
+        resultsArray: []
+      })
       this.model.get("results").reset()
       this.resultsView.resultHeaders.reset()
       var view = this
-      var onSuccess = function(resultsArr) {
+      var onSuccess = function(results) {
         view.presenterModel.set({
           loading: false,
-          resultsArray: resultsArr,
+          resultsArray: results.rows,
           currentIndex: 0,
-          lazyIteration: 0
+          lazyIteration: 0,
+          pagingState: results.paging_state
         })
         view.presenterModel.trigger('newQueryResults')
+        view.setStatusMessage()
       }
 
       var onFailure = function(err) {
         view.presenterModel.set({
-          loading: false
+          loading: false,
+          errorMessage: err
         })
-        view.vent.trigger("triggerAlert", "danger", err)
+        // view.vent.trigger("triggerAlert", "danger", err)
+        view.setStatusMessage()
       }
       this.vent.trigger("query:makeRequest", this.model, onSuccess, onFailure)
     },
@@ -69,9 +88,11 @@ define(['ResultsView'], function(ResultsView) {
 
     render: function() {
       this.unstickit()
+      this.unstickit(this.presenterModel, this.presenterBindings)
       Backbone.Marionette.LayoutView.prototype.render.call(this)
       this.results.show(this.resultsView)
       this.stickit()
+      this.stickit(this.presenterModel, this.presenterBindings)
     }
   })
 

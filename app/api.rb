@@ -12,7 +12,7 @@ module Conduit
       include ResultFormatter
 
       def request_query params
-        prepare_and_execute_cql params[:query], params[:keyspace]
+        prepare_and_execute_cql params[:query], params[:keyspace], params[:paging_state]
       end
 
       def request_hierarchy
@@ -35,7 +35,7 @@ module Conduit
     end
     post :queries do
       cass_result = request_query params
-      cass_result.is_a?(Cassandra::Results::Paged) ? table_to_json(cass_result) : format_error(cass_result)
+
       if cass_result.is_a? Cassandra::Results::Paged
         table_to_json cass_result
       else

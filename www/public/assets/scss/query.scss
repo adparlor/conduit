@@ -1,5 +1,6 @@
 
 $midnight: #2c3e50;
+$asphaltl: #3E576F;
 $asphalt: #34495e;
 $asbestos: #7f8c8d;
 $silver: #bdc3c7;
@@ -137,10 +138,9 @@ $alizarin: #e74c3c;
       }
     }
   }
-  .resultsRegion {
-    height: 70%;
+  .results-container {
+    height: calc(70% - 25px);
     border-top: 1px solid $clouds;
-    margin: 0 1%;
     border: 1px solid $asphalt;
     background-color: $clouds;
     position: relative;
@@ -148,12 +148,24 @@ $alizarin: #e74c3c;
       height: 100%;
       overflow-x: scroll;
       position: relative;
-      .fa-spinner {
+      .fa-circle-o-notch {
         font-size: 100px;
         position: absolute;
         top: 40%;
         left: 45%;
         color: $river;
+      }
+      .error-container {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        .error-message {
+          font-size: 17px;
+          text-align: center;
+          position: relative;
+          top: -50%;
+          left: -50%;
+        }
       }
       .headers-container {
         position: absolute;
@@ -167,7 +179,7 @@ $alizarin: #e74c3c;
           font-weight: 200;
         }
       }
-      .results-container {
+      .rows-container {
         margin-top: 31px;
       }
       .result-rows .result-data-container {
@@ -185,5 +197,12 @@ $alizarin: #e74c3c;
         }
       }
     }
+  }
+  .status-message {
+    // background: linear-gradient(to bottom, $asphaltl 50%, $asphalt 50%);
+    background-color: $asphalt;
+    height: 25px;
+    color: $clouds;
+    padding: 3px 0px 0px 8px;
   }
 }

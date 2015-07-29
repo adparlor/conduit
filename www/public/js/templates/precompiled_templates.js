@@ -19,7 +19,7 @@ templates['query/queries_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"
     return "";
 },"useData":true});
 templates['query/query_builder_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"query-field\">\n  <textarea spellcheck=\"false\"></textarea>\n  <button class=\"run-query btn\">Run Query</button>\n</div>\n<div class=\"resultsRegion\"></div>";
+    return "<div class=\"query-field\">\n  <textarea spellcheck=\"false\"></textarea>\n  <button class=\"run-query btn\">Run Query</button>\n</div>\n<div class=\"results-container\"></div>\n<div class=\"status-message\"></div>";
 },"useData":true});
 templates['query/query_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<div id=\"tabsRegion\"></div>\n<div class=\"query-button-container\"><i class=\"add-query fa fa-plus\"></i></div>\n<div id=\"queries\"></div>";
@@ -37,7 +37,7 @@ templates['query/results/result_layout'] = template({"compiler":[6,">= 2.0.0-bet
   return ((stack1 = (helpers.displayTableRow || (depth0 && depth0.displayTableRow) || helpers.helperMissing).call(depth0,depth0,{"name":"displayTableRow","hash":{},"data":data})) != null ? stack1 : "");
 },"useData":true});
 templates['query/results/results_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<i class=\"fa fa-spinner fa-spin\"></i>\n<table class=\"headers-container\">\n  <thead class=\"result-headers\"></thead>\n</table>\n<table class=\"results-container\">\n  <tbody class=\"result-rows\"></tbody>\n</table>";
+    return "<i class=\"fa fa-circle-o-notch fa-spin\"></i>\n<div class=\"error-container\">\n  <div class=\"error-message\"></div>\n</div>\n<table class=\"headers-container\">\n  <thead class=\"result-headers\"></thead>\n</table>\n<table class=\"rows-container\">\n  <tbody class=\"result-rows\"></tbody>\n</table>";
 },"useData":true});
 templates['query/tab_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<span class=\"close-tab\">&times;</span>\n<span class=\"tab-name\"></span>";

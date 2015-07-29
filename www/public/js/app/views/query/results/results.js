@@ -6,7 +6,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
     initialize: function(options) {
       this.options = options
       this.resultsCollection = this.options.results
-      this.lazyResultsBlock = 100
+      this.lazyResultsBlock = 1000
       this.resultHeaders = new Backbone.Collection()
       this.model = this.options.model
       this.resultHeadersView = new ResultHeadersView({
@@ -26,7 +26,8 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
 
     regions: {
       'headers': '.result-headers',
-      'rows': '.result-rows'
+      'rows': '.result-rows',
+      'status': '.status-container'
     },
 
     events: {
@@ -34,7 +35,7 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
     },
 
     bindings: {
-      '.fa-spinner': {
+      '.fa-circle-o-notch': {
         attributes: [{
           observe: ['loading', 'lazyLoading'],
           name: 'class',
@@ -51,11 +52,19 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
             return loading ? "hide" : ""
           }
         }]
+      },
+      '.error-message': {
+        observe: 'errorMessage',
+        updateMethod: 'html',
+        onGet: 'formatErrorMessage'
       }
     },
 
-    lazyRenderCollection: function() {
+    formatErrorMessage: function(message) {
+      if (message) return "<b>" + message.errorClass + "</b><br>" + message.errorMessage
+    },
 
+    lazyRenderCollection: function() {
       var currentIndex = this.model.get("currentIndex"),
           resultsToAdd = this.model.get("resultsArray").slice(currentIndex, currentIndex + this.lazyResultsBlock),
           collectionToAdd = SystemDeserializer.deserializeQueryResponse(resultsToAdd)

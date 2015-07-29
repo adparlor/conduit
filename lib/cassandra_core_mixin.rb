@@ -78,7 +78,7 @@ module CassandraCoreMixin
     cassandra_session.prepare(query)
   end
 
-  def prepare_and_execute_cql(cql, keyspace)
+  def prepare_and_execute_cql(cql, keyspace, paging_state = nil)
     @keyspace = keyspace
 
     begin
@@ -87,7 +87,9 @@ module CassandraCoreMixin
       return e
     end
 
-    cassandra_execute(prepared_statement)
+    paging_state = Base64.decode64(paging_state) if paging_state
+
+    cassandra_execute(prepared_statement, page_size: 100000, paging_state: paging_state)
   end
 
   def get_keyspace_hierarchy
