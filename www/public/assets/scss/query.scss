@@ -192,6 +192,9 @@ $alizarin: #e74c3c;
       &:focus {
         outline: none;
       }
+      .fa-check {
+        width: 12px;
+      }
     }
     > .run-query {
       right: calc(5% + 38px);

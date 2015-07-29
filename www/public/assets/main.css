@@ -208,6 +208,8 @@ html, body, #appContent, #appContent > div {
         background-color: #2980b9; }
       #queryRegion > div .query-field > .run-query:focus, #queryRegion > div .query-field > .save-query:focus {
         outline: none; }
+      #queryRegion > div .query-field > .run-query .fa-check, #queryRegion > div .query-field > .save-query .fa-check {
+        width: 12px; }
     #queryRegion > div .query-field > .run-query {
       right: calc(5% + 38px);
       border-radius: 3px 0 0 3px;
