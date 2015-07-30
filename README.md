@@ -28,6 +28,14 @@ While the server is running, go to http://localhost:9999/public/index.html and y
 
 The Cassandra host settings are in the /config/config.yml file, currently set to localhost, but you can provide changes to the development field in that file to supply a different host.
 
+## How to Use
+
+Once you have everything set up and your server is running, navigate to http://localhost:9999/public/index.html and you should see your Cassandra keyspaces located in the left sidebar. You can navigate through each keyspace's tables and columns to decide what you need to query.
+
+The keyspace that is highlighted blue will be the default keyspace your queries will be for, but you can override this by prepending the keyspace you prefer to the table in your query. Type your query into the CQL input, then press the "Run Query" button and if the query is valid it will load all the affected rows into the table below. If it is not valid, the table will turn red and an error will show.
+
+All queries you have run previously will save into your Query History, and all the queries you save (beside the "Run Query" button) will save into your Query Favorites. They hold up to 10 queries, pushing your last one out whenever you add more than that. Both of these you can view and clear by clicking the appropriate button above the table. Click on any of the queries in these popovers to load it into the CQL input.
+
 ## Development Setup
 
 Use this setup if you would like to contribute to Conduit.

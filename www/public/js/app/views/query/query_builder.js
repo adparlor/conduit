@@ -125,6 +125,7 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
     saveQueryToFavorites: function() {
       var view = this
       addQueryToFavorites(this.model.get("query"), function() {
+        if (view.favoritesCollection.length >= 10) view.favoritesCollection.shift()
         view.favoritesCollection.add(new Backbone.Model({query: view.model.get("query")}))
         view.presenterModel.set("savingQuery", true)
         setTimeout(function() {
@@ -177,7 +178,8 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
       var view = this
       var onSuccess = function(results) {
         addQueryToHistory(view.model.get("query"), function() {
-          view.historyCollection.add(new Backbone.Model({ query: view.model.get("query")}))
+          if (view.historyCollection.length >= 10) view.historyCollection.shift()
+          view.historyCollection.add(new Backbone.Model({query: view.model.get("query")}))
         })
         view.presenterModel.set({
           loading: false,

@@ -139,13 +139,15 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
 
     setHeadersCollection: function(collection) {
       var headersCollection = new Backbone.Collection()
-      collection.at(0).get("headers").forEach(function(header) {
-        headersCollection.add(new Backbone.Model({
-          header: header
-        }))
-      })
-      this.resultHeaders.reset(headersCollection.models)
-      this.assignHeaderModelsInitialWidths()
+      if (collection.length) {
+        collection.at(0).get("headers").forEach(function(header) {
+          headersCollection.add(new Backbone.Model({
+            header: header
+          }))
+        })
+        this.resultHeaders.reset(headersCollection.models)
+        this.assignHeaderModelsInitialWidths()
+      }
     },
 
     fillInResultRowBlanks: function() {
