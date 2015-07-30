@@ -200,7 +200,7 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
         view.model.unset("pagingState")
         view.setStatusMessage()
       }
-      this.vent.trigger('query:makeRequest', this.model, onSuccess, onFailure)
+      this.vent.trigger('sidebar:setSelectedKeyspace', this.model, onSuccess, onFailure)
     },
 
     onDestroy: function() {

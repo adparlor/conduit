@@ -11,7 +11,7 @@ function(QueryView, SystemRepo) {
       })
 
       this.options.queryRegion.show(this.queryView)
-      this.listenTo(this.options.vent, "query:makeRequest", this.makeQueryRequest)
+      this.listenTo(this.options.vent, 'queries:makeRequest', this.makeQueryRequest)
     },
 
     makeQueryRequest: function(queryModel, successCallback, failureCallback) {

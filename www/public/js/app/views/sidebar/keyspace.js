@@ -5,7 +5,6 @@ define(['TableView'], function(TableView) {
     initialize: function(options) {
       this.options = options
       this.collection = this.model.get("tables")
-      this.model.set("isCollapsed", true)
     },
 
     template: Handlebars.templates['sidebar/keyspace_layout'],
@@ -26,7 +25,7 @@ define(['TableView'], function(TableView) {
           observe: 'isCollapsed',
           name: 'class',
           onGet: function(isCollapsed) {
-            return isCollapsed ? "glyphicon-chevron-right" : "glyphicon-chevron-down"
+            return isCollapsed ? "fa-chevron-right" : "fa-chevron-down"
           }
         }]
       },

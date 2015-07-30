@@ -57,6 +57,15 @@ function(ResultHeadersView, ResultRowsView, SystemDeserializer) {
         observe: 'errorMessage',
         updateMethod: 'html',
         onGet: 'formatErrorMessage'
+      },
+      ':el': {
+        attributes: [{
+          observe: 'errorMessage',
+          name: 'style',
+          onGet: function(err) {
+            return err ? "background-color: #FDEDEC" : ""
+          }
+        }]
       }
     },
 

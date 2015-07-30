@@ -5,7 +5,7 @@ define([], function() {
 
     serializeQueryRequest: function(queryModel) {
       var finalJSON = {
-        keyspace: queryModel.get("keyspace") || "rainmaker",
+        keyspace: queryModel.get("keyspace"),
         query: queryModel.get("query"),
         paging_state: queryModel.get("pagingState")
       }

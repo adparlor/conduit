@@ -39,10 +39,12 @@ define(function() {
     deserializeHierarchyResult: function(keyspaces) {
       var keyspaceCollection = new Backbone.Collection()
 
-      keyspaces.forEach(function(keyspaceObject) {
+      keyspaces.forEach(function(keyspaceObject, index) {
         var keyspace = new Backbone.Model({
           name: keyspaceObject.name,
-          tables: new Backbone.Collection()
+          tables: new Backbone.Collection(),
+          isActive: Boolean(index == 0),
+          isCollapsed: Boolean(index != 0)
         })
         keyspaceObject.tables.forEach(function(tableObject) {
           var table = new Backbone.Model({

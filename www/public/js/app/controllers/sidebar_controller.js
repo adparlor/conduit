@@ -13,6 +13,15 @@ function(SidebarView, SystemRepo) {
 
       this.options.sidebarRegion.show(sidebarView)
       this.requestSidebarHierarchy()
+
+      this.listenTo(this.options.vent, 'sidebar:setSelectedKeyspace', this.setSelectedKeyspace)
+    },
+
+    setSelectedKeyspace: function(queryModel, successCallback, failureCallback) {
+      var selectedKeyspace = this.keyspaceCollection.findWhere({isActive: true}).get("name")
+      queryModel.set("keyspace", selectedKeyspace)
+
+      this.options.vent.trigger('queries:makeRequest', queryModel, successCallback, failureCallback)
     },
 
     requestSidebarHierarchy: function() {
