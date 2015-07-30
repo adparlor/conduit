@@ -162,7 +162,7 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
         view.presenterModel.unset("pagingState")
         view.model.unset("pagingState")
       }
-      this.vent.trigger('query:makeRequest', this.model, onSuccess, onFailure)
+      this.vent.trigger('queries:makeRequest', this.model, onSuccess, onFailure)
     },
 
     sendQueryRequest: function() {
