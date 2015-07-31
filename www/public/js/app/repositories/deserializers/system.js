@@ -49,7 +49,8 @@ define(function() {
         keyspaceObject.tables.forEach(function(tableObject) {
           var table = new Backbone.Model({
             name: tableObject.name,
-            columns: new Backbone.Collection()
+            columns: new Backbone.Collection(),
+            keyspace: keyspaceObject.name
           })
           tableObject.columns.forEach(function(columnObject) {
             var column = new Backbone.Model({
@@ -57,7 +58,9 @@ define(function() {
               type: columnObject.type,
               primary: columnObject.primary,
               clusterColumn: columnObject.cluster_column,
-              secondaryIndex: columnObject.secondary_index
+              secondaryIndex: columnObject.secondary_index,
+              keyspace: keyspaceObject.name,
+              table: tableObject.name
             })
             table.get("columns").add(column)
           })

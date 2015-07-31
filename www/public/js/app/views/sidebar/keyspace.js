@@ -5,6 +5,10 @@ define(['TableView'], function(TableView) {
     initialize: function(options) {
       this.options = options
       this.collection = this.model.get("tables")
+
+      this.childViewOptions = {
+        vent: this.options.vent
+      }
     },
 
     template: Handlebars.templates['sidebar/keyspace_layout'],

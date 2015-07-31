@@ -7,6 +7,10 @@ define(['KeyspaceView'], function(KeyspaceView) {
       this.model = new Backbone.Model()
 
       this.listenTo(this.collection, 'makeActive', this.toggleActiveKeyspace)
+
+      this.childViewOptions = {
+        vent: this.options.vent
+      }
     },
 
     template: Handlebars.templates['sidebar/sidebar_layout'],

@@ -19,7 +19,8 @@ define(['ColumnView'], function(ColumnView) {
     className: 'table-row',
 
     events: {
-      'click .table-collapse-toggle': 'collapseColumns'
+      'click .table-collapse-toggle': 'collapseColumns',
+      'dblclick .table-collapse-toggle': 'useDefaultQueryForTable'
     },
 
     presenterBindings: {
@@ -52,8 +53,12 @@ define(['ColumnView'], function(ColumnView) {
       }
     },
 
+    useDefaultQueryForTable: function() {
+      var queryString = 'SELECT * FROM ' + this.model.get("keyspace") + '.' + this.model.get("name")
+      this.options.vent.trigger('setCurrentQuery', queryString)
+    },
+
     collapseColumns: function(e) {
-      e.stopPropagation()
       this.presenterModel.set("isCollapsed", !this.presenterModel.get("isCollapsed"))
     },
 

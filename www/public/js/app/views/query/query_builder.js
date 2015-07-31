@@ -29,6 +29,7 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
       this.listenTo(this.resultsView, 'resumeQuery', this.resumeQueryRequest)
       this.listenTo(this.historyCollection, 'setCurrentQuery', this.setCurrentQuery)
       this.listenTo(this.favoritesCollection, 'setCurrentQuery', this.setCurrentQuery)
+      this.listenTo(this.vent, 'setCurrentQuery', this.setCurrentQuery)
     },
 
     template: Handlebars.templates['query/query_builder_layout'],
