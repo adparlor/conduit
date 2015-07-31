@@ -36,6 +36,11 @@ The keyspace that is highlighted blue will be the default keyspace your queries 
 
 All queries you have run previously will save into your Query History, and all the queries you save (beside the "Run Query" button) will save into your Query Favorites. They hold up to 10 queries, pushing your last one out whenever you add more than that. Both of these you can view and clear by clicking the appropriate button above the table. Click on any of the queries in these popovers to load it into the CQL input.
 
+### Shortcuts
+
+CTRL/CMD + ENTER - Runs the current query.
+DBLClick on a table in the sidebar - Makes that table's keyspace active, and loads a default 'SELECT' query for that table.
+
 ## Development Setup
 
 Use this setup if you would like to contribute to Conduit.
