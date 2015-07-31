@@ -37,7 +37,7 @@ define([], function() {
       e.stopPropagation()
       var tabsCollection = this.model.collection
       this.model.destroy()
-      if (tabsCollection.length) tabsCollection.at(0).set("isActive", true)
+      if (tabsCollection.length) tabsCollection.at(tabsCollection.length - 1).set("isActive", true)
     },
 
     toggleActive: function() {
