@@ -47,7 +47,8 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
       'click .query-history-container': 'toggleHistoryView',
       'click :not(.history-container, .open-history, .query-history-container)': 'hideHistoryView',
       'click .query-favorites-container': 'toggleFavoritesView',
-      'click :not(.favorites-container, .open-favorites, .query-favorites-container)': 'hideFavoritesView'
+      'click :not(.favorites-container, .open-favorites, .query-favorites-container)': 'hideFavoritesView',
+      'keydown .query-field > textarea': 'checkForShortcut'
     },
 
     presenterBindings: {
@@ -74,6 +75,10 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
           }
         }]
       }
+    },
+
+    checkForShortcut: function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.keyCode == 13) this.sendQueryRequest()
     },
 
     setCurrentQuery: function(query) {
