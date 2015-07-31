@@ -55,6 +55,7 @@ define(['ColumnView'], function(ColumnView) {
 
     useDefaultQueryForTable: function() {
       var queryString = 'SELECT * FROM ' + this.model.get("keyspace") + '.' + this.model.get("name")
+      this.model.trigger('setActiveKeyspace')
       this.options.vent.trigger('setCurrentQuery', queryString)
     },
 

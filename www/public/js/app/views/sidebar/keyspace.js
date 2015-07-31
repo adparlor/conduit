@@ -6,6 +6,8 @@ define(['TableView'], function(TableView) {
       this.options = options
       this.collection = this.model.get("tables")
 
+      this.listenTo(this.collection, 'setActiveKeyspace', this.setActiveKeyspace)
+
       this.childViewOptions = {
         vent: this.options.vent
       }
@@ -54,10 +56,13 @@ define(['TableView'], function(TableView) {
       }
     },
 
+    setActiveKeyspace: function() {
+      this.model.trigger('makeKeyspaceActive', this.model)
+    },
+
     collapseTables: function(e) {
-      // e.stopPropagation()
       this.model.set("isCollapsed", !this.model.get("isCollapsed"))
-      this.model.trigger("makeActive", this.model)
+      this.model.trigger('makeKeyspaceActive', this.model)
     },
 
     onDestroy: function() {

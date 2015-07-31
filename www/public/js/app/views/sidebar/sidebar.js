@@ -6,7 +6,7 @@ define(['KeyspaceView'], function(KeyspaceView) {
       this.options = options
       this.model = new Backbone.Model()
 
-      this.listenTo(this.collection, 'makeActive', this.toggleActiveKeyspace)
+      this.listenTo(this.collection, 'makeKeyspaceActive', this.toggleActiveKeyspace)
 
       this.childViewOptions = {
         vent: this.options.vent
