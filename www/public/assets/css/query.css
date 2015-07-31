@@ -18,13 +18,14 @@
       padding: 0 25px;
       margin-bottom: 0px;
       height: 40px;
-      overflow: hidden; }
+      overflow: hidden;
+      width: 100%; }
       #queryRegion > div #tabsRegion .query-tabs .query-tab {
         position: relative;
         height: 40px;
         background-color: white;
         display: inline-block;
-        width: 175px;
+        width: 16%;
         border-radius: 7px 7px 0 0;
         text-align: center;
         padding-top: 10px;
