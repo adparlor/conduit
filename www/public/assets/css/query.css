@@ -56,7 +56,11 @@
           white-space: nowrap;
           overflow: hidden;
           display: block;
-          padding: 0 10px; }
+          padding: 0 10px;
+          border: none;
+          cursor: default; }
+          #queryRegion > div #tabsRegion .query-tabs .query-tab .tab-name:focus {
+            outline: none; }
   #queryRegion > div .query-tab-button-container {
     display: inline-block;
     height: 50px;

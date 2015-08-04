@@ -75,6 +75,11 @@ $alizarin: #e74c3c;
           overflow: hidden;
           display: block;
           padding: 0 10px;
+          border: none;
+          cursor: default;
+          &:focus {
+            outline: none;
+          }
         }
       }
     }

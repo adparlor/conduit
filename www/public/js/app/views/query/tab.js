@@ -17,9 +17,13 @@ define([], function() {
 
     bindings: {
       '.tab-name': {
-        observe: 'query',
-        onGet: function(query) {
-          return query ? query : "Untitled"
+        observe: ['title', 'query'],
+        onGet: function(attrs) {
+          return attrs[0] || attrs[1] || "Untitled"
+        },
+        onSet: function(value, options) {
+          if ((this.model.get(options.observe[1]) != value) || (!value))
+            this.model.set(options.observe[0], value)
         }
       },
       ':el': {
@@ -31,6 +35,10 @@ define([], function() {
           }
         }]
       }
+    },
+
+    changeTitle: function(e) {
+
     },
 
     destroyQuery: function(e) {

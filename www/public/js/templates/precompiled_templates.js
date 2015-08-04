@@ -56,7 +56,7 @@ templates['query/results/results_layout'] = template({"compiler":[6,">= 2.0.0-be
     return "<i class=\"fa fa-circle-o-notch fa-spin\"></i>\n<div class=\"error-container\">\n  <div class=\"error-message\"></div>\n</div>\n<table class=\"headers-container\">\n  <thead class=\"result-headers\"></thead>\n</table>\n<table class=\"rows-container\">\n  <tbody class=\"result-rows\"></tbody>\n</table>";
 },"useData":true});
 templates['query/tab_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<span class=\"close-tab\">&times;</span>\n<span class=\"tab-name\"></span>";
+    return "<span class=\"close-tab\">&times;</span>\n<input type=\"text\" class=\"tab-name\" readOnly=\"true\" onblur=\"this.readOnly='true'\" ondblclick=\"this.readOnly=''; this.select();\">";
 },"useData":true});
 templates['sidebar/column_layout'] = template({"1":function(depth0,helpers,partials,data) {
     return "    <i class=\"fa fa-key\" style=\"font-weight:bold;\" data-toggle=\"tooltip\" data-delay='{\"show\": 500, \"hide\": 0}' title=\"Partitioning Key\"></i>\n";
