@@ -134,6 +134,7 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
         if (view.favoritesCollection.length >= 10) view.favoritesCollection.shift()
         view.favoritesCollection.add(new Backbone.Model({query: view.model.get("query")}))
         view.presenterModel.set("savingQuery", true)
+        view.$('.save-query').tooltip('hide')
         setTimeout(function() {
           view.presenterModel.set("savingQuery", false)
         }, 2000)

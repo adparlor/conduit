@@ -1,13 +1,13 @@
 <span class="column-name">
-  <i class="fa fa-columns"></i>
+  <i class="fa fa-columns" data-toggle="tooltip" title="Column"></i>
 
   {{#if primary}}
-    <i class="fa fa-key" style="font-weight:bold;"></i>
+    <i class="fa fa-key" style="font-weight:bold;" data-toggle="tooltip" data-delay='{"show": 500, "hide": 0}' title="Partitioning Key"></i>
   {{else if clusterColumn}}
-    <i class="fa fa-key"></i>
+    <i class="fa fa-key" data-toggle="tooltip" data-delay='{"show": 500, "hide": 0}' title="Clustering Column"></i>
   {{else if secondaryIndex}}
-    <i class="fa fa-hand-o-right"></i>
+    <i class="fa fa-hand-o-right" data-toggle="tooltip" data-delay='{"show": 500, "hide": 0}' title="Secondary Index"></i>
   {{/if}}
   {{name}}
 </span>
-<span class="pull-right">{{type}}</span>
+<span class="pull-right" data-toggle="tooltip" data-delay='{"show":500, "hide":0}' title="Column type">{{type}}</span>

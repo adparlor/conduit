@@ -29,7 +29,7 @@ define(['ColumnView'], function(ColumnView) {
           observe: 'isCollapsed',
           name: 'class',
           onGet: function(isCollapsed) {
-            return isCollapsed ? "glyphicon-chevron-right" : "glyphicon-chevron-down"
+            return isCollapsed ? "fa-chevron-right" : "fa-chevron-down"
           }
         }]
       },
@@ -54,7 +54,7 @@ define(['ColumnView'], function(ColumnView) {
     },
 
     useDefaultQueryForTable: function() {
-      var queryString = 'SELECT * FROM ' + this.model.get("keyspace") + '.' + this.model.get("name")
+      var queryString = 'SELECT * FROM ' + this.model.get("keyspace") + '.' + this.model.get("name") + ';'
       this.presenterModel.set("isCollapsed", false)
       this.model.trigger('setActiveKeyspace')
       this.options.vent.trigger('setCurrentQuery', queryString)
@@ -65,7 +65,7 @@ define(['ColumnView'], function(ColumnView) {
     },
 
     onDestroy: function() {
-
+      this.options = null
     },
 
     render: function() {

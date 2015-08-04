@@ -49,7 +49,7 @@ define([], function() {
     },
 
     onDestroy: function() {
-
+      this.options = null
     },
 
     render: function(){

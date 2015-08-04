@@ -14,7 +14,7 @@ var getRowTemplate = function(rowModel) {
     var currentDataValue = rowModel[header],
         currentDataTemplate = '<td class="result-data data-' + header + '"><div class="result-data-container">'
 
-    if (header.indexOf("_json") != -1) currentDataTemplate = buildTemplateForJSON(header, rowModel)
+    if (header.indexOf("json") != -1) currentDataTemplate = buildTemplateForJSON(header, rowModel)
 
     if (currentDataValue) currentDataTemplate += currentDataValue
 

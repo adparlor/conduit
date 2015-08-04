@@ -35,10 +35,10 @@ templates['query/queries_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"
     return "";
 },"useData":true});
 templates['query/query_builder_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"query-field\">\n  <textarea spellcheck=\"false\"></textarea>\n  <div class=\"query-favorites-container\">\n    <button class=\"open-favorites btn\">Query Favorites <i class=\"fa fa-chevron-down\"></i></button>\n    <div class=\"favorites-container\"></div>\n  </div>\n  <div class=\"query-history-container\">\n    <button class=\"open-history btn\">Query History <i class=\"fa fa-chevron-down\"></i></button>\n    <div class=\"history-container\"></div>\n  </div>\n  <button class=\"run-query btn\">Run Query</button>\n  <button class=\"save-query btn\"><i class=\"fa\"></i></button>\n</div>\n<div class=\"results-container\"></div>\n<div class=\"status-message\"></div>";
+    return "<div class=\"query-field\">\n  <textarea spellcheck=\"false\"></textarea>\n  <div class=\"query-favorites-container\">\n    <button class=\"open-favorites btn\">Query Favorites <i class=\"fa fa-chevron-down\"></i></button>\n    <div class=\"favorites-container\"></div>\n  </div>\n  <div class=\"query-history-container\">\n    <button class=\"open-history btn\">Query History <i class=\"fa fa-chevron-down\"></i></button>\n    <div class=\"history-container\"></div>\n  </div>\n  <button class=\"run-query btn\">Run Query</button>\n  <button class=\"save-query btn\" data-toggle=\"tooltip\" data-delay='{\"show\": 500, \"hide\": 0}' title=\"Save query\"><i class=\"fa\"></i></button>\n</div>\n<div class=\"results-container\"></div>\n<div class=\"status-message\"></div>";
 },"useData":true});
 templates['query/query_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div id=\"tabsRegion\"></div>\n<div class=\"query-tab-button-container\"><i class=\"add-query-tab fa fa-plus\"></i></div>\n<div id=\"queries\"></div>";
+    return "<div id=\"tabsRegion\"></div>\n<div class=\"query-tab-button-container\">\n  <i class=\"add-query-tab fa fa-plus\" data-toggle=\"tooltip\" data-placement=\"left\" data-delay='{\"show\": 500, \"hide\": 0}' title=\"New tab\"></i>\n</div>\n<div id=\"queries\"></div>";
 },"useData":true});
 templates['query/results/result_header_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
@@ -59,34 +59,34 @@ templates['query/tab_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main
     return "<span class=\"close-tab\">&times;</span>\n<span class=\"tab-name\"></span>";
 },"useData":true});
 templates['sidebar/column_layout'] = template({"1":function(depth0,helpers,partials,data) {
-    return "    <i class=\"fa fa-key\" style=\"font-weight:bold;\"></i>\n";
+    return "    <i class=\"fa fa-key\" style=\"font-weight:bold;\" data-toggle=\"tooltip\" data-delay='{\"show\": 500, \"hide\": 0}' title=\"Partitioning Key\"></i>\n";
 },"3":function(depth0,helpers,partials,data) {
     var stack1;
 
   return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.clusterColumn : depth0),{"name":"if","hash":{},"fn":this.program(4, data, 0),"inverse":this.program(6, data, 0),"data":data})) != null ? stack1 : "");
 },"4":function(depth0,helpers,partials,data) {
-    return "    <i class=\"fa fa-key\"></i>\n";
+    return "    <i class=\"fa fa-key\" data-toggle=\"tooltip\" data-delay='{\"show\": 500, \"hide\": 0}' title=\"Clustering Column\"></i>\n";
 },"6":function(depth0,helpers,partials,data) {
     var stack1;
 
   return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.secondaryIndex : depth0),{"name":"if","hash":{},"fn":this.program(7, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "");
 },"7":function(depth0,helpers,partials,data) {
-    return "    <i class=\"fa fa-hand-o-right\"></i>\n  ";
+    return "    <i class=\"fa fa-hand-o-right\" data-toggle=\"tooltip\" data-delay='{\"show\": 500, \"hide\": 0}' title=\"Secondary Index\"></i>\n  ";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "<span class=\"column-name\">\n  <i class=\"fa fa-columns\"></i>\n\n"
+  return "<span class=\"column-name\">\n  <i class=\"fa fa-columns\" data-toggle=\"tooltip\" title=\"Column\"></i>\n\n"
     + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.primary : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.program(3, data, 0),"data":data})) != null ? stack1 : "")
     + "  "
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "\n</span>\n<span class=\"pull-right\">"
+    + "\n</span>\n<span class=\"pull-right\" data-toggle=\"tooltip\" data-delay='{\"show\":500, \"hide\":0}' title=\"Column type\">"
     + alias3(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"type","hash":{},"data":data}) : helper)))
     + "</span>\n";
 },"useData":true});
 templates['sidebar/keyspace_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
 
-  return "<span class=\"keyspace-collapse-toggle\">\n  <span class=\"fa keyspace-collapse-icon\">\n  </span>\n  <span class=\"keyspace-name\"><i class=\"fa fa-database\"></i>"
+  return "<span class=\"keyspace-collapse-toggle\">\n  <span class=\"fa keyspace-collapse-icon\">\n  </span>\n  <span class=\"keyspace-name\"><i class=\"fa fa-database\" data-toggle=\"tooltip\" title=\"Keyspace\" data-delay='{\"show\": 500, \"hide\": 0}'></i>"
     + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\n</span>\n<div class=\"tables-container\">\n</div>";
 },"useData":true});
@@ -96,7 +96,7 @@ templates['sidebar/sidebar_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"]
 templates['sidebar/table_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper;
 
-  return "<span class=\"table-collapse-toggle\">\n  <span class=\"glyphicon table-collapse-icon\"></span>\n  <span class=\"table-name\"><i class=\"fa\"></i>"
+  return "<span class=\"table-collapse-toggle\">\n  <span class=\"fa table-collapse-icon\"></span>\n  <span class=\"table-name\"><i class=\"fa\" data-toggle=\"tooltip\" data-delay='{\"show\": 500, \"hide\": 0}' title=\"Table\"></i>"
     + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\n</span>\n<div class=\"columns-container\"></div>";
 },"useData":true});
