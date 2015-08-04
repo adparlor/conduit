@@ -143,9 +143,10 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
 
     setStatusMessage: function() {
       var errorsStatus = this.presenterModel.get("errorMessage") ? "Errors; " : "No errors; ",
+          pagingStatus = this.presenterModel.get("pagingState") ? "More than " : "",
           rowsAffected = this.presenterModel.get("resultsArray").length + " rows affected"
 
-      this.presenterModel.set("statusMessage", errorsStatus + rowsAffected)
+      this.presenterModel.set("statusMessage", errorsStatus + pagingStatus + rowsAffected)
     },
 
     resumeQueryRequest: function() {

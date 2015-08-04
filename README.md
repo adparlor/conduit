@@ -36,6 +36,8 @@ The keyspace that is highlighted blue will be the default keyspace your queries 
 
 All queries you have run previously will save into your Query History, and all the queries you save (beside the "Run Query" button) will save into your Query Favorites. They hold up to 10 queries, pushing your last one out whenever you add more than that. Both of these you can view and clear by clicking the appropriate button above the table. Click on any of the queries in these popovers to load it into the CQL input.
 
+Each Cassandra request currently has a paging state of 100 rows for each query. This means that your query result will come in chunks of 100 rows. As you scroll down, more rows will be requested from where it left off. You can tell if there are more rows to request if the status bar says '**More than** xxxx rows affected'.
+
 If you have a column with 'json' included in the name, you can click on any of its data cells and it will open the value in a JSON viewer modal. This modal assumes that the value is a string in JSON format, and it will display the value in parsed JSON format with syntax highlighting.
 
 ### Shortcuts
