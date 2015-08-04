@@ -1,6 +1,13 @@
 <span class="column-name">
   <i class="fa fa-columns"></i>
-  <i class="fa column-logo"></i>
+
+  {{#if primary}}
+    <i class="fa fa-key" style="font-weight:bold;"></i>
+  {{else if clusterColumn}}
+    <i class="fa fa-key"></i>
+  {{else if secondaryIndex}}
+    <i class="fa fa-hand-o-right"></i>
+  {{/if}}
   {{name}}
 </span>
 <span class="pull-right">{{type}}</span>

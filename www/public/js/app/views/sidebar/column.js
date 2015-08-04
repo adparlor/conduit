@@ -29,17 +29,7 @@ define([], function() {
     },
 
     bindings: {
-      '.column-logo': {
-        attributes: [{
-          observe: ['primary', 'clusterColumn', 'secondaryIndex'],
-          name: 'class',
-          onGet: function(attrs) {
-            if (attrs[0] || attrs[1]) return "fa-key"
-            else if (attrs[2]) return "fa-hand-o-right"
-          }
-        }]
-      },
-      '.column-name, .column-name > .fa-key': {
+      '.column-name': {
         attributes: [{
           observe: 'primary',
           name: 'style',

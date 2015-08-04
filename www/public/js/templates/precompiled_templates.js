@@ -58,10 +58,26 @@ templates['query/results/results_layout'] = template({"compiler":[6,">= 2.0.0-be
 templates['query/tab_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<span class=\"close-tab\">&times;</span>\n<span class=\"tab-name\"></span>";
 },"useData":true});
-templates['sidebar/column_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+templates['sidebar/column_layout'] = template({"1":function(depth0,helpers,partials,data) {
+    return "    <i class=\"fa fa-key\" style=\"font-weight:bold;\"></i>\n";
+},"3":function(depth0,helpers,partials,data) {
+    var stack1;
 
-  return "<span class=\"column-name\">\n  <i class=\"fa fa-columns\"></i>\n  <i class=\"fa column-logo\"></i>\n  "
+  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.clusterColumn : depth0),{"name":"if","hash":{},"fn":this.program(4, data, 0),"inverse":this.program(6, data, 0),"data":data})) != null ? stack1 : "");
+},"4":function(depth0,helpers,partials,data) {
+    return "    <i class=\"fa fa-key\"></i>\n";
+},"6":function(depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.secondaryIndex : depth0),{"name":"if","hash":{},"fn":this.program(7, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "");
+},"7":function(depth0,helpers,partials,data) {
+    return "    <i class=\"fa fa-hand-o-right\"></i>\n  ";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+
+  return "<span class=\"column-name\">\n  <i class=\"fa fa-columns\"></i>\n\n"
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.primary : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.program(3, data, 0),"data":data})) != null ? stack1 : "")
+    + "  "
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "\n</span>\n<span class=\"pull-right\">"
     + alias3(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"type","hash":{},"data":data}) : helper)))
