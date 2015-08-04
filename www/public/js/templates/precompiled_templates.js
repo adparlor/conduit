@@ -75,7 +75,7 @@ templates['sidebar/column_layout'] = template({"1":function(depth0,helpers,parti
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "<span class=\"column-name\">\n  <i class=\"fa fa-columns\" data-toggle=\"tooltip\" title=\"Column\"></i>\n\n"
+  return "<span class=\"column-name\">\n  <i class=\"fa fa-columns\" data-toggle=\"tooltip\" data-delay='{\"show\": 500, \"hide\": 0}' title=\"Column\"></i>\n\n"
     + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.primary : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.program(3, data, 0),"data":data})) != null ? stack1 : "")
     + "  "
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
