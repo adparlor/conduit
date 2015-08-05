@@ -26,8 +26,7 @@ gulp.task('templates', function(cb) {
   })
 })
 
-gulp.task('default', function() {
-  console.log('Warning: If you have made changes to any templates/styles before running this, you must run them manually.')
+gulp.task('default', ['styles', 'concatStyles', 'templates'], function() {
   gulp.watch('public/assets/scss/**/*.scss', ['styles'])
   gulp.watch('public/assets/css/**/*.css', ['concatStyles'])
   gulp.watch('templates/**/*.handlebars', ['templates'])
