@@ -42,10 +42,13 @@ If you have a column with 'json' included in the name, you can click on any of i
 
 ### Shortcuts
 
-CTRL/CMD + ENTER - Runs the current query.
-DBLClick on a table in the sidebar - Makes that table's keyspace active, and opens the popover to load a default 'SELECT' query for that table.
-DBLClick on a column in the sidebar - Makes that column's keyspace active, and opens the popover to load a default 'SELECT ... WHERE' query for that column.
-DBLClick on a tab - Allows you to change the title of the tab.
+**CTRL/CMD + ENTER** - Runs the current query.
+
+**DBLClick sidebar table** - Makes that table's keyspace active, and opens the popover to load a default 'SELECT' query for that table.
+
+**DBLClick sidebar column** - Makes that column's keyspace active, and opens the popover to load a default 'SELECT ... WHERE' query for that column.
+
+**DBLClick a tab** - Allows you to change the title of the tab.
 
 ## Development Setup
 
