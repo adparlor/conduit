@@ -120,7 +120,7 @@ html, body, #appContent, #appContent > div {
           display: block;
           padding: 0 10px;
           border: none;
-          cursor: default; }
+          cursor: pointer; }
           #queryRegion > div #tabsRegion .query-tabs .query-tab .tab-name:focus {
             outline: none; }
   #queryRegion > div .query-tab-button-container {

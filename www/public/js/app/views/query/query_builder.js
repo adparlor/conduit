@@ -83,9 +83,11 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
     },
 
     setCurrentQuery: function(query) {
-      this.model.set("query", query)
-      this.hideFavoritesView()
-      this.hideHistoryView()
+      if (this.model.get("isActive")) {
+        this.model.set("query", query)
+        this.hideFavoritesView()
+        this.hideHistoryView()
+      }
     },
 
     hideFavoritesView: function() {
