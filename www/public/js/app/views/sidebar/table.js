@@ -8,6 +8,10 @@ define(['ColumnView'], function(ColumnView) {
       this.presenterModel = new Backbone.Model({
         isCollapsed: true
       })
+
+      this.childViewOptions = {
+        vent: this.options.vent
+      }
     },
 
     template: Handlebars.templates['sidebar/table_layout'],
@@ -20,7 +24,9 @@ define(['ColumnView'], function(ColumnView) {
 
     events: {
       'click .table-collapse-toggle': 'collapseColumns',
-      'dblclick .table-collapse-toggle': 'useDefaultQueryForTable'
+      'dblclick .table-collapse-toggle': 'openQueryStringPopover',
+      'click .table-change-query': 'sendQueryForTable',
+      'click .close-popover': 'closeQueryStringPopover'
     },
 
     presenterBindings: {
@@ -53,11 +59,29 @@ define(['ColumnView'], function(ColumnView) {
       }
     },
 
-    useDefaultQueryForTable: function() {
-      var queryString = 'SELECT * FROM ' + this.model.get("keyspace") + '.' + this.model.get("name") + ';'
-      this.presenterModel.set("isCollapsed", false)
+    setQueryString: function() {
+      var queryString = 'SELECT * FROM ' + this.model.get("name")
+      this.presenterModel.set("queryString", queryString)
+    },
+
+    closeQueryStringPopover: function() {
+      this.$('.table-collapse-toggle').popover('hide')
+    },
+
+    openQueryStringPopover: function(e) {
       this.model.trigger('setActiveKeyspace')
-      this.options.vent.trigger('setCurrentQuery', queryString)
+      this.presenterModel.set("isCollapsed", false)
+      this.setQueryString()
+      $('.popover').popover('hide')
+      this.$('.table-collapse-toggle').popover('show')
+      this.$('.popover').css({left: "30px"})
+      this.$('.arrow').css({left: "10%"})
+      this.$('.popover-content').text(this.presenterModel.get("queryString"))
+    },
+
+    sendQueryForTable: function() {
+      this.options.vent.trigger('setCurrentQuery', this.presenterModel.get("queryString"))
+      this.closeQueryStringPopover()
     },
 
     collapseColumns: function(e) {
@@ -66,6 +90,20 @@ define(['ColumnView'], function(ColumnView) {
 
     onDestroy: function() {
       this.options = null
+    },
+
+    onDomRefresh: function() {
+      this.$('.table-collapse-toggle').popover({
+        trigger: 'manual',
+        placement: 'bottom',
+        template: '<div class="popover" role="tooltip">' +
+                    '<div class="arrow"></div>' +
+                    '<h3 class="popover-title"></h3>' +
+                    '<span class="close-popover">&times;</span>' +
+                    '<div class="popover-content"></div>' +
+                    '<button class="btn table-change-query">Confirm</button>' +
+                  '</div>'
+      })
     },
 
     render: function() {

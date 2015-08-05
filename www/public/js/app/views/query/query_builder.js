@@ -87,6 +87,7 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
         this.model.set("query", query)
         this.hideFavoritesView()
         this.hideHistoryView()
+        this.$('.query-field > textarea').focus()
       }
     },
 

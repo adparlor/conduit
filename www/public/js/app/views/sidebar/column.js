@@ -13,7 +13,10 @@ define([], function() {
 
     events: {
       'mouseenter': 'showColumnType',
-      'mouseleave': 'hideColumnType'
+      'mouseleave': 'hideColumnType',
+      'dblclick .column-name': 'openQueryStringPopover',
+      'click .column-change-query': 'sendQueryForColumn',
+      'click .close-popover': 'closeQueryStringPopover'
     },
 
     presenterBindings: {
@@ -40,6 +43,31 @@ define([], function() {
       }
     },
 
+    setQueryString: function() {
+      var queryString = 'SELECT * FROM ' + this.model.get("table") +
+                        ' WHERE ' + this.model.get("name") + '='
+      this.presenterModel.set("queryString", queryString)
+    },
+
+    closeQueryStringPopover: function() {
+      this.$('.column-name').popover('hide')
+    },
+
+    openQueryStringPopover: function(e) {
+      this.model.trigger('setActiveKeyspace')
+      this.setQueryString()
+      $('.popover').popover('hide')
+      this.$('.column-name').popover('show')
+      this.$('.arrow').css({left: "10%"})
+      this.$('.popover').css({left: "-25px"})
+      this.$('.popover-content').text(this.presenterModel.get("queryString"))
+    },
+
+    sendQueryForColumn: function() {
+      this.options.vent.trigger('setCurrentQuery', this.presenterModel.get("queryString"))
+      this.closeQueryStringPopover()
+    },
+
     hideColumnType: function() {
       this.presenterModel.set("showType", false)
     },
@@ -50,6 +78,20 @@ define([], function() {
 
     onDestroy: function() {
       this.options = null
+    },
+
+    onDomRefresh: function() {
+      this.$('.column-name').popover({
+        trigger: 'manual',
+        placement: 'bottom',
+        template: '<div class="popover" role="tooltip">' +
+                    '<div class="arrow"></div>' +
+                    '<h3 class="popover-title"></h3>' +
+                    '<span class="close-popover">&times;</span>' +
+                    '<div class="popover-content"></div>' +
+                    '<button class="btn column-change-query">Confirm</button>' +
+                  '</div>'
+      })
     },
 
     render: function(){

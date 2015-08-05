@@ -286,6 +286,19 @@ html, body, #appContent, #appContent > div {
     color: #2c3e50; }
   #sidebarRegion .fa {
     display: inline; }
+  #sidebarRegion .popover {
+    min-width: 276px; }
+    #sidebarRegion .popover .close-popover {
+      position: absolute;
+      right: 8px;
+      top: 6px;
+      cursor: pointer; }
+    #sidebarRegion .popover .table-change-query, #sidebarRegion .popover .column-change-query {
+      background-color: #3498db;
+      color: white;
+      width: 100%; }
+      #sidebarRegion .popover .table-change-query:hover, #sidebarRegion .popover .column-change-query:hover {
+        background-color: #2980b9; }
   #sidebarRegion #sidebar #keyspaceHeader {
     height: 50px;
     border-top: 2x solid #bdc3c7;
@@ -340,6 +353,7 @@ html, body, #appContent, #appContent > div {
       border-bottom: 1px solid #E1E5E7;
       cursor: default; }
       #sidebarRegion .columns-container .column-row .column-name {
+        cursor: pointer;
         font-weight: 300;
         white-space: nowrap; }
         #sidebarRegion .columns-container .column-row .column-name .fa {
