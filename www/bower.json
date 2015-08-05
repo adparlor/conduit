@@ -17,6 +17,7 @@
     "backbone.stickit": "0.9.2",
     "jquery": "2.1.4",
     "components-font-awesome": "~4.3.0",
-    "localforage": "~1.2.4"
+    "localforage": "~1.2.4",
+    "jqueryui": "~1.11.4"
   }
 }
