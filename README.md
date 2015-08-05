@@ -42,7 +42,7 @@ If you have a column with 'json' included in the name, you can click on any of i
 
 ### Shortcuts
 
-**CTRL/CMD + ENTER** - Runs the current query.
+**CTRL/CMD + ENTER** - Runs the current query. A query text area must be focused.
 
 **DBLClick sidebar table** - Makes that table's keyspace active, and opens the popover to load a default 'SELECT' query for that table.
 

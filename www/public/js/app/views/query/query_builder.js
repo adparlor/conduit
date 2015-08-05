@@ -154,6 +154,7 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
 
     resumeQueryRequest: function() {
       this.presenterModel.unset("pagingState")
+      this.presenterModel.set("lazyLoading", true)
       var view = this
       var onSuccess = function(results) {
         view.presenterModel.set({
