@@ -1,5 +1,11 @@
 module ResultFormatter
 
+  def format result
+    result.is_a?(Cassandra::Results::Paged) ? format_table(result) : format_error(result)
+  end
+
+  private
+
   def format_table result
     formatted_result = {rows: []}
     formatted_result[:paging_state] = Base64.encode64(result.paging_state) if result.paging_state
@@ -11,7 +17,11 @@ module ResultFormatter
   end
 
   def format_error error
-    {error_class: error.class.name, error_message: error.message}
+    {
+      err: true,
+      error_class: error.class.name,
+      error_message: error.message
+    }
   end
 
 end

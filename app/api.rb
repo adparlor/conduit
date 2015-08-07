@@ -19,12 +19,8 @@ module Conduit
         get_keyspace_hierarchy
       end
 
-      def table_to_json result
-        format_table result
-      end
-
-      def error_to_json error
-        format_error error
+      def to_json result
+        format result
       end
     end
 
@@ -34,13 +30,10 @@ module Conduit
       requires :query, type: String, desc: "String to query"
     end
     post :queries do
-      cass_result = request_query params
+      formatted_result = to_json(request_query params)
 
-      if cass_result.is_a? Cassandra::Results::Paged
-        table_to_json cass_result
-      else
-        error! format_error(cass_result), 500
-      end
+      return formatted_result unless formatted_result[:err]
+      error! formatted_result, 500
     end
 
     desc "Submits query to cassandra to return all available
