@@ -16,7 +16,7 @@ module Conduit
       end
 
       def request_hierarchy
-        get_keyspace_hierarchy
+        keyspace_hierarchy
       end
 
       def to_json result

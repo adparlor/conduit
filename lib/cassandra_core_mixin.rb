@@ -5,9 +5,6 @@ module CassandraCoreMixin
 
   def self.included(mod)
     # Force the Cassandra connection to open when this module is included.
-    # We do this to avoid having Cassandra-related threads started inside a
-    # PipelineSegment's flow loop, since they would get killed when the
-    # segment is closed, and this would cause a fatal crash.
     CassandraConnector.instance.cassandra_cluster
   end
 
@@ -48,8 +45,8 @@ module CassandraCoreMixin
 
     def cassandra_cluster
       default_cluster_config = {
-        heartbeat_interval: 10, # this has to be less than the Sewage::Pipeline::STUCK_TIMEOUT, otherwise the pipeline will raise StuckPipelineError before the dead heartbeat is detected
-        idle_timeout: 360 # set it high, because it can take a while for the cassandra connection to start getting used in some pipelines
+        heartbeat_interval: 10,
+        idle_timeout: 360
       }
       cluster_config = default_cluster_config
                         .merge($CONFIG.cassandra.fetch(:cluster).to_h.symbolize_keys)
@@ -90,7 +87,7 @@ module CassandraCoreMixin
     end
   end
 
-  def get_keyspace_hierarchy
+  def keyspace_hierarchy
     hierarchy = []
     cassandra_cluster.keyspaces.each do |k|
       keyspace = Hash.new
@@ -118,43 +115,4 @@ module CassandraCoreMixin
     end
     hierarchy
   end
-
-  # def cast_string_to_cassandra_datatype(cassandra_datatype, string)
-  #   ruby_type = map_cassandra_datatype_to_ruby_type(cassandra_datatype)
-  #   if string.nil?
-  #     nil
-  #   elsif ruby_type == String
-  #     string
-  #   elsif ruby_type == Integer || ruby_type == Bignum
-  #     string.empty? ? nil : string.to_i
-  #   elsif ruby_type == Float
-  #     string.empty? ? nil : string.to_f
-  #   elsif ruby_type == BigDecimal
-  #     string.empty? ? nil : BigDecimal.new(string)
-  #   elsif ruby_type == Time
-  #     string.empty? ? nil : Time.parse(string)
-  #   else
-  #     raise "Don't know how to coerce #{string.inspect} to a #{ruby_type.inspect}"
-  #   end
-  # end
-
-  # def map_cassandra_datatype_to_ruby_type(cassandra_datatype)
-  #   case cassandra_datatype
-  #   when :int, "org.apache.cassandra.db.marshal.Int32Type"
-  #     Integer
-  #   when :bigint, "org.apache.cassandra.db.marshal.LongType"
-  #     Bignum
-  #   when :float
-  #     Float
-  #   when :varchar
-  #     String
-  #   when :decimal
-  #     BigDecimal
-  #   when :timestamp
-  #     Time
-  #   else
-  #     raise "Don't know how to convert #{cassandra_datatype.inspect} into a Ruby type"
-  #   end
-  # end
-
 end
