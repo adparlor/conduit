@@ -77,42 +77,50 @@ module CassandraCoreMixin
 
   def prepare_and_execute_cql(cql, keyspace, paging_state = nil)
     @keyspace = keyspace
-
-    begin
-      prepared_statement = prep(cql)
-      paging_state = Base64.decode64(paging_state) if paging_state
-      cassandra_execute(prepared_statement, page_size: 100, paging_state: paging_state)
-    rescue Exception => e
-      return e
-    end
+    prepared_statement = prep(cql)
+    paging_state = Base64.decode64(paging_state) if paging_state
+    cassandra_execute(prepared_statement, page_size: 100, paging_state: paging_state)
+  rescue Exception => e
+    return e
   end
 
   def keyspace_hierarchy
     hierarchy = []
     cassandra_cluster.keyspaces.each do |k|
-      keyspace = Hash.new
-      keyspace[:name] = k.name
-      keyspace[:tables] = []
-      cassandra_cluster.keyspace(keyspace[:name]).tables.each do |t|
-        table = Hash.new
-        table[:name] = t.name
-        table[:columns] = []
-        current_table = cassandra_cluster.keyspace(keyspace[:name]).table(table[:name])
-        partition_key = current_table.instance_variable_get(:@partition_key).map{|key| key.name}
-        clustering_columns = current_table.instance_variable_get(:@clustering_columns).map{|col| col.name}
-        current_table.columns.each do |c|
-          column = Hash.new
-          column[:name] = c.name
-          column[:type] = c.type
-          column[:primary] = true if partition_key.include? column[:name]
-          column[:cluster_column] = true if clustering_columns.include? column[:name]
-          column[:secondary_index] = true if c.index
-          table[:columns] << column
-        end
+      keyspace = { name: k.name, tables: [] }
+      cassandra_cluster.keyspace(k.name).tables.each do |t|
+        table = { name: t.name, columns: columns(keyspace: k.name, table: t.name) }
         keyspace[:tables] << table
       end
       hierarchy << keyspace
     end
     hierarchy
+  end
+
+  def columns(keyspace:, table:)
+    partition_key = partition_key(keyspace, table)
+    clustering_columns = clustering_columns(keyspace, table)
+
+    table(keyspace, table).columns.map do |c|
+      Hash.new.tap do |h|
+        h[:name] = c.name
+        h[:type] = c.type
+        h[:primary] = true if partition_key.include?(c.name)
+        h[:cluster_column] = true if clustering_columns.include?(c.name)
+        h[:secondary_index] = true if c.index
+      end
+    end
+  end
+
+  def table(keyspace, table)
+    cassandra_cluster.keyspace(keyspace).table(table)
+  end
+
+  def partition_key(keyspace, table)
+    table(keyspace, table).instance_variable_get(:@partition_key).map{|key| key.name}
+  end
+
+  def clustering_columns(keyspace, table)
+    table(keyspace, table).instance_variable_get(:@clustering_columns).map{|col| col.name}
   end
 end
