@@ -12,7 +12,7 @@ define(['JSONModalView'], function(JSONModalView) {
       var jsonModalView = new JSONModalView({
         vent: this.options.vent,
         header: header,
-        jsonToDisplay: json
+        jsonToDisplay: JSON.parse(json)
       })
 
       this.options.modalRegion.show(jsonModalView)

@@ -7,15 +7,11 @@ define([], function() {
 
       this.model = new Backbone.Model({
         header: this.options.header,
-        json: this.syntaxHighlight(JSON.stringify(JSON.parse(this.options.jsonToDisplay), undefined, 4))
+        json: this.syntaxHighlight(JSON.stringify(this.options.jsonToDisplay, undefined, 4))
       })
     },
 
     template: Handlebars.templates['modal/json_modal_layout'],
-
-    bindings: {
-
-    },
 
     syntaxHighlight: function(json) {
       json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -36,12 +32,8 @@ define([], function() {
       })
     },
 
-    events: {
-
-    },
-
     onDestroy: function() {
-
+      this.options = null
     },
 
     render: function() {

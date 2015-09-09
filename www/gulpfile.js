@@ -1,8 +1,9 @@
-var gulp = require('gulp'),
-    exec = require('child_process').exec,
-    sass = require('gulp-ruby-sass'),
-    concat = require('gulp-concat'),
-    autoprefix = require('gulp-autoprefixer')
+var gulp = require('gulp')
+var exec = require('child_process').exec
+var sass = require('gulp-ruby-sass')
+var concat = require('gulp-concat')
+var autoprefix = require('gulp-autoprefixer')
+var runSequence = require('run-sequence')
 
 gulp.task('styles', function() {
   return sass('public/assets/scss')
@@ -26,7 +27,8 @@ gulp.task('templates', function(cb) {
   })
 })
 
-gulp.task('default', ['styles', 'concatStyles', 'templates'], function() {
+gulp.task('default', function(cb) {
+  runSequence('styles', 'concatStyles', 'templates', cb)
   gulp.watch('public/assets/scss/**/*.scss', ['styles'])
   gulp.watch('public/assets/css/**/*.css', ['concatStyles'])
   gulp.watch('templates/**/*.handlebars', ['templates'])

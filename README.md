@@ -97,7 +97,7 @@ $ ./server-development
 
 The only difference between the server and the server-development executable is that server-development runs rackup through rerun.
 
-This project ofcourse also needs Apache Cassandra to get the data from. If you don't already have it installed, I highly suggest using brew
+This project ofcourse also needs Apache Cassandra to get the data from. If you don't already have it installed, I suggest using brew
 
 ```sh
 $ brew install cassandra
