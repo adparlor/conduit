@@ -56,8 +56,11 @@ require (['Router', 'MainView'], function(Router, MainView) {
   Backbone.history.start()
 
   $(document).ready(function() {
-    window.openJSONModal = function(header, json) {
-      window.Conduit.vent.trigger('openJSONModal', header, json)
+    window.openJSONModal = function(element) {
+      var jsonText = $(element).find('.result-data-container').text()
+      var header = $(element).data('header')
+
+      window.Conduit.vent.trigger('openJSONModal', header, jsonText)
     }
   })
 
