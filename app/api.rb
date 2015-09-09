@@ -4,7 +4,6 @@ require 'result_formatter'
 
 module Conduit
   class API < Grape::API
-
     format :json
 
     helpers do
@@ -41,6 +40,5 @@ module Conduit
     get :hierarchy do
       request_hierarchy
     end
-
   end
 end

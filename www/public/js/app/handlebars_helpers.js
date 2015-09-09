@@ -1,7 +1,7 @@
 
 var buildTemplateForJSON = function(header, rowModel) {
   var finalTemplate = '<td class=" json-data result-data data-' + header +
-                      '" onclick=\'openJSONModal({ "value": "' +  header + '"},' + rowModel[header] +
+                      '" onclick=\'openJSONModal({ "value": "' +  header + '"},' + JSON.stringify(rowModel[header], undefined, 4) +
                        ')\'><div class="result-data-container">'
 
   return finalTemplate
