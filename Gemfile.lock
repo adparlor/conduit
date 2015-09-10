@@ -46,6 +46,10 @@ GEM
       celluloid (~> 0.16.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    little-plugger (1.1.4)
+    logging (2.0.0)
+      little-plugger (~> 1.1)
+      multi_json (~> 1.10)
     minitest (5.7.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
@@ -91,6 +95,7 @@ DEPENDENCIES
   byebug
   cassandra-driver
   grape
+  logging
   rack
   rake
   rerun

@@ -5,6 +5,7 @@ gem 'rack'
 gem 'grape'
 gem 'cassandra-driver'
 gem 'rake'
+gem 'logging'
 
 group :development do
   gem 'rerun'
