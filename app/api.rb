@@ -1,6 +1,7 @@
 require 'grape'
-require 'cassandra_core_mixin'
-require 'result_formatter'
+require 'conduit/cassandra_core_mixin'
+require 'conduit/result_formatter'
+require 'conduit/loggable'
 
 module Conduit
   class API < Grape::API
