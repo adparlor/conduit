@@ -33,6 +33,7 @@ requirejs.config({
     Queries: "collections/queries",
     ModalController: "controllers/modal_controller",
     JSONModalView: "views/modal/json_modal",
+    HelperModalView: "views/modal/helper_modal",
     AlertsController: "controllers/alerts_controller",
     AlertView: "views/alerts/alert"
   }

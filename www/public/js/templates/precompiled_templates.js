@@ -6,6 +6,9 @@ templates['alerts/alert_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"m
 templates['main_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<div id=\"conduitLabel\">Conduit</div>\n<div id=\"alertsRegion\"></div>\n<div id=\"sidebarRegion\"></div>\n<div id=\"queryRegion\"></div>\n<div id=\"modalRegion\"></div>";
 },"useData":true});
+templates['modal/helper_modal_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<div class=\"modal fade\" id=\"helperModal\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\"><span>&times;</span></button>\n        <h4 class=\"modal-title\">Information</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"info-body\">Hello World!</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn close-btn\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->";
+},"useData":true});
 templates['modal/json_modal_layout'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function";
 
