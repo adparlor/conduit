@@ -1,11 +1,13 @@
 
 source 'https://rubygems.org'
 
+gem 'activesupport', '~> 4.2.4'
 gem 'rack'
 gem 'grape'
 gem 'cassandra-driver'
 gem 'rake'
 gem 'logging'
+gem 'oj'
 
 group :development do
   gem 'rerun'

@@ -6,6 +6,8 @@ require 'boot'
 
 Bundler.require :default, ENV['RACK_ENV']
 
+require 'active_support/core_ext/hash/transform_values'
+
 Dir[File.expand_path('../../api/*.rb', __FILE__)].each do |file|
   require file
 end

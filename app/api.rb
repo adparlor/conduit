@@ -11,7 +11,7 @@ module Conduit
       include CassandraCoreMixin
       include ResultFormatter
 
-      def request_query params
+      def request_query(params)
         prepare_and_execute_cql params[:query], params[:keyspace], params[:paging_state]
       end
 
@@ -19,7 +19,7 @@ module Conduit
         keyspace_hierarchy
       end
 
-      def to_json result
+      def to_json(result)
         format result
       end
     end

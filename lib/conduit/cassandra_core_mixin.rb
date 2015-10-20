@@ -73,15 +73,24 @@ module Conduit
       end
     end
 
-    def prep query
+    def prep(query)
       cassandra_session.prepare(query)
     end
 
-    def prepare_and_execute_cql(cql, keyspace, paging_state = nil)
-      @keyspace = keyspace
+    def prepare_and_execute_cql(cql, keyspace_name, paging_state = nil)
+      @keyspace = keyspace_name
+      keyspace = cassandra_cluster.keyspace(keyspace_name)
       prepared_statement = prep(cql)
       paging_state = Base64.decode64(paging_state) if paging_state
-      cassandra_execute(prepared_statement, page_size: 100, paging_state: paging_state)
+
+      # Figure out which table we are working with through the cql statement
+      effective_table = keyspace.tables.select{|table| cql.include?(table.name)}.first
+      effective_table = formatted_table(keyspace, effective_table)
+
+      {
+        paged: cassandra_execute(prepared_statement, page_size: 100, paging_state: paging_state),
+        table: effective_table
+      }
     rescue Exception => e
       return e
     end
@@ -89,12 +98,7 @@ module Conduit
     def keyspace_hierarchy
       hierarchy = []
       cassandra_cluster.keyspaces.each do |k|
-        keyspace = { name: k.name, tables: [] }
-        cassandra_cluster.keyspace(k.name).tables.each do |t|
-          table = { name: t.name, columns: columns(keyspace: k.name, table: t.name) }
-          keyspace[:tables] << table
-        end
-        hierarchy << keyspace
+        hierarchy << formatted_keyspace(k)
       end
       hierarchy
     end
@@ -103,10 +107,10 @@ module Conduit
       partition_key = partition_key(keyspace, table)
       clustering_columns = clustering_columns(keyspace, table)
 
-      table(keyspace, table).columns.map do |c|
+      cassandra_table(keyspace, table).columns.map do |c|
         Hash.new.tap do |h|
           h[:name] = c.name
-          h[:type] = c.type
+          h[:type] = c.type.kind
           h[:primary] = true if partition_key.include?(c.name)
           h[:cluster_column] = true if clustering_columns.include?(c.name)
           h[:secondary_index] = true if c.index
@@ -114,16 +118,32 @@ module Conduit
       end
     end
 
-    def table(keyspace, table)
+    def cassandra_table(keyspace, table)
       cassandra_cluster.keyspace(keyspace).table(table)
     end
 
+    def formatted_table(keyspace, table)
+      {
+        name: table.name,
+        columns: columns(keyspace: keyspace.name, table: table.name)
+      }
+    end
+
+    def formatted_keyspace(keyspace)
+      formatted_keyspace = { name: keyspace.name, tables: [] }
+      cassandra_cluster.keyspace(keyspace.name).tables.each do |t|
+        formatted_keyspace[:tables] << formatted_table(keyspace, t)
+      end
+
+      formatted_keyspace
+    end
+
     def partition_key(keyspace, table)
-      table(keyspace, table).instance_variable_get(:@partition_key).map{|key| key.name}
+      cassandra_table(keyspace, table).instance_variable_get(:@partition_key).map{|key| key.name}
     end
 
     def clustering_columns(keyspace, table)
-      table(keyspace, table).instance_variable_get(:@clustering_columns).map{|col| col.name}
+      cassandra_table(keyspace, table).instance_variable_get(:@clustering_columns).map{|col| col.name}
     end
   end
 end
