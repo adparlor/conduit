@@ -13,7 +13,7 @@ module Conduit
     # know how to deal with numbers larger than 32-bit.
     def bigints_converted(row, bigint_columns)
       bigint_columns.each do |column|
-        row[column] = row[column].to_s
+        row[column] = row[column].to_s if row[column]
       end
 
       row
