@@ -4,7 +4,7 @@ module Conduit
   module ResultFormatter
 
     def format(result)
-      result.has_key?(:paged) ? format_table(result) : format_error(result)
+      result.is_a?(Hash) ? format_table(result) : format_error(result)
     end
 
     private
