@@ -206,6 +206,10 @@ function(ResultsView, QueryHistoryView, QueryFavoritesView) {
       }
 
       var onFailure = function(err) {
+        addQueryToHistory(view.model.get("query"), function() {
+          if (view.historyCollection.length >= 10) view.historyCollection.shift()
+          view.historyCollection.add(new Backbone.Model({query: view.model.get("query")}))
+        })
         view.presenterModel.set({
           loading: false,
           errorMessage: err
