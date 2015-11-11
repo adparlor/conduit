@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'boot'
 
-Bundler.require :default, ENV['RACK_ENV']
+Bundler.require :default, ENV['CONDUIT_ENV']
 
 require 'active_support/core_ext/hash/transform_values'
 
@@ -41,6 +41,6 @@ def load_config(env)
 end
 
 BASE_PATH = File.dirname(File.absolute_path(__FILE__))
-$CONFIG = load_config ENV['RACK_ENV']
+$CONFIG = load_config ENV['CONDUIT_ENV']
 
 require 'api'
