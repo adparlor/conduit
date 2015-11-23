@@ -2,7 +2,9 @@
 
 Conduit is a database manager for Apache Cassandra that runs in the browser. The backend is written in Grape, and the frontend uses Backbone.Marionette.
 
+#### Basic View
 ![basic view](https://github.com/adparlor/conduit/blob/master/screenshots/basic_view.png)
+#### Modal View
 ![modal_view](https://github.com/adparlor/conduit/blob/master/screenshots/modal_view.png)
 
 ## Regular Setup
