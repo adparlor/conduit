@@ -8,6 +8,7 @@ gem 'cassandra-driver'
 gem 'rake'
 gem 'logging'
 gem 'oj'
+gem 'really-confy'
 
 group :development do
   gem 'rerun'
